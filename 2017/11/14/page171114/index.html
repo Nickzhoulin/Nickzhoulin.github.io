@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,正则表达式," />
+  <meta name="keywords" content="SQL," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="创建RegExp对象，两种方式： 构造函数方式var reg=new RegExp(“表达式”,”附加参数”);  普通方式 var reg=/表达式/附加参数 在第一种参数中，正则表达式一般以javascript字符串的形式存在，需要使用单引号或双引号引起来。在第二种方式中，则嵌套在“/”字符之间，不能使用引号，两种方式中，附加参数是可选的，用来扩展正则表达式的含义，主要有三个参数：">
-<meta name="keywords" content="JavaScript,正则表达式">
+<meta name="description" content="###目录 1、基本查询语句 2、聚合函数 3、分组查询 4、联接查询 基本查询语句select 列名列表  from 表名  where 筛选条件  order by 排序字段 模糊查询： like：字符类型列，查询满足给定格式的数据 %:任意长度任意字符 _：长度为1的任意字符 []：长度为1且在给定范围字符 in：各种类型列，查询等于其中任意个给定数据的数据** between and：数值">
+<meta name="keywords" content="SQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式 （一）">
-<meta property="og:url" content="http://nickzhoulin.github.io/2017/11/06/page171106/index.html">
+<meta property="og:title" content="SQL学习笔记">
+<meta property="og:url" content="http://nickzhoulin.github.io/2017/11/14/page171114/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="创建RegExp对象，两种方式： 构造函数方式var reg=new RegExp(“表达式”,”附加参数”);  普通方式 var reg=/表达式/附加参数 在第一种参数中，正则表达式一般以javascript字符串的形式存在，需要使用单引号或双引号引起来。在第二种方式中，则嵌套在“/”字符之间，不能使用引号，两种方式中，附加参数是可选的，用来扩展正则表达式的含义，主要有三个参数：">
+<meta property="og:description" content="###目录 1、基本查询语句 2、聚合函数 3、分组查询 4、联接查询 基本查询语句select 列名列表  from 表名  where 筛选条件  order by 排序字段 模糊查询： like：字符类型列，查询满足给定格式的数据 %:任意长度任意字符 _：长度为1的任意字符 []：长度为1且在给定范围字符 in：各种类型列，查询等于其中任意个给定数据的数据** between and：数值">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-06T08:26:53.202Z">
+<meta property="og:updated_time" content="2017-11-16T07:42:53.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式 （一）">
-<meta name="twitter:description" content="创建RegExp对象，两种方式： 构造函数方式var reg=new RegExp(“表达式”,”附加参数”);  普通方式 var reg=/表达式/附加参数 在第一种参数中，正则表达式一般以javascript字符串的形式存在，需要使用单引号或双引号引起来。在第二种方式中，则嵌套在“/”字符之间，不能使用引号，两种方式中，附加参数是可选的，用来扩展正则表达式的含义，主要有三个参数：">
+<meta name="twitter:title" content="SQL学习笔记">
+<meta name="twitter:description" content="###目录 1、基本查询语句 2、聚合函数 3、分组查询 4、联接查询 基本查询语句select 列名列表  from 表名  where 筛选条件  order by 排序字段 模糊查询： like：字符类型列，查询满足给定格式的数据 %:任意长度任意字符 _：长度为1的任意字符 []：长度为1且在给定范围字符 in：各种类型列，查询等于其中任意个给定数据的数据** between and：数值">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://nickzhoulin.github.io/2017/11/06/page171106/"/>
+  <link rel="canonical" href="http://nickzhoulin.github.io/2017/11/14/page171114/"/>
 
 
 
 
 
-  <title>正则表达式 （一） | 想念初恋</title>
+  <title>SQL学习笔记 | 想念初恋</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/11/06/page171106/">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/11/14/page171114/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">正则表达式 （一）</h1>
+          <h1 class="post-title" itemprop="name headline">SQL学习笔记</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:12:34+08:00">
-                2017-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T18:05:26+08:00">
+                2017-11-14
               </time>
             
 
@@ -292,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/资料/" itemprop="url" rel="index">
+                    <span itemprop="name">资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -320,137 +342,148 @@
       
 
       
-        <h3 id="创建RegExp对象，两种方式："><a href="#创建RegExp对象，两种方式：" class="headerlink" title="创建RegExp对象，两种方式："></a>创建RegExp对象，两种方式：</h3><ul>
-<li><p>构造函数方式<br><code>var reg=new RegExp(“表达式”,”附加参数”);</code></p>
-</li>
-<li><p>普通方式</p>
-<p><code>var reg=/表达式/附加参数</code></p>
-<p>在第一种参数中，正则表达式一般以javascript字符串的形式存在，需要使用单引号或双引号引起来。在第二种方式中，则嵌套在“/”字符之间，不能使用引号，两种方式中，附加参数是可选的，用来扩展正则表达式的含义，主要有三个参数：</p>
-<a id="more"></a>
-<blockquote>
-<p>g:全局匹配。如果设置了这个参数，使用该正则表达式模式对<br>i:忽略大小写<br>m:多行匹配</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="RegExp方法"><a href="#RegExp方法" class="headerlink" title="RegExp方法"></a>RegExp方法</h3><p>1.text方法</p>
-<p>   text()方法检索字符串中的指定值。返回值是 true 或 false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">var str=&quot;hello world&quot;</div><div class="line">var regExp=new RegExp(&quot;world&quot;);</div><div class="line">var result=regExp.text(str);</div><div class="line">&lt;/script&gt;</div><div class="line">执行代码后，result结果为true。</div></pre></td></tr></table></figure>
-<p>2.exec方法</p>
-<p>   exec() 方法检索字符串中的指定值。返回值是被找到的值。并确定其位置。如果没有发现匹配，则返回 null。</p>
-<p>exec() 的工作原理如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var patt1=new RegExp(&quot;e&quot;,&quot;g&quot;);</div><div class="line">do</div><div class="line">&#123;</div><div class="line">result=patt1.exec(&quot;The best things in life are free&quot;);</div><div class="line">document.write(result);</div><div class="line">&#125;</div><div class="line">while (result!=null)</div></pre></td></tr></table></figure>
-<p>由于这个字符串中 6 个 “e” 字母，代码的输出将是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eeeeeenull</div></pre></td></tr></table></figure>
-<p>我们可以用result.index确定每次检索出来的位置。</p>
-<p>3.compile()</p>
-<p>   compile() 方法用于改变 RegExp。</p>
-<p>   compile() 既可以改变检索模式，也可以添加或删除第二个参数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var patt1=new RegExp(&quot;e&quot;);</div><div class="line"></div><div class="line">document.write(patt1.test(&quot;The best things in life are free&quot;));</div><div class="line"></div><div class="line">patt1.compile(&quot;d&quot;);</div><div class="line"></div><div class="line">document.write(patt1.test(&quot;The best things in life are free&quot;));</div></pre></td></tr></table></figure>
-<p>由于字符串中存在 “e”，而没有 “d”，以上代码的输出是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">truefalse</div></pre></td></tr></table></figure>
-<h3 id="正则表达式元字符"><a href="#正则表达式元字符" class="headerlink" title="正则表达式元字符"></a>正则表达式元字符</h3><h5 id="1-限定符"><a href="#1-限定符" class="headerlink" title="1.限定符"></a>1.限定符</h5><p>限定符用于指定前面的字符或者组合项连续出现的次数    </p>
+        <p>###目录</p>
+<p>1、基本查询语句</p>
+<p>2、聚合函数</p>
+<p>3、分组查询</p>
+<p>4、联接查询</p>
+<h4 id="基本查询语句"><a href="#基本查询语句" class="headerlink" title="基本查询语句"></a>基本查询语句</h4><p>select 列名列表</p>
+<p> from 表名 </p>
+<p>where 筛选条件 </p>
+<p>order by 排序字段</p>
+<p><strong>模糊查询：</strong></p>
+<p>like：字符类型列，查询满足给定格式的数据</p>
+<p>%:任意长度任意字符</p>
+<p>_：长度为1的任意字符</p>
+<p>[]：长度为1且在给定范围字符</p>
+<p>in：各种类型列，查询等于其中任意个给定数据的数据**</p>
+<p>between and：数值和日期类型，查询区间**</p>
+<h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><p>sum：忽略null，求和</p>
+<p>max、min：忽略null，求最大值、最小值</p>
+<p>avg：忽略null，求平均值</p>
+<p>count：不会忽略null</p>
+<p>count（*）：获取结果集中记录条数</p>
+<p>count（字段）：获取结果集中对应字段中非空数据的个数</p>
+<p> 假如有下面这样一张表</p>
 <table>
 <thead>
 <tr>
-<th>限定符</th>
-<th>描述</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>n+</td>
-<td>匹配任何包含至少一个 n 的字符串。</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr>
-<td>n*</td>
-<td>匹配任何包含零个或多个 n 的字符串。</td>
+<td>null</td>
+<td>2</td>
+<td>2</td>
 </tr>
 <tr>
-<td>n?</td>
-<td>匹配任何包含零个或一个 n 的字符串。</td>
-</tr>
-<tr>
-<td>n{X}</td>
-<td>匹配包含 X 个 n 的序列的字符串。</td>
-</tr>
-<tr>
-<td>n{X,Y}</td>
-<td>匹配包含 X 至 Y 个 n 的序列的字符串。</td>
-</tr>
-<tr>
-<td>n{X,}</td>
-<td>匹配包含至少 X 个 n 的序列的字符串。</td>
-</tr>
-<tr>
-<td>n$</td>
-<td>匹配任何结尾为 n 的字符串。</td>
-</tr>
-<tr>
-<td>^n</td>
-<td>匹配任何开头为 n 的字符串。</td>
-</tr>
-<tr>
-<td>?=n</td>
-<td>匹配任何其后紧接指定字符串 n 的字符串。</td>
-</tr>
-<tr>
-<td>?!n</td>
-<td>匹配任何其后没有紧接指定字符串 n 的字符串。</td>
+<td>3</td>
+<td>null</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
-<h5 id="2-选择匹配符"><a href="#2-选择匹配符" class="headerlink" title="2.选择匹配符"></a>2.选择匹配符</h5><p>选择匹配符只有一个，即“|”字符，用于匹配两个中间的一个。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(chaper|sesect)  结果是匹配这两个中的一个</div></pre></td></tr></table></figure>
-<h5 id="3-字符匹配符"><a href="#3-字符匹配符" class="headerlink" title="3.字符匹配符"></a>3.字符匹配符</h5><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[…]</td>
-<td>匹配方括号字符集中任意一个字符，如[abc],字符“a”,”b”,”c”都可以匹配</td>
-</tr>
-<tr>
-<td>[^…]</td>
-<td>匹配方括号中未包含的字符</td>
-</tr>
-<tr>
-<td>[a-z],[1-9]</td>
-<td>指定范围内的任意字符，加一个“^”号用于匹配不在范围内的字符，方法同上</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配任意一个数字字符，等效于[0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>匹配任意一个非数字字符</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任意空白字符，包括空格，制表符等</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>匹配任意非空白字符</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配任何英文字母，数字和下划线</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>匹配任何非英文字母和数字类字符，单不包括下划线，</td>
-</tr>
-<tr>
-<td>.</td>
-<td>匹配除换行符\n之外的任何单个字符</td>
-</tr>
-</tbody>
-</table>
+<p>count(*):3</p>
+<p>count(b):2</p>
+<p>count(c):3</p>
+<p>####分组查询</p>
+<p>select 列名列表</p>
+<p>from 表名</p>
+<p>where 筛选条件</p>
+<p>groupby 分组项</p>
+<p>having 过滤分组</p>
+<p>orderby 排序字段</p>
+<p>分组个数——》分组项存在不同数据的个数决定</p>
+<p>分组之后，使用聚合函数进行统计，不是针对于所有数据，而是针对于每一组进行统计</p>
+<p>一旦使用分组，select之后只能出现分组项和聚合函数</p>
+<p>分组之后，需要进一步进行数据筛选，只能使用having，不能使用where</p>
+<p>####联接查询</p>
+<p>使用场合：当查询结果集中存在多张表的数据时，使用联接查询</p>
+<p>分类：</p>
+<p>内联接</p>
+<p>外联接（左外联接、右外联接、全联接）</p>
+<p>交叉联接</p>
+<p><strong>内联接：</strong></p>
+<p>select  列名列表 </p>
+<p>from tb_A inner join tb_B</p>
+<p>on  联接条件</p>
+<p>[where 筛选条件]</p>
+<p>[groupby 分组项]</p>
+<p>[having 过滤分组]</p>
+<p>[orderby 排序字段]</p>
+<p><strong>执行流程：</strong></p>
+<blockquote>
+<p>求笛卡尔积</p>
+<p>去除不满足联接条件的数据</p>
+<p>联接结果：左表和右表存在对应满足联接条件的数据将会出现结果中</p>
+</blockquote>
+<p>tb_A       tb_B</p>
+<p>a b c      c d</p>
+<p>1 1 1      3 3</p>
+<p>2 2 2      4 4</p>
+<p>3 3 3</p>
+<p>联接条件：tb_A.c=tb_B.c</p>
+<p>1 1 1  3 3</p>
+<p>1 1 1  4 4</p>
+<p>2 2 2  3 3</p>
+<p>2 2 2  4 4</p>
+<p>3 3 3  3 3</p>
+<p>3 3 3  4 4</p>
+<p>去除不满足条件数据</p>
+<p>3 3 3  3 3</p>
+<p>#####左外联接：</p>
+<p>select 列名列表</p>
+<p>from tb_A left outer join tb_B</p>
+<p>on 联接条件</p>
+<p>[where 筛选条件]</p>
+<p>[groupby 分组项] </p>
+<p>[having 过滤分组]</p>
+<p>[orderby  排序字段]</p>
+<p>#####执行流程：</p>
+<blockquote>
+<p>求笛卡尔积</p>
+<p>去除不满足联接条件的数据</p>
+<p>保留所有左表中数据</p>
+<p>联接结果：所有左表数据都会出现在结果中，若右表存在对应数据，则显示，否则显示null</p>
+</blockquote>
+<p>tb_A       tb_B</p>
+<p>a b c       c d</p>
+<p>1 1 1        3 3</p>
+<p>2 2 2      4 4</p>
+<p>3 3 3     </p>
+<p>联接条件：tb_A.c=tb_B.c</p>
+<p>1 1 1  3 3</p>
+<p>1 1 1  4 4</p>
+<p>2 2 2  3 3</p>
+<p>2 2 2  4 4</p>
+<p>3 3 3  3 3</p>
+<p>3 3 3  4 4</p>
+<p>去除不满足条件数据</p>
+<p>3 3 3  3 3</p>
+<p>1 1 1  null null</p>
+<p>2 2 2  null null</p>
+<p>右外联接：</p>
+<p>tb_A right outer join tb_B</p>
+<p>——》tb_B left outer join tb_A</p>
+<p>内联接和左外联接区别：</p>
+<blockquote>
+<p>内联接的结果&lt;=左外联接的结果</p>
+<p>交换两个表的位置，内联接结果不会发生改变，左外连接结果可能会发生改变</p>
+</blockquote>
+<p>tb_A inner join tb_B——》常规情况</p>
+<p>tb_A inner join tb_A——》特殊情况（自连接）</p>
+<p>tb_A as A inner join tb_A as B</p>
+<blockquote>
+<p>物理上是同一张表，但通过设置不同别名，在逻辑上分为两张表</p>
+</blockquote>
 
       
     </div>
@@ -468,9 +501,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
           
         </div>
       
@@ -483,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/06/diary171106/" rel="next" title="日记 2017-11-06">
-                <i class="fa fa-chevron-left"></i> 日记 2017-11-06
+              <a href="/2017/11/13/page171113/" rel="next" title="XSS过滤绕过速查表">
+                <i class="fa fa-chevron-left"></i> XSS过滤绕过速查表
               </a>
             
           </div>
@@ -492,10 +523,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/06/page171107/" rel="prev" title="XSS简介">
-                XSS简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -633,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建RegExp对象，两种方式："><span class="nav-number">1.</span> <span class="nav-text">创建RegExp对象，两种方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp方法"><span class="nav-number">2.</span> <span class="nav-text">RegExp方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式元字符"><span class="nav-number">3.</span> <span class="nav-text">正则表达式元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-限定符"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.限定符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-选择匹配符"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.选择匹配符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-字符匹配符"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.字符匹配符</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本查询语句"><span class="nav-number">1.</span> <span class="nav-text">基本查询语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合函数"><span class="nav-number">2.</span> <span class="nav-text">聚合函数</span></a></li></ol></div>
             
 
           </div>
