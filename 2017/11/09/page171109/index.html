@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171109-06.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171109-07.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171109-08.JPG">
-<meta property="og:updated_time" content="2017-11-09T13:44:48.111Z">
+<meta property="og:updated_time" content="2017-11-16T09:34:30.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA练习 XSS(Reflected)">
 <meta name="twitter:description" content="首先来看第一道XSS题，反射型XSS：">
@@ -376,7 +376,8 @@
 <p>发现过滤了<code>&lt;script&gt;</code>标签，这个好办,用其它标签代替即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;&quot; onerror=&quot;alert(/XSS/)&quot;&gt;</div></pre></td></tr></table></figure>
 <p>成功弹窗</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;标签被过滤，除了用其他标题代替外，也可以尝试下面的方法</div><div class="line">&lt;ScRipt&gt;alert(/XSS/)&lt;/ScrIpt&gt;</div><div class="line">&lt;scr&lt;script&gt;ipt&gt;alert(/XSS/)&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><code>&lt;script&gt;</code>标签被过滤，除了用其他标题代替外，也可以尝试下面的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;ScRipt&gt;alert(/XSS/)&lt;/ScrIpt&gt;</div><div class="line">&lt;scr&lt;script&gt;ipt&gt;alert(/XSS/)&lt;/script&gt;</div></pre></td></tr></table></figure>
 <h5 id="Medium-Reflected-XSS-Source"><a href="#Medium-Reflected-XSS-Source" class="headerlink" title="Medium Reflected XSS Source"></a>Medium Reflected XSS Source</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">header (&quot;X-XSS-Protection: 0&quot;);</div><div class="line"></div><div class="line">// Is there any input?</div><div class="line">if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &apos;name&apos; ] != NULL ) &#123;</div><div class="line">    // Get input</div><div class="line">    $name = str_replace( &apos;&lt;script&gt;&apos;, &apos;&apos;, $_GET[ &apos;name&apos; ] );</div><div class="line"></div><div class="line">    // Feedback for end user</div><div class="line">    echo &quot;&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
 <h3 id="High"><a href="#High" class="headerlink" title="High"></a>High</h3><p>我看这等级是最高的，打算先随便输入个东西进去试试，试了下面这个，竟然一次性成功了，表示我一脸懵逼，本以为这个会很难的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;&quot; onerror=&quot;alert(/XSS/)&quot;&gt;</div></pre></td></tr></table></figure>

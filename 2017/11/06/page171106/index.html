@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="想念初恋">
 <meta property="og:description" content="创建RegExp对象，两种方式： 构造函数方式var reg=new RegExp(“表达式”,”附加参数”);  普通方式 var reg=/表达式/附加参数 在第一种参数中，正则表达式一般以javascript字符串的形式存在，需要使用单引号或双引号引起来。在第二种方式中，则嵌套在“/”字符之间，不能使用引号，两种方式中，附加参数是可选的，用来扩展正则表达式的含义，主要有三个参数：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-16T09:25:43.899Z">
+<meta property="og:updated_time" content="2017-11-16T09:31:27.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式 （一）">
 <meta name="twitter:description" content="创建RegExp对象，两种方式： 构造函数方式var reg=new RegExp(“表达式”,”附加参数”);  普通方式 var reg=/表达式/附加参数 在第一种参数中，正则表达式一般以javascript字符串的形式存在，需要使用单引号或双引号引起来。在第二种方式中，则嵌套在“/”字符之间，不能使用引号，两种方式中，附加参数是可选的，用来扩展正则表达式的含义，主要有三个参数：">
@@ -334,7 +334,8 @@
 </ul>
 <h3 id="RegExp方法"><a href="#RegExp方法" class="headerlink" title="RegExp方法"></a>RegExp方法</h3><p>1.text方法</p>
 <p>   text()方法检索字符串中的指定值。返回值是 true 或 false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">var str=&quot;hello world&quot;</div><div class="line">var regExp=new RegExp(&quot;world&quot;);</div><div class="line">var result=regExp.text(str);</div><div class="line">&lt;/script&gt;</div><div class="line">执行代码后，result结果为true。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">var str=&quot;hello world&quot;</div><div class="line">var regExp=new RegExp(&quot;world&quot;);</div><div class="line">var result=regExp.text(str);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>执行代码后，result结果为true。</p>
 <p>2.exec方法</p>
 <p>   exec() 方法检索字符串中的指定值。返回值是被找到的值。并确定其位置。如果没有发现匹配，则返回 null。</p>
 <p>exec() 的工作原理如下：</p>
