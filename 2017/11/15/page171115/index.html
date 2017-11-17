@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会简单很多">
+<meta name="description" content="我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会容易很多">
 <meta name="keywords" content="SQL注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Server备忘录">
 <meta property="og:url" content="http://nickzhoulin.github.io/2017/11/15/page171115/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会简单很多">
+<meta property="og:description" content="我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会容易很多">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171115-01.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171115-02.JPG">
@@ -101,10 +101,10 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171115-12.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171115-13.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171115-14.JPG">
-<meta property="og:updated_time" content="2017-11-17T07:51:49.416Z">
+<meta property="og:updated_time" content="2017-11-17T10:55:29.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Server备忘录">
-<meta name="twitter:description" content="我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会简单很多">
+<meta name="twitter:description" content="我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会容易很多">
 <meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171115-01.JPG">
 
 
@@ -358,11 +358,10 @@
 
       
         <blockquote>
-<p>我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会简单很多</p>
+<p>我学习SQL手工注入的过程，可以说是历经波折，关于手工注入，网上有很多的教程，我系统的学过SQL Server，基本的增删改查什么的都很熟练，但每次看别人写的东西，很多时候都是一脸懵逼的，怎么说呢，精品的文章很少，大部分写的都是些乱七八糟的玩意，关于学习SQL注入，个人建议最好去系统的学一种数据库，那样的话理解起来会容易很多</p>
 </blockquote>
 <a id="more"></a>
-<p>####配置信息</p>
-<p>我这里的话是直接在SQL Server里面操作，数据库文件是这个，可自行下载在本地搭建环境</p>
+<h4 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h4><p>我这里的话是直接在SQL Server里面操作，数据库文件是这个，可自行下载在本地搭建环境</p>
 <p><a href="http://oz3okd76o.bkt.clouddn.com/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6.rar" target="_blank" rel="external">点击下载</a></p>
 <p>journey就是主要要操作的数据库,今天的目的是查出journey里面所有内容</p>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20171115-01.JPG" alt=""></p>
@@ -580,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取数据库版本"><span class="nav-number">1.</span> <span class="nav-text">获取数据库版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取当前用户"><span class="nav-number">2.</span> <span class="nav-text">获取当前用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出用户名"><span class="nav-number">3.</span> <span class="nav-text">列出用户名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#当前用户权限"><span class="nav-number">4.</span> <span class="nav-text">当前用户权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库服务器主机名"><span class="nav-number">5.</span> <span class="nav-text">数据库服务器主机名</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取数据库数据"><span class="nav-number"></span> <span class="nav-text">提取数据库数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取当前数据库的名字"><span class="nav-number">1.</span> <span class="nav-text">获取当前数据库的名字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出所有数据库"><span class="nav-number">2.</span> <span class="nav-text">列出所有数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出表"><span class="nav-number">3.</span> <span class="nav-text">列出表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出列"><span class="nav-number">4.</span> <span class="nav-text">列出列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置信息"><span class="nav-number">1.</span> <span class="nav-text">配置信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取数据库版本"><span class="nav-number">1.1.</span> <span class="nav-text">获取数据库版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#获取当前用户"><span class="nav-number">1.2.</span> <span class="nav-text">获取当前用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出用户名"><span class="nav-number">1.3.</span> <span class="nav-text">列出用户名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#当前用户权限"><span class="nav-number">1.4.</span> <span class="nav-text">当前用户权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库服务器主机名"><span class="nav-number">1.5.</span> <span class="nav-text">数据库服务器主机名</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提取数据库数据"><span class="nav-number">2.</span> <span class="nav-text">提取数据库数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取当前数据库的名字"><span class="nav-number">2.1.</span> <span class="nav-text">获取当前数据库的名字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出所有数据库"><span class="nav-number">2.2.</span> <span class="nav-text">列出所有数据库</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出表"><span class="nav-number">2.3.</span> <span class="nav-text">列出表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列出列"><span class="nav-number">2.4.</span> <span class="nav-text">列出列</span></a></li></ol></li></ol></div>
             
 
           </div>
