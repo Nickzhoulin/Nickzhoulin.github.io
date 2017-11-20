@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171117-10.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171117-11.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171117-12.JPG">
-<meta property="og:updated_time" content="2017-11-18T16:33:02.715Z">
+<meta property="og:updated_time" content="2017-11-20T12:31:13.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA Brute Force">
 <meta name="twitter:description" content="人是善忘的，很多事情都会随风而逝，谁还会记得  mmp,又是熟悉的界面,又是熟悉的开场白">
@@ -379,13 +379,13 @@
 <h5 id="4、开始攻击"><a href="#4、开始攻击" class="headerlink" title="4、开始攻击"></a>4、开始攻击</h5><p><img src="http://oz3okd76o.bkt.clouddn.com/20171117-10.JPG" alt=""></p>
 <p>攻击类型的话一共有四种</p>
 <p>第一种：</p>
-<p>Sniper标签<br>这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
+<p>Sniper<br>这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
 <p>第二种：</p>
-<p>Battering ram –<br>这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
+<p>Battering ram<br>这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要在请求中把相同的输入放到多个位置的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
 <p>第三种：</p>
-<p>Pitchfork –<br>这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：position中A处有a字典，B处有b字典，则a【1】将会对应b【1】进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
+<p>Pitchfork<br>这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：position中A处有a字典，B处有b字典，则a【1】将会对应b【1】进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
 <p>第四种：</p>
-<p>Cluster bomb –<br>这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
+<p>Cluster bomb<br>这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。攻击请求的总数是各payload组中payload数量的乘积。</p>
 <p>我这里的话是使用第一种，点击start sttack即可开始</p>
 <p>扫描差不多的时候，给Length排序，我们通过观察Length长度来判断密码</p>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20171117-11.JPG" alt=""></p>
@@ -434,7 +434,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/19/page171118/" rel="prev" title="DVWA 文件上传">
+              <a href="/2017/11/18/page171118/" rel="prev" title="DVWA 文件上传">
                 DVWA 文件上传 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -517,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -539,7 +539,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
