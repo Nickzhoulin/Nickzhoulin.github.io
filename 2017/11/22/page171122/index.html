@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记">
+<meta name="description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，感觉唯一不爽的是这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书的练手的笔记">
 <meta name="keywords" content="Sqlmap,盲注">
 <meta property="og:type" content="article">
 <meta property="og:title" content="From SQL Injection to Shell II">
 <meta property="og:url" content="http://nickzhoulin.github.io/2017/11/22/page171122/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记">
+<meta property="og:description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，感觉唯一不爽的是这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书的练手的笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-01.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-02.JPG">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-09.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-10.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-11.JPG">
-<meta property="og:updated_time" content="2017-11-22T15:43:57.426Z">
+<meta property="og:updated_time" content="2017-11-23T12:41:31.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From SQL Injection to Shell II">
-<meta name="twitter:description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记">
+<meta name="twitter:description" content="最近在看《SQL注入攻击与防御》这本书，收获挺多的，感觉唯一不爽的是这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书的练手的笔记">
 <meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171122-01.JPG">
 
 
@@ -354,12 +354,11 @@
       
 
       
-        <p>最近在看《SQL注入攻击与防御》这本书，收获挺多的，唯一不爽的是感觉这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书练手的笔记<br><a id="more"></a></p>
-<p>####注入</p>
-<p>又是练习平台，今天这个是From SQL Injection to Shell II，可以通过这个网址下载<a href="https://www.pentesterlab.com/exercises/from_sqli_to_shell_II/" target="_blank" rel="external">https://www.pentesterlab.com/exercises/from_sqli_to_shell_II/</a></p>
-<p>下载好后搭建虚拟机就可以了</p>
+        <p>最近在看《SQL注入攻击与防御》这本书，收获挺多的，感觉唯一不爽的是这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书的练手的笔记<br><a id="more"></a></p>
+<h4 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h4><p>又是练习平台，今天这个是From SQL Injection to Shell II，可以通过这个网址下载<a href="https://www.pentesterlab.com/exercises/from_sqli_to_shell_II/" target="_blank" rel="external">https://www.pentesterlab.com/exercises/from_sqli_to_shell_II/</a></p>
+<p>下载好后搭建虚拟机</p>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-01.JPG" alt=""></p>
-<p>用ifconfig看一下ip,我这里ip是192.168.137.131</p>
+<p>用ifconfig看一下ip,这里ip是192.168.137.131</p>
 <p>放到浏览器访问一下</p>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20171122-02.JPG" alt=""></p>
 <p>首先想到的是注入，先手工测试一下，什么<code>&#39;</code>,<code>and 1=1,</code>,<code>and 1=2</code>啊，发现都没什么用，有一个登陆页面</p>
@@ -426,6 +425,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/23/page171123/" rel="prev" title="Sqlmap命令备忘录">
+                Sqlmap命令备忘录 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -506,7 +509,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -563,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#上传webshell"><span class="nav-number">1.</span> <span class="nav-text">上传webshell</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#注入"><span class="nav-number">1.</span> <span class="nav-text">注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传webshell"><span class="nav-number">2.</span> <span class="nav-text">上传webshell</span></a></li></ol></div>
             
 
           </div>
