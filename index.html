@@ -271,7 +271,165 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/11/page171211/" itemprop="url">Python爬取豆瓣电影信息</a></h1>
+                <a class="post-title-link" href="/2017/12/11/page171211/" itemprop="url">Python爬取子域名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T20:14:39+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这几天养成了一个坏习惯，那就是思考的时候喜欢抓头，看着自己手中刚抓下来的三根头发，我内心是崩溃的，想起了几个目前成就还配不上他们发际线的学长，一阵后怕</p>
+<p>刚刚写了一个爬子域名的东西</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#encoding=utf-8</div><div class="line">from bs4 import BeautifulSoup</div><div class="line">import requests</div><div class="line">import re</div><div class="line">requests.packages.urllib3.disable_warnings()</div><div class="line">headers=&#123;</div><div class="line">    &apos;User-Agent&apos;: &apos;Mozilla/5.0 (compatible; MSIE 5.5; Windows NT)&apos;,</div><div class="line">    &apos;Host&apos;: &apos;www.baidu.com&apos;</div><div class="line">&#125;</div><div class="line">site=[]</div><div class="line">sit=raw_input(&quot;input a domain:&quot;)</div><div class="line">reg=r&apos;(.*?.&#123;&#125;)&apos;.format(sit)</div><div class="line">def forNext(url):</div><div class="line">    try:       </div><div class="line">        res = requests.get(url, verify=False, headers=headers)</div><div class="line">        res.encoding = &apos;utf-8&apos;</div><div class="line">        getnext = BeautifulSoup(res.text, &apos;html5lib&apos;)</div><div class="line">        for index in getnext.select(&apos;#content_left a&apos;):</div><div class="line">            list = re.findall(reg, index.text)</div><div class="line">            if len(list) &gt; 0:</div><div class="line">                site.append(list[0])</div><div class="line">        url = &apos;http://www.baidu.com%s&apos; % getnext.select(&apos;#page a&apos;)[-1][&apos;href&apos;]</div><div class="line">        if getnext.select(&apos;#page a&apos;)[-1].text[-1] == &apos;&gt;&apos;:</div><div class="line">            forNext(url)</div><div class="line">    except:</div><div class="line">        pass</div><div class="line">Url=&apos;http://www.baidu.com/s?ie=utf-8&amp;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=site%3A&#123;&#125;&apos;.format(sit)</div><div class="line">forNext(Url)</div><div class="line">newsite=set(site)</div><div class="line">for index in newsite:</div><div class="line">    print index</div></pre></td></tr></table></figure>
+<p>运行效果</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171211-02.JPG" alt=""></p>
+<p>还有点小bug,不过我懒，不修改了，代码解释以后再补上吧</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/11/page171210/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="想念初恋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/11/page171210/" itemprop="url">Python爬取豆瓣电影信息</a></h1>
         
 
         <div class="post-meta">
@@ -358,7 +516,7 @@
           <p>昨天爬了一天的网易云音乐，想写一个免费的音乐下载器，api有一个地方经过加密，结果是没解出来，今天上午转战酷狗，酷狗没用多少时间就爬出来了，这是刚刚写的</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/11/page171211/#more" rel="contents">
+            <a class="btn" href="/2017/12/11/page171210/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -989,152 +1147,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/11/22/page171122/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/22/page171122/" itemprop="url">From SQL Injection to Shell II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-22T21:59:08+08:00">
-                2017-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/渗透/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>最近在看《SQL注入攻击与防御》这本书，收获挺多的，感觉唯一不爽的是这本书太厚了。。。我看这类书没耐性，很少有从头看到尾的，一直都是当参考书来用。。。下面是看这本书的练手的笔记<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/22/page171122/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1189,7 +1201,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
