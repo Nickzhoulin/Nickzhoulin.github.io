@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉只后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边 数据下载地址点击下载 12345import numpy as npdataset_filename = &quot;affinity_datase">
+<meta name="description" content="简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉之后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边 数据下载地址点击下载 12345import numpy as npdataset_filename = &quot;affinity_datase">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="商品亲和性分析">
 <meta property="og:url" content="http://nickzhoulin.github.io/2017/12/15/page171215/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉只后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边 数据下载地址点击下载 12345import numpy as npdataset_filename = &quot;affinity_datase">
+<meta property="og:description" content="简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉之后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边 数据下载地址点击下载 12345import numpy as npdataset_filename = &quot;affinity_datase">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-15T07:54:42.914Z">
+<meta property="og:updated_time" content="2017-12-15T08:00:59.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="商品亲和性分析">
-<meta name="twitter:description" content="简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉只后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边 数据下载地址点击下载 12345import numpy as npdataset_filename = &quot;affinity_datase">
+<meta name="twitter:description" content="简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉之后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边 数据下载地址点击下载 12345import numpy as npdataset_filename = &quot;affinity_datase">
 
 
 
@@ -342,7 +342,7 @@
       
 
       
-        <p>简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉只后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边</p>
+        <p>简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉之后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边</p>
 <p>数据下载地址<a href="http://oz3okd76o.bkt.clouddn.com/affinity_dataset.txt" target="_blank" rel="external">点击下载</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">dataset_filename = <span class="string">"affinity_dataset.txt"</span></div><div class="line">X = np.loadtxt(dataset_filename)</div><div class="line">n_samples, n_features = X.shape</div><div class="line">print(<span class="string">"This dataset has &#123;0&#125; samples and &#123;1&#125; features"</span>.format(n_samples, n_features))</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">This dataset has 100 samples and 5 features</div></pre></td></tr></table></figure>
