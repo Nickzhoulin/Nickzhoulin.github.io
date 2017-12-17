@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="昨天， ::&amp;gt;_&amp;lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，什么蓝灯啊之类的，那就只能重新搭建一个OpenVPS了，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，现在看来，我发现我搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬">
+<meta name="description" content="昨天， ::&amp;gt;_&amp;lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，只好重新搭建一个，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，我刚学怎么搭建VPN的时候，搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬是搞了四五页才写完，一大堆命">
 <meta name="keywords" content="OpenVPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenVPS搭建网络隧道">
 <meta property="og:url" content="http://nickzhoulin.github.io/2017/12/17/page171217/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="昨天， ::&amp;gt;_&amp;lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，什么蓝灯啊之类的，那就只能重新搭建一个OpenVPS了，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，现在看来，我发现我搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬">
+<meta property="og:description" content="昨天， ::&amp;gt;_&amp;lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，只好重新搭建一个，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，我刚学怎么搭建VPN的时候，搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬是搞了四五页才写完，一大堆命">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171217-01.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171217-02.JPG">
@@ -97,10 +97,10 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171217-08.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171217-09.JPG">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171217-10.JPG">
-<meta property="og:updated_time" content="2017-12-17T13:16:10.575Z">
+<meta property="og:updated_time" content="2017-12-17T13:21:48.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenVPS搭建网络隧道">
-<meta name="twitter:description" content="昨天， ::&amp;gt;_&amp;lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，什么蓝灯啊之类的，那就只能重新搭建一个OpenVPS了，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，现在看来，我发现我搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬">
+<meta name="twitter:description" content="昨天， ::&amp;gt;_&amp;lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，只好重新搭建一个，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，我刚学怎么搭建VPN的时候，搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬是搞了四五页才写完，一大堆命">
 <meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171217-01.JPG">
 
 
@@ -353,7 +353,7 @@
       
 
       
-        <p>昨天， ::&gt;_&lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，什么蓝灯啊之类的，那就只能重新搭建一个OpenVPS了，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，现在看来，我发现我搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬是搞了四五页才写完，一大堆命令，又是介绍原理，又是安装啥啥编译器，安装这些，安装那些，按照他们的教程，搞了半天，还不一定能搭建好，废话不多少，下面直接进入主题<br><a id="more"></a></p>
+        <p>昨天， ::&gt;_&lt;::  梯子又到期了，最近有点穷，我在攒钱再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，只好重新搭建一个，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，我刚学怎么搭建VPN的时候，搜到的教程，大都写的很啰嗦，几个简单的步骤就能解决的事情，他们硬是搞了四五页才写完，一大堆命令，又是介绍原理，又是安装啥啥编译器，安装这些，安装那些，按照他们的教程，搞了半天，还不一定能搭建好；废话不多少，下面直接进入主题<br><a id="more"></a></p>
 <h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、首先得有一台国外的服务器，我这里选择的服务器厂商是<a href="https://virmach.com/" target="_blank" rel="external">virmach</a>,你们也可以选择别的厂商，如果单只用来搭建VPN的话，对服务器的配置要求不高</p>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20171217-01.JPG" alt=""></p>
 <p>操作系统的话我们选Linux,我选的是Ubuntu，（友情提示：服务器地址最好别选布法罗/纽约，也就是第一个）</p>
