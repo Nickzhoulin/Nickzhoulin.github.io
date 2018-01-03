@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="大数据," />
 
 
 
@@ -79,16 +79,44 @@
 
 
 
-<meta name="description" content="万物皆虚，万物皆允">
-<meta property="og:type" content="website">
-<meta property="og:title" content="想念初恋">
-<meta property="og:url" content="http://nickzhoulin.github.io/index.html">
+<meta name="description" content="本来想入AI的坑，接触了几天关于AI的东西，全程懵逼，发觉我现在还是老老实实的搞机器学习比较好 目录1、Hadoop搭建2、Hive搭建3、Hadoop基本操作一、Hadoop搭建1-1  简介：Hadoop集群有三种模式，本地模式，伪分布式，和分布式，我这里介绍的的伪分布式的搭建 1-2  环境搭建：1、 Ubuntu 14.4虚拟机 1-3  Java的配置Hadoop在运行的过程中需要使用J">
+<meta name="keywords" content="大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop+Hive搭建">
+<meta property="og:url" content="http://nickzhoulin.github.io/2018/01/02/page180102/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="万物皆虚，万物皆允">
+<meta property="og:description" content="本来想入AI的坑，接触了几天关于AI的东西，全程懵逼，发觉我现在还是老老实实的搞机器学习比较好 目录1、Hadoop搭建2、Hive搭建3、Hadoop基本操作一、Hadoop搭建1-1  简介：Hadoop集群有三种模式，本地模式，伪分布式，和分布式，我这里介绍的的伪分布式的搭建 1-2  环境搭建：1、 Ubuntu 14.4虚拟机 1-3  Java的配置Hadoop在运行的过程中需要使用J">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-01.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-02.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-03.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-04.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-05.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-06.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-07.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-08.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-09.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-10.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-11.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-12.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-13.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-14.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-15.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-16.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-17.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-18.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-19.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-20.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-21.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-22.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-23.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-24.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-25.JPG">
+<meta property="og:updated_time" content="2018-01-03T11:43:50.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="想念初恋">
-<meta name="twitter:description" content="万物皆虚，万物皆允">
+<meta name="twitter:title" content="Hadoop+Hive搭建">
+<meta name="twitter:description" content="本来想入AI的坑，接触了几天关于AI的东西，全程懵逼，发觉我现在还是老老实实的搞机器学习比较好 目录1、Hadoop搭建2、Hive搭建3、Hadoop基本操作一、Hadoop搭建1-1  简介：Hadoop集群有三种模式，本地模式，伪分布式，和分布式，我这里介绍的的伪分布式的搭建 1-2  环境搭建：1、 Ubuntu 14.4虚拟机 1-3  Java的配置Hadoop在运行的过程中需要使用J">
+<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20180102-01.JPG">
 
 
 
@@ -118,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://nickzhoulin.github.io/"/>
+  <link rel="canonical" href="http://nickzhoulin.github.io/2018/01/02/page180102/"/>
 
 
 
 
 
-  <title>想念初恋</title>
+  <title>Hadoop+Hive搭建 | 想念初恋</title>
   
 
 
@@ -143,8 +171,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,9 +264,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -269,9 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/02/page180102/" itemprop="url">Hadoop+Hive搭建</a></h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop+Hive搭建</h1>
         
 
         <div class="post-meta">
@@ -343,9 +368,7 @@
       
 
       
-        
-          
-            <p>本来想入AI的坑，接触了几天关于AI的东西，全程懵逼，发觉我现在还是老老实实的搞机器学习比较好</p>
+        <p>本来想入AI的坑，接触了几天关于AI的东西，全程懵逼，发觉我现在还是老老实实的搞机器学习比较好</p>
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><h5 id="1、Hadoop搭建"><a href="#1、Hadoop搭建" class="headerlink" title="1、Hadoop搭建"></a>1、Hadoop搭建</h5><h5 id="2、Hive搭建"><a href="#2、Hive搭建" class="headerlink" title="2、Hive搭建"></a>2、Hive搭建</h5><h5 id="3、Hadoop基本操作"><a href="#3、Hadoop基本操作" class="headerlink" title="3、Hadoop基本操作"></a>3、Hadoop基本操作</h5><h4 id="一、Hadoop搭建"><a href="#一、Hadoop搭建" class="headerlink" title="一、Hadoop搭建"></a>一、Hadoop搭建</h4><h5 id="1-1-简介："><a href="#1-1-简介：" class="headerlink" title="1-1  简介："></a>1-1  简介：</h5><p>Hadoop集群有三种模式，本地模式，伪分布式，和分布式，我这里介绍的的伪分布式的搭建</p>
 <h5 id="1-2-环境搭建："><a href="#1-2-环境搭建：" class="headerlink" title="1-2  环境搭建："></a>1-2  环境搭建：</h5><p>1、 Ubuntu 14.4虚拟机</p>
 <h5 id="1-3-Java的配置"><a href="#1-3-Java的配置" class="headerlink" title="1-3  Java的配置"></a>1-3  Java的配置</h5><p>Hadoop在运行的过程中需要使用Java的环境，在Linux系统中更新下Java相关的设置。</p>
@@ -534,8 +557,6 @@
 <p>​    hadoop -touchz /input/test/null.txt</p>
 <p>返回值：成功返回0，失败返回-1。</p>
 
-          
-        
       
     </div>
     
@@ -550,311 +571,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/25/page171225/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/25/page171225/" itemprop="url">Metasploit常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-25T20:30:41+08:00">
-                2017-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/资料/" itemprop="url" rel="index">
-                    <span itemprop="name">资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <p>刚刚逛网站时看到的，都是些常用的命令，动动手指，搬到自己这里来</p>
-<p><strong>show exploits</strong>: lists all infiltration attack modules in the metasploit framework.<br><strong>show payloads</strong>: lists all attack loads in the metasploit framework.<br><strong>show auxiliary</strong>: lists all secondary attack loads in the metasploit framework.<br><strong>search name:</strong> find all the infiltration attacks and other modules in the metasploit framework.<br><strong>info</strong>: Displays information about infiltration attacks or modules.<br><strong>use module_name</strong>: load a penetration attack or module.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/25/page171225/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/25/page171225/" rel="next" title="Metasploit常用命令">
+                <i class="fa fa-chevron-left"></i> Metasploit常用命令
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/18/page171215/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/18/page171215/" itemprop="url">商品亲和性分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T15:45:15+08:00">
-                2017-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>简单点说，商品亲和性，就是一个人买了商品X之后，又买了商品Y，那么他下一次来买X的时候，也有可能会买Y,统计分析多个订单，得出一些结论，如：一个人买了香蕉之后很有可能会买牛奶；如果结论在之后的数据验证中成立，那么商家在店铺摆放商品的时候就可以把香蕉放到牛奶旁边</p>
-<p>数据下载地址<a href="http://oz3okd76o.bkt.clouddn.com/affinity_dataset.txt" target="_blank" rel="external">点击下载</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">dataset_filename = <span class="string">"affinity_dataset.txt"</span></div><div class="line">X = np.loadtxt(dataset_filename)</div><div class="line">n_samples, n_features = X.shape</div><div class="line">print(<span class="string">"This dataset has &#123;0&#125; samples and &#123;1&#125; features"</span>.format(n_samples, n_features))</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">This dataset has 100 samples and 5 features</div></pre></td></tr></table></figure>
-<p>​
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/18/page171215/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -864,453 +610,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/17/page171217/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/17/page171217/" itemprop="url">OpenVPS搭建网络隧道</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T20:06:23+08:00">
-                2017-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/资料/" itemprop="url" rel="index">
-                    <span itemprop="name">资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>昨天， ::&gt;_&lt;::  梯子又到期了，最近有点穷，我在攒钱，想再买一台电脑，本打算过一段时间再重新搭建的，没想到今天又需要用到梯子，我不喜欢用公用的翻墙软件，只好重新搭建一个，关于搭建OpenVPS服务器，网上教程一搜一大堆，我之所以在这里再写一次，是因为我以前吃过亏，我刚学怎么搭建VPN的时候，搜到的教程，大都写的很啰嗦，一大堆命令，又是介绍原理，又是安装啥啥编译器，安装这些，安装那些，按照他们的教程，搞了半天，还不一定能搭建好；废话不多说，下面直接进入主题，（这个方法容易搭建，但有一个缺点，那就是同时只能有两个客户端连接，不过自己一个人用也足够了）<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/17/page171217/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/14/page171214/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/14/page171214/" itemprop="url">Pandas基本操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T15:00:31+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/资料/" itemprop="url" rel="index">
-                    <span itemprop="name">资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="comment"># 定义序列, pandas中的数据形式通常是float32或float64</span></div><div class="line">s=pd.Series([<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,np.nan,<span class="number">44</span>,<span class="number">1</span>])</div><div class="line"><span class="keyword">print</span> s</div><div class="line"><span class="keyword">print</span> <span class="string">'-'</span>*<span class="number">40</span></div><div class="line"><span class="keyword">print</span> s[<span class="number">0</span>]</div><div class="line"><span class="keyword">print</span> s[<span class="number">3</span>]</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">0     1.0</div><div class="line">1     3.0</div><div class="line">2     5.0</div><div class="line">3     NaN</div><div class="line">4    44.0</div><div class="line">5     1.0</div><div class="line">dtype: float64</div><div class="line">----------------------------------------</div><div class="line">1.0</div><div class="line">nan</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/14/page171214/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/13/page171213/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/13/page171213/" itemprop="url">numpy基本用法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T16:36:29+08:00">
-                2017-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/资料/" itemprop="url" rel="index">
-                    <span itemprop="name">资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#encoding:utf-8</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="comment"># 定义矩阵</span></div><div class="line">arr = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">                [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</div><div class="line"><span class="keyword">print</span> arr</div><div class="line"><span class="comment">#每一维度上的元素个数</span></div><div class="line"><span class="keyword">print</span> <span class="string">'shapr:'</span>,arr.shape </div><div class="line"><span class="comment">#矩阵的元素总数</span></div><div class="line"><span class="keyword">print</span> <span class="string">'size:'</span>,arr.size</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/13/page171213/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -1318,6 +622,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1338,8 +646,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1405,6 +722,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、Hadoop搭建"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、Hadoop搭建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、Hive搭建"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、Hive搭建</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、Hadoop基本操作"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、Hadoop基本操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Hadoop搭建"><span class="nav-number">1.1.</span> <span class="nav-text">一、Hadoop搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-简介："><span class="nav-number">1.1.1.</span> <span class="nav-text">1-1  简介：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-环境搭建："><span class="nav-number">1.1.2.</span> <span class="nav-text">1-2  环境搭建：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Java的配置"><span class="nav-number">1.1.3.</span> <span class="nav-text">1-3  Java的配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-SSH安装"><span class="nav-number">1.1.4.</span> <span class="nav-text">1-4 SSH安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-Hadoop安装"><span class="nav-number">1.1.5.</span> <span class="nav-text">1-5  Hadoop安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-Hadoop伪分布式配置"><span class="nav-number">1.1.6.</span> <span class="nav-text">1-6 Hadoop伪分布式配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-Hadoop伪分布式启动"><span class="nav-number">1.1.7.</span> <span class="nav-text">1-7 Hadoop伪分布式启动</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、HIVE搭建"><span class="nav-number">1.2.</span> <span class="nav-text">二、HIVE搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Mysql安装"><span class="nav-number">1.2.1.</span> <span class="nav-text">2-1  Mysql安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Hive配置"><span class="nav-number">1.2.2.</span> <span class="nav-text">2-2 Hive配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、Hadoop常用命令"><span class="nav-number">1.3.</span> <span class="nav-text">三、Hadoop常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Mkdir"><span class="nav-number">1.3.1.</span> <span class="nav-text">Mkdir</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#put"><span class="nav-number">1.3.2.</span> <span class="nav-text">put</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#get"><span class="nav-number">1.3.3.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#copyFromLocal"><span class="nav-number">1.3.4.</span> <span class="nav-text">copyFromLocal</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#copyToLocal"><span class="nav-number">1.3.5.</span> <span class="nav-text">copyToLocal</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chmod"><span class="nav-number">1.3.6.</span> <span class="nav-text">chmod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown"><span class="nav-number">1.3.7.</span> <span class="nav-text">chown</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cp"><span class="nav-number">1.3.8.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#du"><span class="nav-number">1.3.9.</span> <span class="nav-text">du</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cat"><span class="nav-number">1.3.10.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ls"><span class="nav-number">1.3.11.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ls-r"><span class="nav-number">1.3.12.</span> <span class="nav-text">Ls   -r</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#expunge"><span class="nav-number">1.3.13.</span> <span class="nav-text">expunge</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mv"><span class="nav-number">1.3.14.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rm"><span class="nav-number">1.3.15.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#stat"><span class="nav-number">1.3.16.</span> <span class="nav-text">stat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tail"><span class="nav-number">1.3.17.</span> <span class="nav-text">tail</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#test"><span class="nav-number">1.3.18.</span> <span class="nav-text">test</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text"><span class="nav-number">1.3.19.</span> <span class="nav-text">text</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#touchz"><span class="nav-number">1.3.20.</span> <span class="nav-text">touchz</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1558,6 +891,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
