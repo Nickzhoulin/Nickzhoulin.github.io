@@ -252,6 +252,282 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/03/12/page180312/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="想念初恋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/12/page180312/" itemprop="url">代码审计（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-12T22:03:59+08:00">
+                2018-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/资料/" itemprop="url" rel="index">
+                    <span itemprop="name">资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有好长一段时间没更新博客了，不是没写，而是很多写到一半就不想写了，懒呐！</p>
+<p>这些天在学PHP代码审计，我只学了几天的PHP基础语法，彻彻底底的审计小白</p>
+<h4 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h4><ul>
+<li><strong>操作机</strong>：<code>Windows XP</code></li>
+</ul>
+<h4 id="实验工具"><a href="#实验工具" class="headerlink" title="实验工具"></a>实验工具</h4><ul>
+<li><code>Sublime Text 2</code>：是一款强大的编辑器，拥有众多的插件，用户可以根据需求，安装不同的插件，本次试验我们将用到它的代码编辑功能</li>
+<li><code>UltraEdit</code>：与是一款非常方便的文档、代码编辑器</li>
+<li><code>Notepad++</code>：它也是一款编辑器，并且支持代码高亮、代码查询、插件等功能，以上三种编辑器我们任意使用一款即可</li>
+</ul>
+<h4 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h4><p>掌握各种PHP相关环境、文件、变量等的配置 掌握在何种情况下开启或关闭相关配置变量</p>
+<h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><p><strong>php INI文件</strong></p>
+<p>PHP 的配置文件一般是 php.ini 文件</p>
+<p>php.ini 文件必须命名为’php.ini’并放置在httpd.conf中的PHPIniDir指令指定的目录中，使用phpinfo()函数可以查看。</p>
+<p>一般情况下需要对其进行配置，使环境更加安全</p>
+<p><strong>.user.INI文件</strong></p>
+<p>自PHP 5.3.0起，PHP支持基于每个目录的.htaccess风格的INI文件。此类文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner跨站作废。如果使用Apache，则用.htaccess文件有同样的效果</p>
+<p><strong>PHP INI语法</strong></p>
+<p>该文件的语法非常简单。空白字符和以分号开始的行被简单地忽略。</p>
+<p>设置指令的格式为：directive = value</p>
+<p>指令名(directive)是大小写敏感的！</p>
+<p>所以”foo=bar”不同于”FOO=bar”。值(value)可以是：</p>
+<p>用引号界定的字符串(如：”foo”)</p>
+<p>一个数字(整数或浮点数，如：0, 1, 34, -1, 33.55)</p>
+<p>一个PHP常量(如：E_ALL, M_PI)</p>
+<p>一个INI常量(On, Off, none)</p>
+<p>一个表达式(如：E_ALL &amp; ~E_NOTICE)</p>
+<p>INI文件中的表达式仅使用： 位运算符、逻辑非、圆括号， | 位或 、&amp; 位与 、~ 位非 、! 逻辑非 ， 布尔标志用 On 表示打开，用 Off 表示关闭</p>
+<p>一个空字符串可以用在等号后不写任何东西表示，或者用 none 关键字：</p>
+<p>foo =　　　　 ; 将foo设为空字符串</p>
+<p>foo = none　　; 将foo设为空字符串</p>
+<p>foo = “none”　; 将foo设为字符串’’none’’</p>
+<p>如果你在指令值中使用动态扩展(PHP扩展或Zend扩展)中的常量，那么你只能在加载这些动态扩展的指令行之后使用这些常量。</p>
+<p>介绍完了语法，我们现在开始配置</p>
+<h4 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h4><h4 id="步骤1：配置变量相关的参数"><a href="#步骤1：配置变量相关的参数" class="headerlink" title="步骤1：配置变量相关的参数"></a>步骤1：配置变量相关的参数</h4><p><strong>本文测试的源码，在网站根目录下的1文件夹中，可以进行测试</strong></p>
+<p>配置参数首先得打开这个配置文件，在PHPstudy右下方有菜单选项，点击它选择打开配置文件，在弹出的框中再次选择php-ini</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-01.png" alt=""></p>
+<p>现在对变量进行一一修改：</p>
+<p>全局变量：<code>register_globals</code></p>
+<p>我们首先将<code>register_globals</code> 设置为off,按ctrl+f，进行搜索，将register_globals填写至搜索框，按回车即可查找</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180312-01.gif" alt=""></p>
+<p>有些程序例如OSC需要启用全局变量.这个设置的作用是关闭自动注册的全局变量，在设置为On的时候，php会将<code>$_POST</code>，<code>$_GET</code>，<code>$_COOKIE</code>，<code>$_ENV</code>，<code>$_SESSION</code>数组中的$key=&gt;$value直接注册为变量，比如$_POST[‘username’]就会被注册为$username。</p>
+<p>虽然方便了调用，但是会有三个问题： 不知道变量是哪里来的，$_POST来的还是$_SESSION来的呢？非常不方便别人阅读代码。 变量之间互相覆盖，引起不必要的麻烦。 安全问题。所以要设置为Off。</p>
+<p>在网站根目录<code>1</code>文件夹下，有test_ini.php。查看下面的内容，如图，都是我们要将的参数，比如测试第一个<code>register_globals</code>时，将其他的参数注释，只留下<code>register_globals</code>下面的选项即可，每次修改PHPINI文件之后，记得要重启phpstudy。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-02.png" alt=""></p>
+<p>比如现在要测试phpinfo，首先将它前方的注释删掉，测试完成后，加上注释即可，测试下一个变量的时，重复上一步操作即可，如图</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180312-02.gif" alt=""></p>
+<p>如果设置为on，将会出现以下问题，我们写了测试的代码来验证<code>register_globals = on</code>时，存在的缺点： 首先访问<code>127.0.0.1/1/test_ini.php</code>,</p>
+<p>将网站根目录下<code>1</code>文件夹的test_ini.php文件打开，并将第十行到第十二行的内容取消注释，删掉前面的注释符。然后通过网页访问。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-03.png" alt=""></p>
+<p>可以看到没有赋值，我们现在分别对他进行Get和Post赋值。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-03.gif" alt=""></p>
+<p>我们可以明确的看到，test即等于123，也等于abc，这就出现了变量覆盖。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180312-03.gif" alt=""></p>
+<p>可以看到，当再次访问的时候，发现只要有冲突的变量，都没有输出一样，因此一般情况下建议设置为off</p>
+<ul>
+<li>短标签 <code>short_open_tag</code></li>
+</ul>
+<p>将<code>short_open_tag</code>设置为on ，并重启phpstudy服务</p>
+<p>这个设置决定是否允许使用 PHP 代码开始标志的缩写形式（&lt;? ?&gt;）。</p>
+<p>如果禁用了，必须使用 PHP 代码开始标志的完整形式（&lt;?php ?&gt;）。</p>
+<p>本指令也会影响到缩写形式 &lt;?=，它和 &lt;? echo 等价。使用此缩写需要 short_open_tag 的值为 On。</p>
+<p>在<code>short_open_tag = on</code>的状态下，我们使用<code>&lt;?=$test?&gt;</code>语句，就可以输出$test的内容，如果为off，则不能正常输出，所以还是建议开启</p>
+<p>将网站根目录下<code>1</code>文件夹的test_ini.php文件打开，删除对应的注释后，如图，访问这个文件进行测试</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-03.gif" alt=""></p>
+<p>在off的状态下，进行测试</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-04.gif" alt=""></p>
+<p>可以清晰的看到，在为off的状态下，没有输出任何东西，短标签无法使用，如要使用请设置为on</p>
+<h4 id="步骤2：配置安全模式相关的参数"><a href="#步骤2：配置安全模式相关的参数" class="headerlink" title="步骤2：配置安全模式相关的参数"></a>步骤2：配置安全模式相关的参数</h4><ul>
+<li>安全模式：<code>safe_mode</code></li>
+</ul>
+<p>php的安全模式是个非常重要的内嵌的安全机制，能够控制一些php中的函数，比如system()，如果设置为<code>on</code>，则不能执行危险函数命令执行等，同时把很多文件操作函数进行了权限控制，也不允许对某些关键文件的文件，比如/etc/passwd，但是默认的php.ini是没有打开安全模式的，可根据自身需求打开或关闭</p>
+<p>本特性已自 PHP 5.3.0 起废弃并将自 PHP 5.4.0 起移除。</p>
+<ul>
+<li>禁用类/函数：<code>disable_functions</code></li>
+</ul>
+<p>这个函数可以禁用一些函数，比如system(),现在我们再次使用system函数调用cmd命令<code>whoami</code></p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-05.gif" alt=""></p>
+<p>可以看到，它提示system函数被禁用，因此，我们在<code>disable_functions</code>后面填写不必要的危险函数，这样就降低了被攻击的风险</p>
+<h4 id="步骤3：上传文件和目录权限参数配置"><a href="#步骤3：上传文件和目录权限参数配置" class="headerlink" title="步骤3：上传文件和目录权限参数配置"></a>步骤3：上传文件和目录权限参数配置</h4><ul>
+<li><p>设置上传及最大上传文件大小</p>
+<p>file_uoloads = on upload_max_filesize = 8M</p>
+</li>
+</ul>
+<p>设置<code>file_uoloads</code>为on，则可以开启上传功能，<code>upload_max_filesize</code>则是限制其大小</p>
+<ul>
+<li><p>设置文件上传临时目录</p>
+<p><code>upload_tmp_dir</code> = 上传临时文件保存的目录，如果未填写，系统将把临时文件上传至系统临时目录(Windows:c\windows\Temp;Linux:/Temp)</p>
+</li>
+</ul>
+<ul>
+<li><p>用户访问目录限制</p>
+<p><code>open_basedir</code> = .;/temp/</p>
+</li>
+</ul>
+<p>设置成这样后，用户便不能查看temp目录了。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-06.gif" alt=""></p>
+<p>可以看到，程序拒绝了我们列出上列目录，这个可以根据场景需求来进行设置</p>
+<h4 id="步骤4：错误信息的配置"><a href="#步骤4：错误信息的配置" class="headerlink" title="步骤4：错误信息的配置"></a>步骤4：错误信息的配置</h4><ul>
+<li><p>错误信息控制</p>
+<p><code>display_error</code> = On</p>
+</li>
+</ul>
+<p>允许输出报错信息，在线上必须要关闭此功能，以免暴露信息，在调试的时候我们当然要打开这个选项，否则什么错误信息也看不到了</p>
+<ul>
+<li><p>错误报告级别</p>
+<p><code>error_reporting</code> = E_ALL</p>
+</li>
+</ul>
+<p>这个设置的作用是将错误级别设置为最高，可以显示所有的问题，这样方便调试和查错，E_ALL就是最高级别的</p>
+<h5 id="步骤5：魔术引号及远程文件相关参数配置"><a href="#步骤5：魔术引号及远程文件相关参数配置" class="headerlink" title="步骤5：魔术引号及远程文件相关参数配置"></a>步骤5：魔术引号及远程文件相关参数配置</h5><ul>
+<li><p>魔术引号</p>
+<p><code>magic_quotes_gpc</code> = On</p>
+</li>
+</ul>
+<p>当打开时，所有的 ‘（单引号），”（双引号），\（反斜线）和 NULL 字符都会被自动加上一个反斜线进行转义。这和 addslashes() 作用完全相同。</p>
+<p><code>magic_quotes_runtime</code></p>
+<p>如果打开的话，大部份从外部来源取得数据并返回的函数，包括从数据库和文本文件，所返回的数据都会被反斜线转义。</p>
+<p>打开它有一个严重的效率问题，使得运行速度变慢，因此本特性已自 PHP 5.3.0 起废弃并将自 PHP 5.4.0 起移除</p>
+<ul>
+<li>是否允许打开远程文件</li>
+</ul>
+<p>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@环境不合适</p>
+<p><code>allow_url_fopen</code> = on</p>
+<p>本选项激活了URL形式的fopen封装协议使得可以访问URL对象,例如文件 选择on后，将激活此选项，可以远程打开</p>
+<p>我们尝试打开php.net的内容，并输出</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20171127-07.gif" alt=""></p>
+<p>可以看到，成功的输出了php.net的内容，如果按钮为Off，则不会输出成功</p>
+<ul>
+<li><p>是否允许包含远程文件</p>
+<p><code>allow_url_include</code> = off</p>
+</li>
+</ul>
+<p>想必学习过渗透知识的朋友都知道这个选项，这个选项非常危险，它可以包含远程的文件，任意格式都执行为php，因此必须关闭</p>
+<h4 id="实验结果分析与总结"><a href="#实验结果分析与总结" class="headerlink" title="实验结果分析与总结"></a>实验结果分析与总结</h4><p>通过本次的实验，我们学习了变量的配置、安全模式的配置、上传文件目录权限的配置、错误信息的配置、魔术引号及远程文件的配置，通过学习这些配置，基本已经可以做到本地环境的安全，但只靠这些配置文件是不够的，还需我们写程序时更加认真与严禁，这样才能使环境更加安全</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/01/02/page180102/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -976,152 +1252,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/13/page171213/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/13/page171213/" itemprop="url">numpy基本用法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-13T16:36:29+08:00">
-                2017-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/资料/" itemprop="url" rel="index">
-                    <span itemprop="name">资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#encoding:utf-8</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="comment"># 定义矩阵</span></div><div class="line">arr = np.array([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">                [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</div><div class="line"><span class="keyword">print</span> arr</div><div class="line"><span class="comment">#每一维度上的元素个数</span></div><div class="line"><span class="keyword">print</span> <span class="string">'shapr:'</span>,arr.shape </div><div class="line"><span class="comment">#矩阵的元素总数</span></div><div class="line"><span class="keyword">print</span> <span class="string">'size:'</span>,arr.size</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/13/page171213/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1176,7 +1306,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1198,7 +1328,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
