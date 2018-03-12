@@ -99,7 +99,7 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171127-05.gif">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171127-06.gif">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171127-07.gif">
-<meta property="og:updated_time" content="2018-03-12T15:55:41.491Z">
+<meta property="og:updated_time" content="2018-03-12T15:57:45.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码审计（一）">
 <meta name="twitter:description" content="有好长一段时间没更新博客了，不是没写，而是很多写到一半就不想写了，懒呐！ 这些天在学PHP代码审计，我只学了几天的PHP基础语法，彻彻底底的审计小白 实验环境 操作机：Windows XP  实验工具 Sublime Text 2：是一款强大的编辑器，拥有众多的插件，用户可以根据需求，安装不同的插件，本次试验我们将用到它的代码编辑功能 UltraEdit：与是一款非常方便的文档、代码编辑器 Not">
@@ -366,8 +366,7 @@
 <li><code>Notepad++</code>：它也是一款编辑器，并且支持代码高亮、代码查询、插件等功能，以上三种编辑器我们任意使用一款即可</li>
 </ul>
 <h4 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h4><p>掌握各种PHP相关环境、文件、变量等的配置 掌握在何种情况下开启或关闭相关配置变量</p>
-<h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><p><strong>php INI文件</strong></p>
-<p>PHP 的配置文件一般是 php.ini 文件<br><a id="more"></a><br>php.ini 文件必须命名为’php.ini’并放置在httpd.conf中的PHPIniDir指令指定的目录中，使用phpinfo()函数可以查看。</p>
+<h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><p>php INI文件<br>PHP 的配置文件一般是 php.ini 文件<br><a id="more"></a><br>php.ini 文件必须命名为’php.ini’并放置在httpd.conf中的PHPIniDir指令指定的目录中，使用phpinfo()函数可以查看。</p>
 <p>一般情况下需要对其进行配置，使环境更加安全</p>
 <p><strong>.user.INI文件</strong></p>
 <p>自PHP 5.3.0起，PHP支持基于每个目录的.htaccess风格的INI文件。此类文件仅被CGI/FastCGI SAPI处理。此功能使得PECL的htscanner跨站作废。如果使用Apache，则用.htaccess文件有同样的效果</p>
