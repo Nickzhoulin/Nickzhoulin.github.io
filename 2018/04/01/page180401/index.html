@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="我将介绍sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。 sklearn.datasets（1）datasets.load_*() 获取小规模数据集，数据包含在datasets里 （2）datasets.fetch_*() 获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录，默">
+<meta name="description" content="下面介绍的是sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。 sklearn.datasets（1）datasets.load_*() 获取小规模数据集，数据包含在datasets里 （2）datasets.fetch_*() 获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录">
 <meta name="keywords" content="scikit-learn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scikit-learn数据集">
 <meta property="og:url" content="http://nickzhoulin.github.io/2018/04/01/page180401/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="我将介绍sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。 sklearn.datasets（1）datasets.load_*() 获取小规模数据集，数据包含在datasets里 （2）datasets.fetch_*() 获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录，默">
+<meta property="og:description" content="下面介绍的是sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。 sklearn.datasets（1）datasets.load_*() 获取小规模数据集，数据包含在datasets里 （2）datasets.fetch_*() 获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-01T15:00:07.272Z">
+<meta property="og:updated_time" content="2018-04-01T15:01:35.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="scikit-learn数据集">
-<meta name="twitter:description" content="我将介绍sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。 sklearn.datasets（1）datasets.load_*() 获取小规模数据集，数据包含在datasets里 （2）datasets.fetch_*() 获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录，默">
+<meta name="twitter:description" content="下面介绍的是sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。 sklearn.datasets（1）datasets.load_*() 获取小规模数据集，数据包含在datasets里 （2）datasets.fetch_*() 获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录">
 
 
 
@@ -342,13 +342,14 @@
       
 
       
-        <p>我将介绍sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。</p>
+        <p>下面介绍的是sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。</p>
 <h2 id="sklearn-datasets"><a href="#sklearn-datasets" class="headerlink" title="sklearn.datasets"></a>sklearn.datasets</h2><p><strong>（1）datasets.load_*()</strong></p>
 <p>获取小规模数据集，数据包含在datasets里</p>
 <p><strong>（2）datasets.fetch_*()</strong></p>
 <p>获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录，默认是 ~/scikit_learn_data/，要修改默认目录，可以修改环境变量SCIKIT_LEARN_DATA</p>
 <p><strong>（3）datasets.make_*()</strong></p>
 <p>本地生成数据集</p>
+<a id="more"></a>
 <p><strong>load*和 fetch* 函数返回的数据类型是 datasets.base.Bunch，本质上是一个 dict，它的键值对可用通过对象的属性方式访问。主要包含以下属性：</strong></p>
 <ul>
 <li>data：特征数据数组，是 n_samples * n_features 的二维 numpy.ndarray 数组</li>
