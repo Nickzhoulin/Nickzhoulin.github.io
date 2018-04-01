@@ -252,6 +252,306 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/04/01/page180401/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="想念初恋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/01/page180401/" itemprop="url">scikit-learn数据集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-01T22:56:49+08:00">
+                2018-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/资料/" itemprop="url" rel="index">
+                    <span itemprop="name">资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我将介绍sklearn中的数据集类，模块包括用于加载数据集的实用程序，包括加载和获取流行参考数据集的方法。它还具有一些人工数据生成器。</p>
+<h2 id="sklearn-datasets"><a href="#sklearn-datasets" class="headerlink" title="sklearn.datasets"></a>sklearn.datasets</h2><p><strong>（1）datasets.load_*()</strong></p>
+<p>获取小规模数据集，数据包含在datasets里</p>
+<p><strong>（2）datasets.fetch_*()</strong></p>
+<p>获取大规模数据集，需要从网络上下载，函数的第一个参数是data_home，表示数据集下载的目录，默认是 ~/scikit_learn_data/，要修改默认目录，可以修改环境变量SCIKIT_LEARN_DATA</p>
+<p><strong>（3）datasets.make_*()</strong></p>
+<p>本地生成数据集</p>
+<p><strong>load*和 fetch* 函数返回的数据类型是 datasets.base.Bunch，本质上是一个 dict，它的键值对可用通过对象的属性方式访问。主要包含以下属性：</strong></p>
+<ul>
+<li>data：特征数据数组，是 n_samples * n_features 的二维 numpy.ndarray 数组</li>
+<li>target：标签数组，是 n_samples 的一维 numpy.ndarray 数组</li>
+<li>DESCR：数据描述</li>
+<li>feature_names：特征名</li>
+<li>target_names：标签名</li>
+</ul>
+<p><strong>数据集目录可以通过datasets.get_data_home()获取，clear_data_home(data_home=None)删除所有下载数据</strong></p>
+<ul>
+<li>datasets.get_data_home(data_home=None)</li>
+</ul>
+<p>返回scikit学习数据目录的路径。这个文件夹被一些大的数据集装载器使用，以避免下载数据。默认情况下，数据目录设置为用户主文件夹中名为“scikit_learn_data”的文件夹。或者，可以通过“SCIKIT_LEARN_DATA”环境变量或通过给出显式的文件夹路径以编程方式设置它。’〜’符号扩展到用户主文件夹。如果文件夹不存在，则会自动创建。</p>
+<ul>
+<li>sklearn.datasets.clear_data_home(data_home=None)</li>
+</ul>
+<p>删除存储目录中的数据</p>
+<h2 id="获取小数据集"><a href="#获取小数据集" class="headerlink" title="获取小数据集"></a>获取小数据集</h2><p><strong>用于分类</strong></p>
+<ul>
+<li>sklearn.datasets.load_iris</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class sklearn.datasets.load_iris(return_X_y=False)</div><div class="line">  &quot;&quot;&quot;</div><div class="line">  加载并返回虹膜数据集</div><div class="line"></div><div class="line">  :param return_X_y: 如果为True，则返回而不是Bunch对象，默认为False</div><div class="line"></div><div class="line">  :return: Bunch对象，如果return_X_y为True，那么返回tuple，（data,target）</div><div class="line">  &quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">12</span>]: from sklearn.datasets import load_iris</div><div class="line">    ...: data = load_iris()</div><div class="line">    ...:</div><div class="line"></div><div class="line">In [<span class="number">13</span>]: data.target</div><div class="line">Out[<span class="number">13</span>]:</div><div class="line"><span class="keyword">array</span>([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</div><div class="line">       <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</div><div class="line">       <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>,</div><div class="line">       <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>,</div><div class="line">       <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>,</div><div class="line">       <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>,</div><div class="line">       <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>])</div><div class="line"></div><div class="line">In [<span class="number">14</span>]: data.feature_names</div><div class="line">Out[<span class="number">14</span>]:</div><div class="line">[<span class="string">'sepal length (cm)'</span>,</div><div class="line"> <span class="string">'sepal width (cm)'</span>,</div><div class="line"> <span class="string">'petal length (cm)'</span>,</div><div class="line"> <span class="string">'petal width (cm)'</span>]</div><div class="line"></div><div class="line">In [<span class="number">15</span>]: data.target_names</div><div class="line">Out[<span class="number">15</span>]:</div><div class="line"><span class="keyword">array</span>([<span class="string">'setosa'</span>, <span class="string">'versicolor'</span>, <span class="string">'virginica'</span>],</div><div class="line">      dtype=<span class="string">'|S10'</span>)</div><div class="line"></div><div class="line">In [<span class="number">17</span>]: data.target[[<span class="number">1</span>,<span class="number">10</span>, <span class="number">100</span>]]</div><div class="line">Out[<span class="number">17</span>]: <span class="keyword">array</span>([<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>])</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类别</td>
+<td>3</td>
+</tr>
+<tr>
+<td>特征</td>
+<td>4</td>
+</tr>
+<tr>
+<td>样本数量</td>
+<td>150</td>
+</tr>
+<tr>
+<td>每个类别数量</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sklearn.datasets.load_digits</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class sklearn.datasets.load_digits(n_class=10, return_X_y=False)</div><div class="line">    <span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">    加载并返回数字数据集</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    :param n_class: 整数，介于0和10之间，可选（默认= 10，要返回的类的数量</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    :param return_X_y: 如果为True，则返回而不是Bunch对象，默认为False</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    :return: Bunch对象，如果return_X_y为True，那么返回tuple，（data,target）</span></div><div class="line"><span class="string">    "</span><span class="string">""</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">20</span>]: from sklearn.datasets import load_digits</div><div class="line"></div><div class="line">In [<span class="number">21</span>]: digits = load_digits()</div><div class="line"></div><div class="line">In [<span class="number">22</span>]: <span class="keyword">print</span>(digits.data.shape)</div><div class="line">(<span class="number">1797</span>, <span class="number">64</span>)</div><div class="line"></div><div class="line">In [<span class="number">23</span>]: digits.target</div><div class="line">Out[<span class="number">23</span>]: <span class="keyword">array</span>([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, ..., <span class="number">8</span>, <span class="number">9</span>, <span class="number">8</span>])</div><div class="line"></div><div class="line">In [<span class="number">24</span>]: digits.target_names</div><div class="line">Out[<span class="number">24</span>]: <span class="keyword">array</span>([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>])</div><div class="line"></div><div class="line">In [<span class="number">25</span>]: digits.images</div><div class="line">Out[<span class="number">25</span>]:</div><div class="line"><span class="keyword">array</span>([[[  <span class="number">0.</span>,   <span class="number">0.</span>,   <span class="number">5.</span>, ...,   <span class="number">1.</span>,   <span class="number">0.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">0.</span>,  <span class="number">13.</span>, ...,  <span class="number">15.</span>,   <span class="number">5.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">3.</span>,  <span class="number">15.</span>, ...,  <span class="number">11.</span>,   <span class="number">8.</span>,   <span class="number">0.</span>],</div><div class="line">        ...,</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">4.</span>,  <span class="number">11.</span>, ...,  <span class="number">12.</span>,   <span class="number">7.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">2.</span>,  <span class="number">14.</span>, ...,  <span class="number">12.</span>,   <span class="number">0.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">0.</span>,   <span class="number">6.</span>, ...,   <span class="number">0.</span>,   <span class="number">0.</span>,   <span class="number">0.</span>]],</div><div class="line"></div><div class="line">        [[  <span class="number">0.</span>,   <span class="number">0.</span>,  <span class="number">10.</span>, ...,   <span class="number">1.</span>,   <span class="number">0.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">2.</span>,  <span class="number">16.</span>, ...,   <span class="number">1.</span>,   <span class="number">0.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">0.</span>,  <span class="number">15.</span>, ...,  <span class="number">15.</span>,   <span class="number">0.</span>,   <span class="number">0.</span>],</div><div class="line">        ...,</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">4.</span>,  <span class="number">16.</span>, ...,  <span class="number">16.</span>,   <span class="number">6.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">8.</span>,  <span class="number">16.</span>, ...,  <span class="number">16.</span>,   <span class="number">8.</span>,   <span class="number">0.</span>],</div><div class="line">        [  <span class="number">0.</span>,   <span class="number">1.</span>,   <span class="number">8.</span>, ...,  <span class="number">12.</span>,   <span class="number">1.</span>,   <span class="number">0.</span>]]])</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类别</td>
+<td>10</td>
+</tr>
+<tr>
+<td>特征</td>
+<td>64</td>
+</tr>
+<tr>
+<td>样本数量</td>
+<td>1797</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用于回归</strong></p>
+<ul>
+<li>sklearn.datasets.load_boston</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class  sklearn.datasets.load_boston(return_X_y=False)</div><div class="line">  <span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">  加载并返回波士顿房价数据集</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param return_X_y: 如果为True，则返回而不是Bunch对象，默认为False</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :return: Bunch对象，如果return_X_y为True，那么返回tuple，（data,target）</span></div><div class="line"><span class="string">  "</span><span class="string">""</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">34</span>]: from sklearn.datasets import load_boston</div><div class="line"></div><div class="line">In [<span class="number">35</span>]: boston = load_boston()</div><div class="line"></div><div class="line">In [<span class="number">36</span>]: boston.data.shape</div><div class="line">Out[<span class="number">36</span>]: (<span class="number">506</span>, <span class="number">13</span>)</div><div class="line"></div><div class="line">In [<span class="number">37</span>]: boston.feature_names</div><div class="line">Out[<span class="number">37</span>]:</div><div class="line"><span class="keyword">array</span>([<span class="string">'CRIM'</span>, <span class="string">'ZN'</span>, <span class="string">'INDUS'</span>, <span class="string">'CHAS'</span>, <span class="string">'NOX'</span>, <span class="string">'RM'</span>, <span class="string">'AGE'</span>, <span class="string">'DIS'</span>, <span class="string">'RAD'</span>,</div><div class="line">       <span class="string">'TAX'</span>, <span class="string">'PTRATIO'</span>, <span class="string">'B'</span>, <span class="string">'LSTAT'</span>],</div><div class="line">      dtype=<span class="string">'|S7'</span>)</div><div class="line"></div><div class="line">In [<span class="number">38</span>]:</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标类别</td>
+<td>5-50</td>
+</tr>
+<tr>
+<td>特征</td>
+<td>13</td>
+</tr>
+<tr>
+<td>样本数量</td>
+<td>506</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sklearn.datasets.load_diabetes</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">class sklearn.datasets.load_diabetes(return_X_y=False)</div><div class="line">  <span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">  加载和返回糖尿病数据集</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param return_X_y: 如果为True，则返回而不是Bunch对象，默认为False</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :return: Bunch对象，如果return_X_y为True，那么返回tuple，（data,target）</span></div><div class="line"><span class="string">  "</span><span class="string">""</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">13</span>]:  from sklearn.datasets import load_diabetes</div><div class="line"></div><div class="line">In [<span class="number">14</span>]: diabetes = load_diabetes()</div><div class="line"></div><div class="line">In [<span class="number">15</span>]: diabetes.data</div><div class="line">Out[<span class="number">15</span>]:</div><div class="line"><span class="keyword">array</span>([[ <span class="number">0.03807591</span>,  <span class="number">0.05068012</span>,  <span class="number">0.06169621</span>, ..., <span class="number">-0.00259226</span>,</div><div class="line">         <span class="number">0.01990842</span>, <span class="number">-0.01764613</span>],</div><div class="line">       [<span class="number">-0.00188202</span>, <span class="number">-0.04464164</span>, <span class="number">-0.05147406</span>, ..., <span class="number">-0.03949338</span>,</div><div class="line">        <span class="number">-0.06832974</span>, <span class="number">-0.09220405</span>],</div><div class="line">       [ <span class="number">0.08529891</span>,  <span class="number">0.05068012</span>,  <span class="number">0.04445121</span>, ..., <span class="number">-0.00259226</span>,</div><div class="line">         <span class="number">0.00286377</span>, <span class="number">-0.02593034</span>],</div><div class="line">       ...,</div><div class="line">       [ <span class="number">0.04170844</span>,  <span class="number">0.05068012</span>, <span class="number">-0.01590626</span>, ..., <span class="number">-0.01107952</span>,</div><div class="line">        <span class="number">-0.04687948</span>,  <span class="number">0.01549073</span>],</div><div class="line">       [<span class="number">-0.04547248</span>, <span class="number">-0.04464164</span>,  <span class="number">0.03906215</span>, ...,  <span class="number">0.02655962</span>,</div><div class="line">         <span class="number">0.04452837</span>, <span class="number">-0.02593034</span>],</div><div class="line">       [<span class="number">-0.04547248</span>, <span class="number">-0.04464164</span>, <span class="number">-0.0730303</span> , ..., <span class="number">-0.03949338</span>,</div><div class="line">        <span class="number">-0.00421986</span>,  <span class="number">0.00306441</span>]])</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标范围</td>
+<td>25-346</td>
+</tr>
+<tr>
+<td>特征</td>
+<td>10</td>
+</tr>
+<tr>
+<td>样本数量</td>
+<td>442</td>
+</tr>
+</tbody>
+</table>
+<h2 id="获取大数据集"><a href="#获取大数据集" class="headerlink" title="获取大数据集"></a>获取大数据集</h2><ul>
+<li>sklearn.datasets.fetch_20newsgroups</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class sklearn.datasets.fetch_20newsgroups(data_home=None, subset='train', categories=None, shuffle=True, random_state=42, remove=(), download_if_missing=True)</div><div class="line">  <span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">  加载20个新闻组数据集中的文件名和数据</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param subset: 'train'或者'test','all'，可选，选择要加载的数据集：训练集的“训练”，测试集的“测试”，两者的“全部”，具有洗牌顺序</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param data_home: 可选，默认值：无，指定数据集的下载和缓存文件夹。如果没有，所有scikit学习数据都存储在'〜/ scikit_learn_data'子文件夹中</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param categories: 无或字符串或Unicode的集合，如果没有（默认），加载所有类别。如果不是无，要加载的类别名称列表（忽略其他类别）</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param shuffle: 是否对数据进行洗牌</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param random_state: numpy随机数生成器或种子整数</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param download_if_missing: 可选，默认为True，如果False，如果数据不在本地可用而不是尝试从源站点下载数据，则引发IOError</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param remove: 元组</span></div><div class="line"><span class="string">  "</span><span class="string">""</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">29</span>]: from sklearn.datasets import fetch_20newsgroups</div><div class="line"></div><div class="line">In [<span class="number">30</span>]: data_test = fetch_20newsgroups(subset=<span class="string">'test'</span>,shuffle=<span class="keyword">True</span>, random_sta</div><div class="line">    ...: te=<span class="number">42</span>)</div><div class="line"></div><div class="line">In [<span class="number">31</span>]: data_train = fetch_20newsgroups(subset=<span class="string">'train'</span>,shuffle=<span class="keyword">True</span>, random_s</div><div class="line">    ...: tate=<span class="number">42</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>sklearn.datasets.fetch_20newsgroups_vectorized</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">class sklearn.datasets.fetch_20newsgroups_vectorized(subset='train', remove=(), data_home=None)</div><div class="line">  <span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">  加载20个新闻组数据集并将其转换为tf-idf向量，这是一个方便的功能; 使用sklearn.feature_extraction.text.Vectorizer的默认设置完成tf-idf 转换。对于更高级的使用（停止词过滤，n-gram提取等），将fetch_20newsgroup与自定义Vectorizer或CountVectorizer组合在一起</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param subset: 'train'或者'test','all'，可选，选择要加载的数据集：训练集的“训练”，测试集的“测试”，两者的“全部”，具有洗牌顺序</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param data_home: 可选，默认值：无，指定数据集的下载和缓存文件夹。如果没有，所有scikit学习数据都存储在'〜/ scikit_learn_data'子文件夹中</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param remove: 元组</span></div><div class="line"><span class="string">  "</span><span class="string">""</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">57</span>]: from sklearn.datasets import fetch_20newsgroups_vectorized</div><div class="line"></div><div class="line">In [<span class="number">58</span>]: bunch = fetch_20newsgroups_vectorized(subset=<span class="string">'all'</span>)</div><div class="line"></div><div class="line">In [<span class="number">59</span>]: from sklearn.utils import shuffle</div><div class="line"></div><div class="line">In [<span class="number">60</span>]: X, y = shuffle(bunch.data, bunch.target)</div><div class="line">    ...: offset = int(X.shape[<span class="number">0</span>] * <span class="number">0.8</span>)</div><div class="line">    ...: X_train, y_train = X[:offset], y[:offset]</div><div class="line">    ...: X_test, y_test = X[offset:], y[offset:]</div><div class="line">    ...:</div></pre></td></tr></table></figure>
+<h2 id="获取本地生成数据"><a href="#获取本地生成数据" class="headerlink" title="获取本地生成数据"></a>获取本地生成数据</h2><p>生成本地分类数据：</p>
+<ul>
+<li><p>sklearn.datasets.make_classification</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">class make_classification(n_samples=100, n_features=20, n_informative=2, n_redundant=2, n_repeated=0, n_classes=2, n_clusters_per_class=2, weights=None, flip_y=0.01, class_sep=1.0, hypercube=True, shift=0.0, scale=1.0, shuffle=True, random_state=None)</div><div class="line"><span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">生成用于分类的数据集</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">:param n_samples:int，optional（default = 100)，样本数量</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">:param n_features:int，可选（默认= 20），特征总数</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">:param n_classes:int，可选（default = 2),类（或标签）的分类问题的数量</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">:param random_state:int，RandomState实例或无，可选（默认=无）</span></div><div class="line"><span class="string">  如果int，random_state是随机数生成器使用的种子; 如果RandomState的实例，random_state是随机数生成器; 如果没有，随机数生成器所使用的RandomState实例np.random</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">:return :X,特征数据集；y,目标分类值</span></div><div class="line"><span class="string">"</span><span class="string">""</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">from sklearn.datasets.samples_generator import make_classification</div><div class="line">X,y= datasets.make_classification(n_samples=<span class="number">100000</span>, n_features=<span class="number">20</span>,n_informative=<span class="number">2</span>, n_redundant=<span class="number">10</span>,random_state=<span class="number">42</span>)</div></pre></td></tr></table></figure>
+<p>生成本地回归数据：</p>
+<ul>
+<li>sklearn.datasets.make_regression</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">class make_regression(n_samples=100, n_features=100, n_informative=10, n_targets=1, bias=0.0, effective_rank=None, tail_strength=0.5, noise=0.0, shuffle=True, coef=False, random_state=None)</div><div class="line">  <span class="string">""</span><span class="string">"</span></div><div class="line"><span class="string">  生成用于回归的数据集</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param n_samples:int，optional（default = 100)，样本数量</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param  n_features:int,optional（default = 100)，特征数量</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param  coef:boolean，optional（default = False），如果为True，则返回底层线性模型的系数</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :param random_state:int，RandomState实例或无，可选（默认=无）</span></div><div class="line"><span class="string">    如果int，random_state是随机数生成器使用的种子; 如果RandomState的实例，random_state是随机数生成器; 如果没有，随机数生成器所使用的RandomState实例np.random</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  :return :X,特征数据集；y,目标值</span></div><div class="line"><span class="string">  "</span><span class="string">""</span></div><div class="line">from sklearn.datasets.samples_generator import make_regression</div><div class="line">X, y = make_regression(n_samples=<span class="number">200</span>, n_features=<span class="number">5000</span>, random_state=<span class="number">42</span>)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/03/12/page180312/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -989,153 +1289,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/14/page171214/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Nick">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="想念初恋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/14/page171214/" itemprop="url">Pandas基本操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T15:00:31+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/资料/" itemprop="url" rel="index">
-                    <span itemprop="name">资料</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="comment"># 定义序列, pandas中的数据形式通常是float32或float64</span></div><div class="line">s=pd.Series([<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,np.nan,<span class="number">44</span>,<span class="number">1</span>])</div><div class="line"><span class="keyword">print</span> s</div><div class="line"><span class="keyword">print</span> <span class="string">'-'</span>*<span class="number">40</span></div><div class="line"><span class="keyword">print</span> s[<span class="number">0</span>]</div><div class="line"><span class="keyword">print</span> s[<span class="number">3</span>]</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">0     1.0</div><div class="line">1     3.0</div><div class="line">2     5.0</div><div class="line">3     NaN</div><div class="line">4    44.0</div><div class="line">5     1.0</div><div class="line">dtype: float64</div><div class="line">----------------------------------------</div><div class="line">1.0</div><div class="line">nan</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/14/page171214/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1190,7 +1343,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1212,7 +1365,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
