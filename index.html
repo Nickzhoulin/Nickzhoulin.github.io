@@ -344,11 +344,9 @@
 
       
         
-          <p><strong>1、HDFS参数调优(hdfs-site.xml)</strong></p>
-<p>　  ▶ dfs.namenode.handler.count：namenode用于处理RPC的线程数，默认值10，可根据NameNode所在节点机器配置适当调大，如32、64；</p>
-<p>　  ▶ dfs.datanode.handler.count：datanode上用于处理RPC的线程数，2.6版本默认值10，早期1.x版本默认值为3，可根据datanode节点的配置适当调整；</p>
-<p><strong>2、MapReduce参数调优(mapred-site.xml)</strong></p>
-<p>▶ <strong>mapreduce.map.memory.mb</strong>：每个Map Task需要的内存量（1024）<br>
+          <h4 id="1、HDFS参数调优-hdfs-site-xml"><a href="#1、HDFS参数调优-hdfs-site-xml" class="headerlink" title="1、HDFS参数调优(hdfs-site.xml)"></a>1、HDFS参数调优(hdfs-site.xml)</h4><p>　   dfs.namenode.handler.count：namenode用于处理RPC的线程数，默认值10，可根据NameNode所在节点机器配置适当调大，如32、64；</p>
+<p>　   dfs.datanode.handler.count：datanode上用于处理RPC的线程数，2.6版本默认值10，早期1.x版本默认值为3，可根据datanode节点的配置适当调整；</p>
+<h4 id="2、MapReduce参数调优-mapred-site-xml"><a href="#2、MapReduce参数调优-mapred-site-xml" class="headerlink" title="2、MapReduce参数调优(mapred-site.xml)"></a>2、MapReduce参数调优(mapred-site.xml)</h4><p>mapreduce.map.memory.mb：每个Map Task需要的内存量（1024）<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/24/page180924/#more" rel="contents">
