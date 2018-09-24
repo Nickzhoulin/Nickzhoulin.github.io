@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="文章发布测试">
+<meta name="description" content="1、HDFS参数调优(hdfs-site.xml) 　  ▶ dfs.namenode.handler.count：namenode用于处理RPC的线程数，默认值10，可根据NameNode所在节点机器配置适当调大，如32、64； 　  ▶ dfs.datanode.handler.count：datanode上用于处理RPC的线程数，2.6版本默认值10，早期1.x版本默认值为3，可根据data">
+<meta name="keywords" content="Hadoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
+<meta property="og:title" content="Hadoop">
 <meta property="og:url" content="http://nickzhoulin.github.io/2018/09/24/page180924/index.html">
 <meta property="og:site_name" content="想念初恋">
-<meta property="og:description" content="文章发布测试">
+<meta property="og:description" content="1、HDFS参数调优(hdfs-site.xml) 　  ▶ dfs.namenode.handler.count：namenode用于处理RPC的线程数，默认值10，可根据NameNode所在节点机器配置适当调大，如32、64； 　  ▶ dfs.datanode.handler.count：datanode上用于处理RPC的线程数，2.6版本默认值10，早期1.x版本默认值为3，可根据data">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-24T09:26:21.233Z">
+<meta property="og:updated_time" content="2018-09-24T13:28:28.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试">
-<meta name="twitter:description" content="文章发布测试">
+<meta name="twitter:title" content="Hadoop">
+<meta name="twitter:description" content="1、HDFS参数调优(hdfs-site.xml) 　  ▶ dfs.namenode.handler.count：namenode用于处理RPC的线程数，默认值10，可根据NameNode所在节点机器配置适当调大，如32、64； 　  ▶ dfs.datanode.handler.count：datanode上用于处理RPC的线程数，2.6版本默认值10，早期1.x版本默认值为3，可根据data">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title>测试 | 想念初恋</title>
+  <title>Hadoop | 想念初恋</title>
   
 
 
@@ -269,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">测试</h1>
+          <h1 class="post-title" itemprop="name headline">Hadoop</h1>
         
 
         <div class="post-meta">
@@ -291,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/资料/" itemprop="url" rel="index">
+                    <span itemprop="name">资料</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -319,7 +342,24 @@
       
 
       
-        <p>文章发布测试</p>
+        <p><strong>1、HDFS参数调优(hdfs-site.xml)</strong></p>
+<p>　  ▶ dfs.namenode.handler.count：namenode用于处理RPC的线程数，默认值10，可根据NameNode所在节点机器配置适当调大，如32、64；</p>
+<p>　  ▶ dfs.datanode.handler.count：datanode上用于处理RPC的线程数，2.6版本默认值10，早期1.x版本默认值为3，可根据datanode节点的配置适当调整；</p>
+<p><strong>2、MapReduce参数调优(mapred-site.xml)</strong></p>
+<p>▶ <strong>mapreduce.map.memory.mb</strong>：每个Map Task需要的内存量（1024）<br><a id="more"></a><br>▶ <strong>mapreduce.reduce.memory.mb</strong>：每个Reduce Task需要的内存量(2048)</p>
+<p>▶ <strong>mapreduce.map.java.opts</strong>：jvm启动时的参数（-Xmx768m）</p>
+<p>▶ <strong>mapreduce.reduce.java.opts</strong>:jvm启动时的参数(–Xmx1536m)</p>
+<p>　  ▶ mapreduce.tasktracker.map.tasks.maximum：每个nodemanager节点上可运行的最大map任务数，默认值2，可根据实际值调整为10~100；</p>
+<p>　  ▶ mapreduce.tasktracker.reduce.tasks.maximum：每个nodemanager节点上可运行的最大reduce任务数，默认值2，可根据实际值调整为10~100；</p>
+<p>　  ▶ mapreduce.output.fileoutputformat.compress：是否对map任务产生的结果进行压缩，默认值false。对传输数据进行压缩，既可以减少文件的存储空间，又可以加快数据在网络不同节点之间的传输速度。</p>
+<p>　  ▶ mapreduce.output.fileoutputformat.compress.type：map产生任务数据的压缩方式，默认值RECORD，可配置值有：NONE、RECORD、BLOCK</p>
+<p>　  ▶ mapreduce.task.io.sort.mb：map任务输出结果的内存环形缓冲区大小，默认值100M，可根据map节点的机器进行配置,但是不能超过mapred.child.java.opts配置的值</p>
+<p>　  ▶ mapreduce.map.sort.spill.percent：map任务输出环形缓冲区大小溢写触发最大比例，默认值80%，这个值一般不建议修改；</p>
+<p>　  ▶ mapreduce.reduce.shuffle.parallelcopies：reduce节点通过http拷贝map输出结果数据到本地的最大工作线程数，默认值5，可根据节点机器配置适当修改；</p>
+<p>　  ▶ mapred.child.java.opts：配置每个map或reduce使用的内存数量，默认值-Xmx200m，即200M。</p>
+<p><strong>3. Yarn参数调优(yarn-site.xml)</strong></p>
+<p>▶ yarn.scheduler.maximum-allocation-mb（系统运存减1024M）: 这是说每个container最多申请的内存上限，会不会存在一个container申请过多资源的情况，只要没超过设定值就不会管他，但是可能超过机器内存限制了，然后就被杀死了（Container就是一个yarn的java进程，在Mapreduce中的MapTask，ReduceTask都作为Container在Yarn的框架上执行）</p>
+<p>s</p>
 
       
     </div>
@@ -335,6 +375,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+        </div>
+      
 
       
       
@@ -344,7 +390,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/01/page180401/" rel="next" title="scikit-learn数据集">
+              <a href="/2018/09/23/page180401/" rel="next" title="scikit-learn数据集">
                 <i class="fa fa-chevron-left"></i> scikit-learn数据集
               </a>
             
@@ -446,7 +492,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
